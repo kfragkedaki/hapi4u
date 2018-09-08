@@ -20,6 +20,8 @@
 
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
+	
+	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/> <!--For dropdown option-->
 
   </head>
 
@@ -62,21 +64,77 @@
     <header id="page-top" class="masthead text-white text-center">
       <div class="overlay"></div>
       <div class="container">
-        <div class="row" id="search">
+        <div class="row">
           <div class="col-xl-9 mx-auto">
             <h1 class="mb-5">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h1>
           </div>
-          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form>
-              <div class="form-row">
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-                </div>
-                <div class="col-12 col-md-3">
-                  <a href="pharmacies.html" class="btn btn-primary btn-lg" role="button" id="find">Αναζήτηση</a>
-                </div>
-              </div>
-            </form>
+          <div class="col-md-10 mx-auto">
+		   <div class="container">
+			<form style="width:100%; background-color:rgba(102, 0, 102, 0.5); padding:40px">
+			    <div class="form-group col-lg-12 col-md-12 col-sm-12" style="width:100%">
+					<label><b>Περιοχή:  </b></label>
+						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="test" style="width: 100%;">
+						
+						<optgroup label = "Κέντρο Αθήνας">
+						
+						<option>Άγιος Ελευθέριος</option>
+						<option>Άγιος Κωνσταντίνος - Πλατεία Βάθης</option>
+						<option>Άνω Κυψέλη</option>
+						<option>Άνω Πατήσια</option>
+						<option>Α΄ Νεκροταφείο</option>
+						<option>Ακαδημία Πλάτωνος</option>
+						<option>Ακρόπολη</option>
+						<option>Αμπελόκηποι</option>
+						<option>Βοτανικός</option>
+						<option>Γκάζι</option>
+						<option>Γκύζη</option>
+						<option>Γουδή</option>
+						<option>Γούβα</option>
+						<option>Ελληνορώσων</option>
+						<option>Εμπορικό Τρίγωνο - Πλάκα</option>
+						<option>Ζάππειο</option>
+						<option>Θησείο</option>
+						<option>Ιλίσια</option>
+						<option>Κεραμεικός</option>
+						<option>Κολοκυνθού</option>
+						<option>Κολωνάκι</option>
+						<option>Κολωνός</option>
+						<option>Κουκάκι - Μακρυγιάννη</option>
+						<option>Κυψέλη</option>
+						<option>Λυκαβηττός</option>
+						<option>Μουσείο - Εξάρχεια - Νεάπολη</option>
+						<option>Νέα Κυψέλη</option>
+						<option>Νέος Κόσμος</option>
+						<option>Νιρβάνα</option>
+						<option>Παγκράτι</option>
+						<option>Πανεπιστημιούπολη</option>
+						<option>Πατήσια</option>
+						<option>Πεδίον Άρεως</option>
+						<option>Πεντάγωνο</option>
+						<option>Πετράλωνα</option>
+						<option>Πλατεία Αμερικής</option>
+						<option>Πλατεία Αττικής</option>
+						<option>Πολύγωνο</option>
+						<option>Προμπονά</option>
+						<option>Ρηγίλλης</option>
+						<option>Ριζούπολη</option>
+						<option>Ρουφ </option>
+						<option>Σεπόλια </option>
+						<option>Στάδιο </option>
+						<option>Σταθμός Λαρίσης</option>
+		            	</optgroup>
+                      </select>
+					</div>
+					
+					<label><b>Ημερομηνία</b></label>
+						<input type="date" id="date" name="date">
+						
+					<label><b>Ώρα</b></label>
+						<input type="time" id="time" name="time">
+						
+					<button type="button" class="btn btn-primary">Αναζήτηση</button>
+		    </form>
+		   </div>	
           </div>
         </div>
       </div>
@@ -247,6 +305,16 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+
+	<script>
+
+		$(".chosen-select").chosen({
+  no_results_text: "Oops, nothing found!"
+})
+	</script>
 
   </body>
 
