@@ -17,15 +17,37 @@ h1,h2,h3,h4,h5,h6{
 	font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
 	font-weight:700
 	}
+	
+.btn-primary{
+	background-color:#830d0f;
+	border-color:#830d0f;
+}
+
+.container2{
+	width:100%; 
+	background-color:rgba(20, 20, 31, 0.8); 
+	padding:40px; 
+	margin-top:10px;
+}
+
+.date{
+	padding-right:100px;
+}
+
+.time{
+	padding-right:130px;
+}
+
 header.masthead{
 	position:relative;
 	background-color:#343a40;
-	background:url(../img/pharmacy.png) center center;
+	background:url(../img/bright-cardiac-cardiology.jpg) center center;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;-o-background-size:cover;
 	background-size:cover;
 	padding-top:8rem;
-	padding-bottom:8rem}
+	padding-bottom:8rem;
+	height:800px;}
 	
 header.masthead .overlay{
 	position:absolute;

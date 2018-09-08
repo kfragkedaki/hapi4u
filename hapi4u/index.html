@@ -65,12 +65,12 @@
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
-          <div class="col-xl-9 mx-auto">
+          <div class="col-xl-4 mx-auto" style="right:80px;">
             <h1 class="mb-5">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h1>
           </div>
           <div class="col-md-10 mx-auto">
-		   <div class="container">
-			<form style="width:100%; background-color:rgba(102, 0, 102, 0.5); padding:40px">
+		   <div class="container2">
+			<form>
 			    <div class="form-group col-lg-12 col-md-12 col-sm-12" style="width:100%">
 					<label><b>Περιοχή:  </b></label>
 						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="test" style="width: 100%;">
@@ -126,12 +126,13 @@
                       </select>
 					</div>
 					
-					<label><b>Ημερομηνία</b></label>
+					<label class="date"><b>Ημερομηνία</b>
 						<input type="date" id="date" name="date">
-						
-					<label><b>Ώρα</b></label>
+					</label>
+					<label class="time"><b>Ώρα</b>
 						<input type="time" id="time" name="time">
-						
+					</label>
+					
 					<button type="button" class="btn btn-primary">Αναζήτηση</button>
 		    </form>
 		   </div>	
