@@ -19,14 +19,15 @@ h1,h2,h3,h4,h5,h6{
 	}
 	
 .btn-primary{
-	background-color:#830d0f;
-	border-color:#830d0f;
+	background-color:#2976a0;
+	border-color:#2976a0;
 }
 
 .container2{
 	width:100%; 
 	background-color:rgba(20, 20, 31, 0.8); 
 	padding:40px; 
+	margin-top:70px;
 }
 
 .date{
@@ -41,12 +42,13 @@ h1,h2,h3,h4,h5,h6{
 header.masthead{
 	position:relative;
 	background-color:#343a40;
-	background:url(../img/bright-cardiac-cardiology.jpg) center center;
+	background:url(../img/main_page.jpg) center center;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;-o-background-size:cover;
 	background-size:cover;
-	padding-top:8rem;
-	padding-bottom:8rem;
+	padding-top:120px;
+	padding-bottom:10px;
+	margin-top:50px;
 	height:650px;
 	margin-bottom:10px}
 	
