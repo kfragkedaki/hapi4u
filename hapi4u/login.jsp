@@ -71,7 +71,7 @@
 
 		<form class="form-signin" method="post" action="loginController.jsp">
 			<h2 class="form-signin-heading text-center">Παρακαλώ συνδεθείτε.</h2>
-			<input type="text" name="username" id="inputusername" class="form-control" placeholder="email" required>
+			<input type="text" name="email" id="inputusername" class="form-control" placeholder="email" required>
 			<input name="password" type="password" id="inputpassword" class="form-control" placeholder="κωδικός" required>
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Σύνδεση</button>

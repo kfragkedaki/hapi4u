@@ -2,7 +2,6 @@ package hapi4u_javafiles;
 
 public class User {
 
-	private String username;
 	private String password;
 	private String email;
 
@@ -14,8 +13,9 @@ public class User {
 	 * @param email, String
 	 */
 	public User(String email, String password) {
-		this.password = password;
+
 		this.email = email;
+		this.password = password;
 	}
 
 	/*Getters and Setters*/
