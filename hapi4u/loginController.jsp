@@ -22,6 +22,6 @@
 	<% }	
 		session.setAttribute("user_object", udao.findUser(email)); %>
 	
-	<jsp:forward page="index.html"/>	
+	<jsp:forward page="index.jsp"/>	
 			
 		

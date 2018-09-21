@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page errorPage="error.jsp"%>
 <%@ page import="hapi4u_javafiles.*" %>
-<%
-	if( session.getAttribute("user_object") == null ) {
-		request.setAttribute("message", "You are not authorized to access this resource! Please login.");
-	
-%>
-		<jsp:forward page="login.jsp"/>
-<%	}  %>
+
 
 <%
 
@@ -73,14 +67,20 @@ UserDAO udao = new UserDAO();
 				  <a class="nav-link js-scroll-trigger" data-target="#register"><b>Εγγραφη</b></button></a>
 				</li>
 			  </ul>
+			  <%
+	if( session.getAttribute("user_object") != null ) {
+	
+%>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="logout_ex2_8150008.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
+								<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
 							</ul>
 				         </li>				
 		            </ul>
+	<%}
+	%>
 			</div>
 		</div>
 	</nav>
