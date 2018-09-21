@@ -60,12 +60,19 @@ UserDAO udao = new UserDAO();
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" href="#contact">Επικοινωνια</a>
 				</li>
+	<%
+	if( session.getAttribute("user_object") == null ) {
+	
+%>
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" data-target="#register"><b>Εγγραφη</b></button></a>
 				</li>
+	<%
+	}
+	%>
 			  </ul>
 			  <%
 	if( session.getAttribute("user_object") != null ) {
