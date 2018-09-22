@@ -70,22 +70,26 @@ UserDAO udao = new UserDAO();
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" data-target="#register"><b>Εγγραφη</b></button></a>
 				</li>
-
-			  </ul>
+             </ul>
 			  <%
 	}else{
 	
 %>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
-							</ul>
-				         </li>				
-		            </ul>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="favourites.jsp">Αγαπημένα</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
+					</ul>
+				</li>				
+		    </ul>
 	<%}
 	%>
+	    
 			</div>
 		</div>
 	</nav>
