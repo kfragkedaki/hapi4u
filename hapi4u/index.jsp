@@ -70,12 +70,10 @@ UserDAO udao = new UserDAO();
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" data-target="#register"><b>Εγγραφη</b></button></a>
 				</li>
-	<%
-	}
-	%>
+
 			  </ul>
 			  <%
-	if( session.getAttribute("user_object") != null ) {
+	}else{
 	
 %>
 					<ul class="nav navbar-nav navbar-right">
