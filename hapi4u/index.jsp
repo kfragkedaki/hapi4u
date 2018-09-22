@@ -32,6 +32,7 @@ UserDAO udao = new UserDAO();
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
 	
+	
 	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/> <!--For dropdown option-->
 
   </head>

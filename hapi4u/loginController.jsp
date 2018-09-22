@@ -20,8 +20,17 @@
 %>
 		<jsp:forward page="login.jsp"/>	
 	<% }	
-		session.setAttribute("user_object", udao.findUser(email)); %>
-	
-	<jsp:forward page="index.jsp"/>	
+		session.setAttribute("user_object", udao.findUser(email)); 
+		User user = (User) session.getAttribute("user_object");
+		
+		if ( user.getEmail().equals("pharmacy_haimalis@gmail.com")){%>
+		 
+			<jsp:forward page="profil.jsp"/>
+			
+		<%}else {%>
+		
+			<jsp:forward page="index.jsp"/>	
+		<%}
+		%>
 			
 		

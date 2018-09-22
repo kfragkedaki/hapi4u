@@ -29,6 +29,8 @@ public class UserDAO {
 		users.add(new User("chadler_bing@gmail.com", "4444"));
 		users.add(new User("joey_tribbiani@gmail.com", "5555"));
 		users.add(new User("monica_geller@gmail.com", "6666"));
+		users.add(new User("pharmacy_haimalis@gmail.com", "7777"));
+
 
 		return users;
 
