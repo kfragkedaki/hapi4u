@@ -8,8 +8,7 @@
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		UserDAO udao = new UserDAO();
-		
+ 		
 		try {
 			
 			udao.authenticate(email, password);

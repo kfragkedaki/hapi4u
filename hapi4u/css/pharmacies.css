@@ -1,0 +1,24 @@
+#description {
+	background: #f2f2f2;
+    padding: 90px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.content {
+    a{
+      color: gray;
+      text-decoration: none !important;
+      .fa fa-2x{
+        transition: all .5s;
+        &.fa-heart{
+          color: #e74c3c;
+        }
+        &.fa-heart-o{
+          &:hover{
+            transform:scale(1.1);
+          }
+        }
+    }     
+}
