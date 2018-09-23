@@ -112,51 +112,51 @@ UserDAO udao = new UserDAO();
 						
 						<optgroup label = "Κέντρο Αθήνας">
 						
-						<option>Άγιος Ελευθέριος</option>
-						<option>Άγιος Κωνσταντίνος - Πλατεία Βάθης</option>
-						<option>Άνω Κυψέλη</option>
-						<option>Άνω Πατήσια</option>
-						<option>Α΄ Νεκροταφείο</option>
-						<option>Ακαδημία Πλάτωνος</option>
-						<option>Ακρόπολη</option>
-						<option>Αμπελόκηποι</option>
-						<option>Βοτανικός</option>
-						<option>Γκάζι</option>
-						<option>Γκύζη</option>
-						<option>Γουδή</option>
-						<option>Γούβα</option>
-						<option>Ελληνορώσων</option>
-						<option>Εμπορικό Τρίγωνο - Πλάκα</option>
-						<option>Ζάππειο</option>
-						<option>Θησείο</option>
-						<option>Ιλίσια</option>
-						<option>Κεραμεικός</option>
-						<option>Κολοκυνθού</option>
-						<option>Κολωνάκι</option>
-						<option>Κολωνός</option>
-						<option>Κουκάκι - Μακρυγιάννη</option>
-						<option>Κυψέλη</option>
-						<option>Λυκαβηττός</option>
-						<option>Μουσείο - Εξάρχεια - Νεάπολη</option>
-						<option>Νέα Κυψέλη</option>
-						<option>Νέος Κόσμος</option>
-						<option>Νιρβάνα</option>
-						<option>Παγκράτι</option>
-						<option>Πανεπιστημιούπολη</option>
-						<option>Πατήσια</option>
-						<option>Πεδίον Άρεως</option>
-						<option>Πεντάγωνο</option>
-						<option>Πετράλωνα</option>
-						<option>Πλατεία Αμερικής</option>
-						<option>Πλατεία Αττικής</option>
-						<option>Πολύγωνο</option>
-						<option>Προμπονά</option>
-						<option>Ρηγίλλης</option>
-						<option>Ριζούπολη</option>
-						<option>Ρουφ </option>
-						<option>Σεπόλια </option>
-						<option>Στάδιο </option>
-						<option>Σταθμός Λαρίσης</option>
+						<option value=1>Άγιος Ελευθέριος</option>
+						<option value=2>Άγιος Κωνσταντίνος - Πλατεία Βάθης</option>
+						<option value=3>Άνω Κυψέλη</option>
+						<option value=4>Άνω Πατήσια</option>
+						<option value=5>Α΄ Νεκροταφείο</option>
+						<option value=6>Ακαδημία Πλάτωνος</option>
+						<option value=7>Ακρόπολη</option>
+						<option value=8>Αμπελόκηποι</option>
+						<option value=9>Βοτανικός</option>
+						<option value=10>Γκάζι</option>
+						<option value=11>Γκύζη</option>
+						<option value=12>Γουδή</option>
+						<option value=13>Γούβα</option>
+						<option value=14>Ελληνορώσων</option>
+						<option value=15>Εμπορικό Τρίγωνο - Πλάκα</option>
+						<option value=16>Ζάππειο</option>
+						<option value=17>Θησείο</option>
+						<option value=18>Ιλίσια</option>
+						<option value=19>Κεραμεικός</option>
+						<option value=20>Κολοκυνθού</option>
+						<option value=21>Κολωνάκι</option>
+						<option value=22>Κολωνός</option>
+						<option value=23>Κουκάκι - Μακρυγιάννη</option>
+						<option value=24>Κυψέλη</option>
+						<option value=25>Λυκαβηττός</option>
+						<option value=26>Μουσείο - Εξάρχεια - Νεάπολη</option>
+						<option value=27>Νέα Κυψέλη</option>
+						<option value=28>Νέος Κόσμος</option>
+						<option value=29>Νιρβάνα</option>
+						<option value=30>Παγκράτι</option>
+						<option value=31>Πανεπιστημιούπολη</option>
+						<option value=32>Πατήσια</option>
+						<option value=33>Πεδίον Άρεως</option>
+						<option value=34>Πεντάγωνο</option>
+						<option value=35>Πετράλωνα</option>
+						<option value=36>Πλατεία Αμερικής</option>
+						<option value=37>Πλατεία Αττικής</option>
+						<option value=38>Πολύγωνο</option>
+						<option value=39>Προμπονά</option>
+						<option value=40>Ρηγίλλης</option>
+						<option value=41>Ριζούπολη</option>
+						<option value=42>Ρουφ </option>
+						<option value=43>Σεπόλια </option>
+						<option value=44>Στάδιο </option>
+						<option value=45>Σταθμός Λαρίσης</option>
 		            	</optgroup>
                       </select>
 					
@@ -167,7 +167,7 @@ UserDAO udao = new UserDAO();
 						<input type="time"id="time" name="time">
 					</label>
 					
-					<button type="button" class="btn btn-primary">Αναζήτηση</button>
+					<button type="button" class="btn btn-primary" href="pharmacies.jsp">Αναζήτηση</button>
 		    </form>
 		   </div>	
           </div>
