@@ -13,7 +13,7 @@
 	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>(); 
 
 	for (int i=0; i < locations.size(); i++){
-		pharmacies = pdao.findpharmacies("locations.get(i)");
+		pharmacies = pdao.findPharmacies("locations.get(i)");
 	}
 	
 %>	

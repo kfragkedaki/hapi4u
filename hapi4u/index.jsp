@@ -105,7 +105,7 @@ UserDAO udao = new UserDAO();
           </div>
           <div class="col-md-10 mx-auto">
 		   <div class="container2">
-			<form class="form-group">
+			<form class="form-group" method="post" action ="pharmacies.jsp">
 			    
 					<label><b>Περιοχή:  </b></label>
 						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="test" style="width: 20%;">
@@ -167,7 +167,7 @@ UserDAO udao = new UserDAO();
 						<input type="time"id="time" name="time">
 					</label>
 					
-					<button type="button" class="btn btn-primary" href="pharmacies.jsp">Αναζήτηση</button>
+					<button type="submit" class="btn btn-primary">Αναζήτηση</button>
 		    </form>
 		   </div>	
           </div>
