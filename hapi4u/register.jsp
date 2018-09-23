@@ -6,7 +6,7 @@
 <html lang="en">
 
 	<head>
-
+		
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
@@ -26,6 +26,8 @@
 		<link href="css/landing-page.min.css" rel="stylesheet">
 		<link href="css/register.css" rel="stylesheet">
 		<link href="css/landing-page.css" rel="stylesheet">
+		<link href="../hapi4u/css/register.css" rel="stylesheet">
+		<link href="../hapi4u/css/landing-page.css" rel="stylesheet">
 
 	</head>
 
@@ -34,7 +36,7 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
 			<div class="container">
-				<a class="navbar-brand js-scroll-trigger" href="index.html#page-top" id="title"></i> Hapi4u</a>
+				<a class="navbar-brand js-scroll-trigger" href="index.jsp#page-top" id="title"></i> Hapi4u</a>
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				  Menu
 				  <i class="fa fa-bars"></i>
@@ -42,22 +44,22 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 				  <ul class="navbar-nav text-uppercase ml-auto">
 				  <li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="index.html#services"> Υπηρεσιες</a>
+					  <a class="nav-link js-scroll-trigger" href="index.jsp#services"> Υπηρεσιες</a>
 					</li>
 					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="index.html#about">Πως λειτουργει</a>
+					  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει</a>
 					</li>
 					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="index.html#developers">Η ομαδα μας</a>
+					  <a class="nav-link js-scroll-trigger" href="index.jsp#developers">Η ομαδα μας</a>
 					</li>
 					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="index.html#contact">Επικοινωνια</a>
+					  <a class="nav-link js-scroll-trigger" href="index.jsp#contact">Επικοινωνια</a>
 					</li>
 					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" data-target="#login"><b>Εισοδος</b></button></a>
+					  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
 					</li>
 					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" data-target="#register"><b>Εγγραφη</b></button></a>
+					  <a class="nav-link js-scroll-trigger" href="register.jsp"><b>Εγγραφη</b></button></a>
 					</li>
 				  </ul>
 				</div>
@@ -73,18 +75,11 @@
 
 			<hr>
 			
-			<% if(request.getAttribute("message") != null) { %>		
-				<div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
+			<% if(session.getAttribute("message") != null) { %>		
+				<div class="alert alert-danger text-center" role="alert"><%=(String)session.getAttribute("message") %></div>
 			<% } %>
-
 		
 			<form name="form-register" class="form-horizontal" method="post" action="../servlet/RegisterController">
-				<div class="form-group row">
-					<label for="username" class="col-sm-2 offset-sm-2 control-label"><b>Όνομα Χρήστη:</b></label>
-					<div class="col-sm-4">
-					  <input name="username" type="text" class="form-control" id="inputUsername" placeholder="Username">
-					</div>
-				</div>
 				<div class="form-group row">
 					<label for="email" class="col-sm-2 offset-sm-2 control-label"><b>Email:</b></label>
 					<div class="col-sm-4">
@@ -94,19 +89,19 @@
 				<div class="form-group row">
 					<label for="password" class="col-sm-2 offset-sm-2 control-label"><b>Κωδικός:</b></label>
 					<div class="col-sm-4">
-					  <input name="password" type="text" class="form-control" id="inputPassword" placeholder="Password">
+					  <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
 					</div>
 			    </div> 
 				<div class="form-group row">
-					<label for="password" class="col-sm-3 offset-sm-1 control-label"><b>Επιβεβαίωση κωδικού:</b></label>
+					<label for="password" class="col-sm-3 offset-sm-1 control-label"><b>Επιβεβαίωση Kωδικού:</b></label>
 					<div class="col-sm-4">
-					  <input name="valid_password" type="text" class="form-control" id="inputValidPassword" placeholder="Password">
+					  <input name="valid_password" type="password" class="form-control" id="inputValidPassword" placeholder="Password">
 					</div>
 				</div>
 				<br>
 				<br>
 				<div class="text-center">
-					<button type="submit" class="btn btn-lg btn-primary " href="hom-e.html" ><b>Δημιουργία λογαριασμού</b></button>
+					<button type="submit" class="btn btn-lg btn-primary "><b>Δημιουργία λογαριασμού</b></button>
 				</div> 
 			</form>
 		</div>
