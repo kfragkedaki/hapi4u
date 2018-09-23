@@ -1,5 +1,6 @@
 package hapi4u_javafiles;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class UserDAO {
 	 *
 	 * @return List<User>
 	 */
-	public List<User> getUsers() {
+/*	public List<User> getUsers() {
 
 		List<User> users = new ArrayList<User>();
 
@@ -34,8 +35,51 @@ public class UserDAO {
 
 		return users;
 
-	}
+	} */
+	public List<User> getUsers() throws Exception {
 
+		Connection con = null;
+
+		String sqlquery= "SELECT * FROM users;";
+
+		DB db = new DB();
+		List<User> users = new ArrayList<User>();
+
+		try {
+
+			db.open(); //open connection
+
+			con = db.getConnection(); //get Connection object
+
+			PreparedStatement stmt = con.prepareStatement(sqlquery);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while ( rs.next() ) {
+				users.add( new User( rs.getString("email"), rs.getString("password") ) );
+			}
+
+			rs.close(); //closing ResultSet
+			stmt.close(); // closing PreparedStatement
+			db.close(); // closing connection
+
+			return users;
+
+		} catch (Exception e) {
+
+			throw new Exception( e.getMessage() );
+
+		} finally {
+
+			try {
+				db.close();
+			} catch (Exception e) {
+				//no need to do anything...
+			}
+
+		}
+
+	}
 	/**
 	 * Search user by username
 	 *
@@ -43,7 +87,7 @@ public class UserDAO {
 	 * @return User, the User object
 	 * @throws Exception, if user not found
 	 */
-	public User findUser(String email) throws Exception {
+/*	public User findUser(String email) throws Exception {
 
 		List<User> users = getUsers();
 
@@ -56,6 +100,58 @@ public class UserDAO {
 		}
 
 		throw new Exception("User with username: " + email + " does not exist");
+	} */
+	public User findUser(String email) throws Exception {
+
+		Connection con = null;
+
+		String sqlquery= "SELECT * FROM users WHERE email=?;";
+
+		DB db = new DB();
+
+		try {
+
+			db.open();
+
+			con = db.getConnection();
+
+			PreparedStatement stmt = con.prepareStatement(sqlquery);
+			stmt.setString( 1, email );
+
+			ResultSet rs = stmt.executeQuery();
+
+			if( !rs.next() ) {
+
+				rs.close();
+				stmt.close();
+				db.close();
+
+				throw new Exception("Not valide email");
+
+			}
+
+			User user = new User( rs.getString("email"), rs.getString("password") );
+
+			rs.close(); //closing ResultSet
+			stmt.close(); // closing PreparedStatement
+			db.close(); // closing connection
+
+			return user;
+
+		} catch (Exception e) {
+
+			throw new Exception(e.getMessage());
+
+		} finally {
+
+			try {
+				db.close();
+			} catch (Exception e) {
+				//no need to do anything...
+			}
+
+		}
+
 	}
 
 	/**
@@ -65,7 +161,7 @@ public class UserDAO {
 	 * @param password
 	 * @throws Exception, if the credentials are not valid
 	 */
-	public void authenticate(String email, String password) throws Exception {
+/*	public void authenticate(String email, String password) throws Exception {
 
 		List<User> users = getUsers();
 
@@ -78,7 +174,94 @@ public class UserDAO {
 		}
 
 		throw new Exception("Wrong email or password");
+	}*/
+
+	public void authenticate(String email, String password) throws Exception {
+
+		Connection con = null;
+
+		String sqlquery= "SELECT * FROM users WHERE email=? AND password=?;";
+
+		DB db = new DB();
+
+		try {
+
+			db.open();
+
+			con = db.getConnection();
+
+			PreparedStatement stmt = con.prepareStatement(sqlquery);
+			stmt.setString( 1, email );
+			stmt.setString( 2, password );
+
+			ResultSet rs = stmt.executeQuery();
+
+			if(!rs.next()) {
+				rs.close();
+				stmt.close();
+				db.close();
+				throw new Exception("Wrong email or password");
+			}
+
+			rs.close();
+			stmt.close();
+			db.close();
+
+		} catch (Exception e) {
+
+			throw new Exception(e.getMessage());
+
+		} finally {
+
+			try {
+				db.close();
+			} catch (Exception e) {
+				//no need to do anything...
+			}
+
+		}
 	}
+
+
+	public void saveUser(User user) throws Exception {
+
+		Connection con = null;
+
+		String sqlquery= "INSERT INTO users VALUES ( ?, ?);";
+
+		DB db = new DB();
+
+		try {
+
+			db.open();
+
+			con = db.getConnection();
+
+			PreparedStatement stmt = con.prepareStatement(sqlquery);
+			stmt.setString( 1, user.getEmail() );
+			stmt.setString( 2, user.getPassword() );
+
+			stmt.executeUpdate();
+
+			stmt.close(); // closing PreparedStatement
+			db.close(); // closing connection
+
+
+	 	} catch (Exception e) {
+
+			throw new Exception(e.getMessage());
+
+		} finally {
+
+			try {
+				db.close();
+			} catch (Exception e) {
+				//no need to do anything...
+			}
+
+		}
+
+	} //End of saveUser
 
 	public UserDAO() {
 

@@ -55,7 +55,7 @@
 				  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" data-target="#register"><b>Εγγραφη</b></button></a>
+				  <a class="nav-link js-scroll-trigger" href="register.jsp"><b>Εγγραφη</b></button></a>
 				</li>
 			  </ul>
 			</div>
