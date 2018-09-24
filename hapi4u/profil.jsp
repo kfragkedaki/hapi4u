@@ -7,6 +7,8 @@
 
 UserDAO udao = new UserDAO();
 
+PharmacyDAO pdao = new PharmacyDAO();
+
 %>	
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@ UserDAO udao = new UserDAO();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hapi4u</title>
+    <title>Pharmacy profil</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -63,14 +65,17 @@ UserDAO udao = new UserDAO();
 		</div>
 	</nav>
     <!-- Header - set the background image for the header in the line below -->
+    <%Pharmacy pharmacy = pdao.findPharmacyByUserId(user.getUserId());
+	  
+	%>
     <header>
-     <img class="img-fluid d-block mx-auto"  style="width:30%; margin-top:30px;" src="img/pharmacy.jpg" alt="">
+     <img class="img-fluid d-block mx-auto"  style="width:30%; margin-top:30px;" src=<%=pharmacy.getImage()%> alt="">
     </header>
 
     <!-- Content section -->
     <section class="py-5">
       <div class="container">
-        <h1>ΠΑΝΑΓΙΩΤΗΣ ΧΑΪΜΑΛΑΣ ΚΑΙ ΣΙΑ ΟΕ</h1>
+        <h1><%=pharmacy.getName()%></h1>
         <p class="lead">Δημαρχείου 14, Αιγάλεω, 12242, ΑΤΤΙΚΗΣ</p>
       </div>
     </section>

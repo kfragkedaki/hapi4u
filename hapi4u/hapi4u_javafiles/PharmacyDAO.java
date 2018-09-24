@@ -28,7 +28,7 @@ public class PharmacyDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				pharmacies.add( new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("img"), rs.getString("availability"), rs.getInt("location_id"), rs.getInt("user_id")  ) );
+				pharmacies.add( new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("image"), rs.getString("availability"), rs.getInt("location_id"), rs.getInt("user_id")  ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -74,7 +74,7 @@ public class PharmacyDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				pharmacies.add( new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("img"),rs.getInt("location_id"), rs.getInt("user_id") ) );
+				pharmacies.add( new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("availability"), rs.getString("image"),rs.getInt("location_id"), rs.getInt("user_id") ) );
 			}
 
 			if( !rs.next() ) {
@@ -141,7 +141,7 @@ public class PharmacyDAO {
 
 			}
 
-			Pharmacy pharmacy = new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("img"), rs.getInt("location_id"), rs.getInt("user_id"));
+			Pharmacy pharmacy = new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("availability"), rs.getString("image"), rs.getInt("location_id"), rs.getInt("user_id"));
 
 
 			rs.close(); //closing ResultSet
