@@ -111,14 +111,15 @@ public class PharmacyDAO {
 
 	}
 
-	public List<Pharmacy> findPharmaciesByEmail(String email) throws Exception {
+	public Pharmacy findPharmacyByEmail(String email) throws Exception {
 
 		Connection con = null;
 
 		String sqlquery= "SELECT * FROM pharmacies WHERE email=?;";
 
 		DB db = new DB();
-		List<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
+
+		Pharmacy pharmacy = new Pharmacy();
 
 		try {
 
@@ -131,27 +132,24 @@ public class PharmacyDAO {
 
 			ResultSet rs = stmt.executeQuery();
 
-			while ( rs.next() ) {
-				pharmacies.add( new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("email"), rs.getString("password"), rs.getInt("location_id") ) );
-			}
 
 			if( !rs.next() ) {
 
 				rs.close();
 				stmt.close();
 				db.close();
-
-				throw new Exception("Not valide email");
+				return pharmacy;
 
 			}
 
+			pharmacy = new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("email"), rs.getString("password"), rs.getInt("location_id"));
 
 
 			rs.close(); //closing ResultSet
 			stmt.close(); // closing PreparedStatement
 			db.close(); // closing connection
 
-			return pharmacies;
+			return pharmacy;
 
 		} catch (Exception e) {
 

@@ -23,6 +23,7 @@ public class Pharmacy {
 		this.location_id = location_id;
 	}
 
+	public Pharmacy(){}
 	/*Getters and Setters*/
 
 	public int getId() {
