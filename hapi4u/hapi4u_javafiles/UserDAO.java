@@ -56,7 +56,7 @@ public class UserDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				users.add( new User( rs.getString("email"), rs.getString("password") ) );
+				users.add( new User( rs.getInt("user_id"), rs.getString("email"), rs.getString("password"), rs.getString("pharmacy"), rs.getString("administrator") ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -130,7 +130,7 @@ public class UserDAO {
 				throw new Exception ("Not valid email");
 
 			}
-			User user = new User( rs.getString("email"), rs.getString("password") );
+			User user = new User( rs.getInt("user_id"), rs.getString("email"), rs.getString("password"), rs.getString("pharmacy"), rs.getString("administrator") );
 
 			rs.close(); //closing ResultSet
 			stmt.close(); // closing PreparedStatement
@@ -226,7 +226,7 @@ public class UserDAO {
 
 		Connection con = null;
 
-		String sqlquery= "INSERT INTO users VALUES ( ?, ?);";
+		String sqlquery= "INSERT INTO users VALUES (?, ?, ? ,? , ?);";
 
 		DB db = new DB();
 
@@ -237,8 +237,11 @@ public class UserDAO {
 			con = db.getConnection();
 
 			PreparedStatement stmt = con.prepareStatement(sqlquery);
-			stmt.setString( 1, user.getEmail() );
-			stmt.setString( 2, user.getPassword() );
+			stmt.setInt( 1, user.getUserId() );
+			stmt.setString( 2, user.getEmail() );
+			stmt.setString( 3, user.getPassword() );
+			stmt.setString( 4, user.getIfPharmacy() );
+			stmt.setString( 5, user.getIfAdministrator() );
 
 			stmt.executeUpdate();
 

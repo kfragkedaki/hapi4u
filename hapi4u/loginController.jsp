@@ -20,10 +20,27 @@
 			request.setAttribute("message", e.getMessage());
 %>
 		<jsp:forward page="login.jsp"/>	
-	<% }	
-		session.setAttribute("user_object", udao.findUser(email));%>
-		 
-		<jsp:forward page="index.jsp"/>
+	<% }
+		
+		for (User user : udao.getUsers()){
+			
+			if (email.equals(user.getEmail())){
+				
+				session.setAttribute("user_object", user);
+				
+				if ( (user.getIfAdministrator()).equals("0") && (user.getIfPharmacy()).equals("0")){
+					%>
+					<jsp:forward page="index.jsp"/>
+				<%}else if (user.getIfPharmacy() == "1"){
+					%>
+					<jsp:forward page="profil.jsp"/>
+				<%}else{
+					%>
+					<jsp:forward page="profil.jsp"/>
+				<%}
+				break;
+			}
+		}%>
 
 			
 		
