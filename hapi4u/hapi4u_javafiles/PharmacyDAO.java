@@ -28,7 +28,7 @@ public class PharmacyDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				pharmacies.add( new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("email"), rs.getString("password"), rs.getInt("location_id") ) );
+				pharmacies.add( new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getInt("location_id"), rs.getInt("user_id")  ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -74,7 +74,7 @@ public class PharmacyDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				pharmacies.add( new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("email"), rs.getString("password"), rs.getInt("location_id") ) );
+				pharmacies.add( new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"),rs.getInt("location_id"), rs.getInt("user_id") ) );
 			}
 
 			if( !rs.next() ) {
@@ -111,11 +111,11 @@ public class PharmacyDAO {
 
 	}
 
-	public Pharmacy findPharmacyByEmail(String email) throws Exception {
+	public Pharmacy findPharmacyByUserId(int user_id) throws Exception {
 
 		Connection con = null;
 
-		String sqlquery= "SELECT * FROM pharmacies WHERE email=?;";
+		String sqlquery= "SELECT * FROM pharmacies WHERE user_id=?;";
 
 		DB db = new DB();
 
@@ -126,7 +126,7 @@ public class PharmacyDAO {
 			con = db.getConnection();
 
 			PreparedStatement stmt = con.prepareStatement(sqlquery);
-			stmt.setString( 1, email );
+			stmt.setInt( 1, user_id );
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -141,7 +141,7 @@ public class PharmacyDAO {
 
 			}
 
-			Pharmacy pharmacy = new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("email"), rs.getString("password"), rs.getInt("location_id"));
+			Pharmacy pharmacy = new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getInt("location_id"), rs.getInt("user_id"));
 
 
 			rs.close(); //closing ResultSet
@@ -165,50 +165,7 @@ public class PharmacyDAO {
 		}
 
 	}
-	public void authenticatePharmacy(String email, String password) throws Exception {
 
-		Connection con = null;
-
-		String sqlquery= "SELECT * FROM pharmacies WHERE email=? AND password=?;";
-
-		DB db = new DB();
-		try {
-
-			db.open();
-
-			con = db.getConnection();
-
-			PreparedStatement stmt = con.prepareStatement(sqlquery);
-			stmt.setString( 1, email );
-			stmt.setString( 2, password );
-
-			ResultSet rs = stmt.executeQuery();
-
-
-			if(!rs.next() ) {
-				rs.close();
-				stmt.close();
-				db.close();
-			}
-
-			rs.close();
-			stmt.close();
-			db.close();
-
-		} catch (Exception e) {
-
-			throw new Exception(e.getMessage());
-
-		} finally {
-
-			try {
-				db.close();
-			} catch (Exception e) {
-				//no need to do anything...
-			}
-
-		}
-	}
 
 
 

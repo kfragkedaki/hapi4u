@@ -5,22 +5,20 @@ public class Pharmacy {
 	private int id;
 	private String name;
 	private String availability;
-	private String email;
-	private String password;
 	private int location_id;
+	private int user_id;
 
 	/**
 	 * Constructor
 	 *
 	 */
-	public Pharmacy(int id, String name, String availability, String email, String password, int location_id ) {
+	public Pharmacy(int id, String name, String availability, int location_id, int user_id ) {
 
 		this.id = id ;
 		this.name = name;
 		this.availability = availability;
-		this.email = email;
-		this.password = password;
 		this.location_id = location_id;
+		this.user_id = user_id;
 	}
 
 	/*Getters and Setters*/
@@ -49,21 +47,14 @@ public class Pharmacy {
 		this.availability = availability;
 	}
 
-	public String getPassword() {
-		return password;
+	public int getUser_id() {
+		return user_id;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public int getLocationId() {
 		return location_id;
