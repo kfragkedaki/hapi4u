@@ -1,10 +1,13 @@
 package hapi4u_javafiles;
 
+import java.net.URL;
+
 public class Pharmacy {
 
 	private int id;
 	private String name;
 	private String availability;
+	private String img;
 	private int location_id;
 	private int user_id;
 
@@ -12,11 +15,12 @@ public class Pharmacy {
 	 * Constructor
 	 *
 	 */
-	public Pharmacy(int id, String name, String availability, int location_id, int user_id ) {
+	public Pharmacy(int id, String name, String availability, String img, int location_id, int user_id ) {
 
 		this.id = id ;
 		this.name = name;
 		this.availability = availability;
+		this.img = img;
 		this.location_id = location_id;
 		this.user_id = user_id;
 	}
@@ -62,6 +66,14 @@ public class Pharmacy {
 
 	public void setLocationId() {
 		this.location_id = location_id;
+	}
+
+	public String getImage() {
+		return img;
+	}
+
+	public void setImage() {
+		this.img = img;
 	}
 
 } //End of class
