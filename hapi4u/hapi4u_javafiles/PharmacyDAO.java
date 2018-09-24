@@ -119,8 +119,6 @@ public class PharmacyDAO {
 
 		DB db = new DB();
 
-		Pharmacy pharmacy = new Pharmacy();
-
 		try {
 
 			db.open();
@@ -138,11 +136,12 @@ public class PharmacyDAO {
 				rs.close();
 				stmt.close();
 				db.close();
-				return pharmacy;
+
+				throw new Exception ("Not valid email!");
 
 			}
 
-			pharmacy = new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("email"), rs.getString("password"), rs.getInt("location_id"));
+			Pharmacy pharmacy = new Pharmacy( rs.getInt("id"), rs.getString("name"), rs.getString("availability"), rs.getString("email"), rs.getString("password"), rs.getInt("location_id"));
 
 
 			rs.close(); //closing ResultSet
@@ -166,6 +165,51 @@ public class PharmacyDAO {
 		}
 
 	}
+	public void authenticatePharmacy(String email, String password) throws Exception {
+
+		Connection con = null;
+
+		String sqlquery= "SELECT * FROM pharmacies WHERE email=? AND password=?;";
+
+		DB db = new DB();
+		try {
+
+			db.open();
+
+			con = db.getConnection();
+
+			PreparedStatement stmt = con.prepareStatement(sqlquery);
+			stmt.setString( 1, email );
+			stmt.setString( 2, password );
+
+			ResultSet rs = stmt.executeQuery();
+
+
+			if(!rs.next() ) {
+				rs.close();
+				stmt.close();
+				db.close();
+			}
+
+			rs.close();
+			stmt.close();
+			db.close();
+
+		} catch (Exception e) {
+
+			throw new Exception(e.getMessage());
+
+		} finally {
+
+			try {
+				db.close();
+			} catch (Exception e) {
+				//no need to do anything...
+			}
+
+		}
+	}
+
 
 
 

@@ -110,7 +110,6 @@ public class UserDAO {
 
 		DB db = new DB();
 
-		User user = new User();
 
 		try {
 
@@ -128,10 +127,10 @@ public class UserDAO {
 				stmt.close();
 				db.close();
 
-				return user;
+				throw new Exception ("Not valid email");
 
 			}
-			user = new User( rs.getString("email"), rs.getString("password") );
+			User user = new User( rs.getString("email"), rs.getString("password") );
 
 			rs.close(); //closing ResultSet
 			stmt.close(); // closing PreparedStatement
@@ -177,12 +176,11 @@ public class UserDAO {
 		throw new Exception("Wrong email or password");
 	}*/
 
-	public void authenticate(String email, String password) throws Exception {
+	public void authenticateUser(String email, String password) throws Exception {
 
 		Connection con = null;
 
-		String sqlquery1= "SELECT * FROM users WHERE email=? AND password=?;";
-		String sqlquery2= "SELECT * FROM pharmacies WHERE email=? AND password=?;";
+		String sqlquery= "SELECT * FROM users WHERE email=? AND password=?;";
 
 		DB db = new DB();
 		try {
@@ -191,30 +189,21 @@ public class UserDAO {
 
 			con = db.getConnection();
 
-			PreparedStatement stmt1 = con.prepareStatement(sqlquery1);
-			stmt1.setString( 1, email );
-			stmt1.setString( 2, password );
+			PreparedStatement stmt = con.prepareStatement(sqlquery);
+			stmt.setString( 1, email );
+			stmt.setString( 2, password );
 
-			ResultSet rs1 = stmt1.executeQuery();
+			ResultSet rs = stmt.executeQuery();
 
-			PreparedStatement stmt2 = con.prepareStatement(sqlquery2);
-			stmt2.setString( 1, email );
-			stmt2.setString( 2, password );
 
-			ResultSet rs2 = stmt2.executeQuery();
-
-			if(!rs1.next() && !rs2.next() ) {
-				rs1.close();
-				stmt1.close();
-				rs2.close();
-				stmt2.close();
+			if(!rs.next() ) {
+				rs.close();
+				stmt.close();
 				db.close();
 			}
 
-			rs1.close();
-			stmt1.close();
-			rs2.close();
-			stmt2.close();
+			rs.close();
+			stmt.close();
 			db.close();
 
 		} catch (Exception e) {
