@@ -200,6 +200,7 @@ public class UserDAO {
 				rs.close();
 				stmt.close();
 				db.close();
+				throw new Exception("Wrong username or password");
 			}
 
 			rs.close();
