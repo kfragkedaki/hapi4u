@@ -7,7 +7,7 @@
 		<% 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
+		UserDAO udao = new UserDAO();
  		
 		try {
 			
@@ -20,9 +20,14 @@
 		<jsp:forward page="login.jsp"/>	
 	<% }	
 		session.setAttribute("user_object", udao.findUser(email)); 
+		
 		User user = (User) session.getAttribute("user_object");
 		
-		if ( user.getEmail().equals("pharmacy_haimalis@gmail.com")){%>
+		PharmacyDAO pdao = new PharmacyDAO();
+		
+		pdao.findPharmaciesByEmail(user.getEmail());
+		
+		if ( (pdao.findPharmaciesByEmail(user.getEmail()).size() != 0) ){%>
 		 
 			<jsp:forward page="profil.jsp"/>
 			
