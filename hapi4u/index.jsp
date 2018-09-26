@@ -273,35 +273,39 @@ LocationDAO ldao = new LocationDAO();
             <h2 class="mb-4 text-center">Επικοινώνησε μαζί μας!<h2>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-			  <form name="sentMessage" id="contactForm" novalidate>
+
+					
+			  <form name="sentMessage" id="contactForm" method="post" action="messageController.jsp">
 			    <div class="control-group form-group">
 				  <div class="controls">
 					<label>Title:</label>
-					<input type="text" class="form-control" id="phone" required data-validation-required-message="Please enter a specific Title.">
+					<input type="text" class="form-control" name="title" required>
 				  </div>
 				</div>
 				<div class="control-group form-group">
 				  <div class="controls">
 					<label>Full Name:</label>
-					<input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+					<input type="text" class="form-control" id="name" name="name" required>
 					<p class="help-block"></p>
 				  </div>
 				</div>
 				<div class="control-group form-group">
 				  <div class="controls">
 					<label>Email Address:</label>
-					<input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+					<input type="email" class="form-control" id="email" name= "email" required>
 				  </div>
 				</div>
 				<div class="control-group form-group">
 				  <div class="controls">
 					<label>Message:</label>
-					<textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" style="resize:none"required></textarea>
 				  </div>
 				</div>
-				<div id="success" class="text-center">
+				<div class="text-center">
+					<%session.setAttribute("pharmacy_id_receiver", 0 );
+					session.setAttribute("admin_id_receiver", 1 );%>
 					<!-- For success/fail messages -->
-					<button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+					<button type="submit" class="btn btn-primary">Send Message</button>
 				</div>
 			  </form>
           </div>
