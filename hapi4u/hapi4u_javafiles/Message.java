@@ -2,7 +2,6 @@ package hapi4u_javafiles;
 
 public class Message {
 
-	private int message_id;
 	private String title;
 	private String name;
 	private String email;
@@ -19,9 +18,8 @@ public class Message {
 	 * @param password, String
 	 * @param email, String
 	 */
-	public Message(int message_id, String title, String name, String email, String message, int pharmacy_id, int admin_id, boolean checked) {
+	public Message( String title, String name, String email, String message, int pharmacy_id, int admin_id, boolean checked) {
 
-		this.message_id = message_id;
 		this.title = title;
 		this.name = name;
 	    this.email = email;
@@ -33,14 +31,6 @@ public class Message {
 
 	/*Getters and Setters*/
 
-
-	public int getMessageId() {
-		return message_id;
-	}
-
-	public void setMessageId(int message_id) {
-		this.message_id = message_id;
-	}
 
 	public String getTitle() {
 		return title;
