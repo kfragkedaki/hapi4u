@@ -6,7 +6,7 @@
 <%
 
 UserDAO udao = new UserDAO();
-
+LocationDAO ldao = new LocationDAO();
 %>	
 
 <!DOCTYPE html>
@@ -108,56 +108,26 @@ UserDAO udao = new UserDAO();
 			<form class="form-group" method="post" action ="pharmacies.jsp">
 			    
 					<label><b>Περιοχή:  </b></label>
-						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="test" style="width: 20%;">
+						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="locations" style="width: 20%;">
 						
-						<optgroup label = "Κέντρο Αθήνας">
+						<optgroup label = "Αθήνα, ΑΤΤΙΚΗ">
 						
-						<option value=1>Άγιος Ελευθέριος</option>
-						<option value=2>Άγιος Κωνσταντίνος - Πλατεία Βάθης</option>
-						<option value=3>Άνω Κυψέλη</option>
-						<option value=4>Άνω Πατήσια</option>
-						<option value=5>Α΄ Νεκροταφείο</option>
-						<option value=6>Ακαδημία Πλάτωνος</option>
-						<option value=7>Ακρόπολη</option>
-						<option value=8>Αμπελόκηποι</option>
-						<option value=9>Βοτανικός</option>
-						<option value=10>Γκάζι</option>
-						<option value=11>Γκύζη</option>
-						<option value=12>Γουδή</option>
-						<option value=13>Γούβα</option>
-						<option value=14>Ελληνορώσων</option>
-						<option value=15>Εμπορικό Τρίγωνο - Πλάκα</option>
-						<option value=16>Ζάππειο</option>
-						<option value=17>Θησείο</option>
-						<option value=18>Ιλίσια</option>
-						<option value=19>Κεραμεικός</option>
-						<option value=20>Κολοκυνθού</option>
-						<option value=21>Κολωνάκι</option>
-						<option value=22>Κολωνός</option>
-						<option value=23>Κουκάκι - Μακρυγιάννη</option>
-						<option value=24>Κυψέλη</option>
-						<option value=25>Λυκαβηττός</option>
-						<option value=26>Μουσείο - Εξάρχεια - Νεάπολη</option>
-						<option value=27>Νέα Κυψέλη</option>
-						<option value=28>Νέος Κόσμος</option>
-						<option value=29>Νιρβάνα</option>
-						<option value=30>Παγκράτι</option>
-						<option value=31>Πανεπιστημιούπολη</option>
-						<option value=32>Πατήσια</option>
-						<option value=33>Πεδίον Άρεως</option>
-						<option value=34>Πεντάγωνο</option>
-						<option value=35>Πετράλωνα</option>
-						<option value=36>Πλατεία Αμερικής</option>
-						<option value=37>Πλατεία Αττικής</option>
-						<option value=38>Πολύγωνο</option>
-						<option value=39>Προμπονά</option>
-						<option value=40>Ρηγίλλης</option>
-						<option value=41>Ριζούπολη</option>
-						<option value=42>Ρουφ </option>
-						<option value=43>Σεπόλια </option>
-						<option value=44>Στάδιο </option>
-						<option value=45>Σταθμός Λαρίσης</option>
-		            	</optgroup>
+						<% for (int i = 1; i <= ldao.getLocations("Αθήνα", "ΑΤΤΙΚΗ").size() ; i++) { %>
+						
+					
+							<option value=<%=i%> > <%= ldao.getLocationByID(i).getArea() %> </option>
+					
+						<% }%>
+						
+						<optgroup label = "Ηράκλειο, ΚΡΗΤΗ">
+						
+						<% for (int i = 1; i <= ldao.getLocations("Ηράκλειο", "ΚΡΗΤΗ").size() ; i++) { %>
+						
+					
+							<option value=<%=i%> > <%= ldao.getLocationByID(i +45).getArea() %> </option>
+					
+						<% }%>
+						
                       </select>
 					
 					<label class="date"><b>Ημερομηνία</b>

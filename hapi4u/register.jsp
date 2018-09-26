@@ -79,7 +79,7 @@
 				<div class="alert alert-danger text-center" role="alert"><%=(String)session.getAttribute("message") %></div>
 			<% } %>
 		
-			<form name="form-register" class="form-horizontal" method="post" action="../servlet/RegisterController">
+			<form name="form-register" class="form-horizontal" pharmacies.jspmethod="post" action="../servlet/RegisterController">
 				<div class="form-group row">
 					<label for="email" class="col-sm-2 offset-sm-2 control-label"><b>Email:</b></label>
 					<div class="col-sm-4">

@@ -6,6 +6,7 @@ import javax.servlet.http.*;
 import hapi4u_javafiles.DataValidation;
 import hapi4u_javafiles.User;
 import hapi4u_javafiles.UserDAO;
+import hapi4u_javafiles.PharmacyDAO;
 
 public class RegisterController extends HttpServlet {
 
@@ -22,6 +23,7 @@ public class RegisterController extends HttpServlet {
 
 	DataValidation dv = new DataValidation();
 	UserDAO udao = new UserDAO();
+	PharmacyDAO pdao = new PharmacyDAO();
 
 	HttpSession session = request.getSession(true);
 
@@ -44,7 +46,8 @@ public class RegisterController extends HttpServlet {
 
 	if (dv.isValidPassword(password) && dv.isValidEmailAddress(email) && password.equals(valid_password)) {
 		try {
-			User user = new User( email, password);
+			int user_id = udao.getUsers().size() + pdao.getPharmacies().size() + 1 + 1;
+			User user = new User( user_id, email, password, "0", "0");
 			udao.saveUser(user);
 
 			session.setAttribute("user_object", user);

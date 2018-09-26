@@ -28,7 +28,7 @@ public class PharmacyDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				pharmacies.add( new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("image"), rs.getString("availability"), rs.getInt("location_id"), rs.getInt("user_id")  ) );
+				pharmacies.add( new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("address"), rs.getString("image"), rs.getInt("location_id"), rs.getInt("user_id")  ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -53,7 +53,7 @@ public class PharmacyDAO {
 
 	}
 
-	public List<Pharmacy> findPharmacies(int location) throws Exception {
+	public List<Pharmacy> findPharmaciesByLocation(int location) throws Exception {
 
 		Connection con = null;
 
@@ -74,17 +74,7 @@ public class PharmacyDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				pharmacies.add( new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("availability"), rs.getString("image"),rs.getInt("location_id"), rs.getInt("user_id") ) );
-			}
-
-			if( !rs.next() ) {
-
-				rs.close();
-				stmt.close();
-				db.close();
-
-				throw new Exception("Not valide location");
-
+				pharmacies.add( new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("address"), rs.getString("image"),rs.getInt("location_id"), rs.getInt("user_id") ) );
 			}
 
 
@@ -104,10 +94,113 @@ public class PharmacyDAO {
 			try {
 				db.close();
 			} catch (Exception e) {
-				//no need to do anything...
+				throw new Exception("No coonection!");
 			}
 
 		}
+
+	}
+
+		public Availability getAvailabilityId(String date) throws Exception {
+
+			Connection con = null;
+
+			String sqlquery= "SELECT * FROM availability WHERE date=?;";
+
+			DB db = new DB();
+
+			try {
+
+				db.open();
+
+				con = db.getConnection();
+
+				PreparedStatement stmt = con.prepareStatement(sqlquery);
+				stmt.setString( 1, date );
+
+				ResultSet rs = stmt.executeQuery();
+
+				if( !rs.next() ) {
+
+					rs.close();
+					stmt.close();
+					db.close();
+
+					throw new Exception ("Not valid date");
+
+				}
+
+				Availability availability= new Availability( rs.getInt("availability_id"), rs.getString("date"), rs.getString("sunday"));
+
+				rs.close(); //closing ResultSet
+				stmt.close(); // closing PreparedStatement
+				db.close(); // closing connection
+
+				return availability;
+
+			} catch (Exception e) {
+
+				throw new Exception(e.getMessage());
+
+			} finally {
+
+				try {
+					db.close();
+				} catch (Exception e) {
+					throw new Exception("No coonection!");
+				}
+
+			}
+
+	}
+
+		public List<Pharmacy> findAvailablePharmacies(int location_id, int availability_id) throws Exception {
+
+			Connection con = null;
+
+			String sqlquery= "SELECT * FROM my_availability WHERE pharmacy_id=? AND availability_id=?;";
+
+			DB db = new DB();
+			List<Pharmacy> availablePharmacies = new ArrayList<Pharmacy>();
+
+
+			try {
+
+				db.open();
+
+				con = db.getConnection();
+
+				PreparedStatement stmt = con.prepareStatement(sqlquery);
+				stmt.setInt( 1, location_id);
+				stmt.setInt( 2, availability_id);
+
+				ResultSet rs = stmt.executeQuery();
+
+				while ( rs.next() ) {
+					availablePharmacies.add( new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("address"), rs.getString("image"),rs.getInt("location_id"), rs.getInt("user_id") ) );
+				}
+
+
+
+				rs.close(); //closing ResultSet
+				stmt.close(); // closing PreparedStatement
+				db.close(); // closing connection
+
+				return availablePharmacies;
+
+			} catch (Exception e) {
+
+				throw new Exception(e.getMessage());
+
+			} finally {
+
+				try {
+					db.close();
+				} catch (Exception e) {
+					throw new Exception("No coonection!");
+				}
+
+			}
 
 	}
 
@@ -141,7 +234,7 @@ public class PharmacyDAO {
 
 			}
 
-			Pharmacy pharmacy = new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("availability"), rs.getString("image"), rs.getInt("location_id"), rs.getInt("user_id"));
+			Pharmacy pharmacy = new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("address"), rs.getString("image"), rs.getInt("location_id"), rs.getInt("user_id"));
 
 
 			rs.close(); //closing ResultSet

@@ -2,31 +2,41 @@ package hapi4u_javafiles;
 
 public class Location {
 
-	private int id;
-	private String city;
+	private int location_id;
 	private String area;
-	private String zipcode;
+	private String city;
+	private String region;
+	private int postalcode;
 
 	/**
 	 * Constructor
 	 *
 	 */
-	public Location(int id, String city, String area, String zipcode) {
+	public Location(int location_id, String area, String city, String region, int postalcode) {
 
-		this.id = id;
-		this.city = city;
+		this.location_id = location_id;
 		this.area = area;
-		this.zipcode = zipcode;
+		this.city = city;
+		this.region = region;
+		this.postalcode = postalcode;
 	}
 
 	/*Getters and Setters*/
 
-	public int getId() {
-		return id;
+	public int getLocationId() {
+		return location_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setLocationId(int id) {
+		this.location_id = location_id;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
 	}
 
 	public String getCity() {
@@ -37,20 +47,20 @@ public class Location {
 		this.city = city;
 	}
 
-	public String getArea() {
-		return area;
+	public String getRegion() {
+		return region;
 	}
 
-	public void setArea(String Area) {
-		this.area = area;
+	public void setRegion(String region) {
+		this.region = region;
 	}
 
-	public String getZipcode() {
-		return zipcode;
+	public int getPostalcode() {
+		return postalcode;
 	}
 
-	public void setZipcode(String Zipcode) {
-		this.zipcode = zipcode;
+	public void setPostalcode(int postalcode) {
+		this.postalcode = postalcode;
 	}
 
 } //End of class

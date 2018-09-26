@@ -6,7 +6,7 @@ public class Pharmacy {
 
 	private int id;
 	private String name;
-	private String availability;
+	private String address;
 	private String img;
 	private int location_id;
 	private int user_id;
@@ -15,11 +15,11 @@ public class Pharmacy {
 	 * Constructor
 	 *
 	 */
-	public Pharmacy(int id, String name, String availability, String img, int location_id, int user_id ) {
+	public Pharmacy(int id, String name, String address, String img, int location_id, int user_id ) {
 
 		this.id = id ;
 		this.name = name;
-		this.availability = availability;
+		this.address = address;
 		this.img = img;
 		this.location_id = location_id;
 		this.user_id = user_id;
@@ -43,12 +43,12 @@ public class Pharmacy {
 		this.name = name;
 	}
 
-	public String getAvailability() {
-		return availability;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAvailability(String availability) {
-		this.availability = availability;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public int getUser_id() {

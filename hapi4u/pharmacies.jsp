@@ -1,19 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.io.*,java.util.*,java.sql.*" %>
+<%@ page import = "java.io.*,java.util.*,java.text.*" %>
 <%@ page errorPage="error.jsp"%>
 <%@ page import="hapi4u_javafiles.*" %>
 
 
 <%
-	List<Location> locations = request.getParameter("test");
-	Date date = request.getParameter("date");
-	Time time = request.getParameter("time");
+	List<Integer> location_ids =  new ArrayList<Integer>();
+	String[] l = request.getParameterValues("locations");
+	for( int i=0; i< l.length; i++) {
+		int location = Integer.parseInt(l[i]);
+		location_ids.add(location);
+	}
 	
+	String date = request.getParameter("date");
+	String time = request.getParameter("time");
+	
+	LocationDAO ldao = new LocationDAO();
 	PharmacyDAO pdao = new PharmacyDAO();
-	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>(); 
-
-	for (int i=0; i < locations.size(); i++){
-		pharmacies = pdao.findPharmacies("locations.get(i)");
+	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>(); 	
+	List<Pharmacy> pharmacies2 = new ArrayList<Pharmacy>();
+	Availability availability = pdao.getAvailabilityId(date);
+	
+	if ((Integer.parseInt(time.replace(":","")) > 2100 && Integer.parseInt(time.replace(":","")) < 800) || availability.getSunday().equals("1")) {
+		
+		int availability_id = pdao.getAvailabilityId(date).getAvailabilityId();
+		
+		for (int i=0; i<location_ids.size(); i++){
+			pharmacies2 = pdao.findAvailablePharmacies(location_ids.get(i), availability_id);
+			pharmacies = pharmacies.addAll(pharmacies2);
+		}
+	} else {
+		
+		for (int i=0; i<location_ids.size(); i++){
+			pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
+			pharmacies = pharmacies.addAll(pharmacies2);
+		}
 	}
 	
 %>	
@@ -85,7 +106,7 @@
 
       <!-- Page Heading -->
 	  <h2 class="section-heading">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h2>
-      <h4 class="section-subheading text-muted"><%= pharmacies.size()%>4 Αποτελέσματα</h4>
+      <h4 class="section-subheading text-muted"><%= pharmacies.size()%> Αποτελέσματα <%=date %> and <%= time%>  </h4>
 	  <hr>
 	  
 		<%
@@ -96,12 +117,12 @@
 				  <div class="row">
 					<div class="col-md-7">
 					  <a href="#">
-						<img class="img-fluid rounded mb-3 mb-md-0" src="img/pharmacy.jpg" alt="">
+						<img class="img-fluid rounded mb-3 mb-md-0" src="<%=pharmacy.getImage()%>" alt="">
 					  </a>
 					</div>
 					<div class="col-md-5" id="description">
 					  <h4><%= pharmacy.getName()%></h4>
-					  <p>Δημαρχείου 14, Αιγάλεω, 12242, <br>ΑΤΤΙΚΗΣ</p>
+					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
 					  <a class="btn btn-primary" href="#">Δες περισσότερα</a>
 					</div>
 				  </div>
@@ -112,74 +133,6 @@
 				
 		<%	} %>
 		
-      <!-- Project One -->
-      <div class="row">
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="img/pharmacy.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-md-5" id="description">
-          <h4>ΠΑΝΑΓΙΩΤΗΣ ΧΑΪΜΑΛΑΣ ΚΑΙ ΣΙΑ ΟΕ</h4>
-          <p>Δημαρχείου 14, Αιγάλεω, 12242, <br>ΑΤΤΙΚΗΣ</p>
-          <a class="btn btn-primary" href="#">Δες περισσότερα</a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Project Two -->
-      <div class="row">
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="img/pharmacy2.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-md-5" id="description">
-          <h3>ΛΩΛΑΣ ΑΝΤΩΝΙΟΣ</h3>
-          <p>Μητροπόλεως 54, Μοναστηράκι, 10563, <br>ΑΤΤΙΚΗΣ</p>
-          <a class="btn btn-primary" href="#">Δες περισσότερα</a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Project Three -->
-      <div class="row">
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="img/pharmacy3.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-md-5" id="description">
-          <h3>ΡΟΥΧΩΤΑΣ ΧΑΡΑΛΑΜΠΟΣ</h3>
-          <p>Διδότου 39, Εξάρχεια, 10680, <br>ΑΤΤΙΚΗΣ</p>
-          <a class="btn btn-primary" href="#">Δες περισσότερα</a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Project Four -->
-      <div class="row">
-
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="img/pharmacy4.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-md-5" id="description">
-          <h3>ΤΖΑΝΝΕ ΕΛΕΝΗ</h3>
-          <p>Χερσίφρονος 27, Άγιος Ιωάννης, 11631, <br>ΑΤΤΙΚΗΣ</p>
-          <a class="btn btn-primary" href="#">Δες περισσότερα</a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
 
       <!-- Pagination -->
       <ul class="pagination justify-content-center">

@@ -1,0 +1,11 @@
+user_id,email,password,pharmacy,administrator
+1,phoebe_buffay@gmail.com,1111,0,0
+2,pharmacy1@gmail.com,1111,1,0
+3,pharmacy2@gmail.com,2222,1,0
+4,pharmacy3@gmail.com,3333,1,0
+5,pharmacy4@gmail.com,4444,1,0
+6,pharmacy5@gmail.com,5555,1,0
+7,pharmacy6@gmail.com,6666,1,0
+8,pharmacy9@gmail.com,7777,1,0
+9,pharmacy8@gmail.com,8888,1,0
+10,administrator@gmail.com,1111,0,1
