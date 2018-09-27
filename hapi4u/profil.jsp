@@ -106,6 +106,7 @@ PharmacyDAO pdao = new PharmacyDAO();
                   <h5>georgean@gmail.com<span class="chat_date">Aug 28</span></h5>
                   <p><h5>Καλησπέρα. Μπορώ να βρω στο κατάστημά σας το Collagen Power Pro Active Liquid Lemon; Μήπως θα...</h5></p>
                 </div>
+				<button class="btn"><i class="fa fa-trash"></i></button>
               </div>
             </div>
             <div class="chat_list">
