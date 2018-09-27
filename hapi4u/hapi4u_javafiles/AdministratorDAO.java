@@ -64,6 +64,60 @@ public class AdministratorDAO {
 
 	}
 
+	public Boolean findUserIdInAdministrator(int user_id) throws Exception {
+
+		Connection con = null;
+
+		String sqlquery= "SELECT * FROM administrators WHERE user_id=?;";
+
+		DB db = new DB();
+
+		try {
+
+			db.open();
+
+			con = db.getConnection();
+
+			PreparedStatement stmt = con.prepareStatement(sqlquery);
+			stmt.setInt( 1, user_id );
+
+			ResultSet rs = stmt.executeQuery();
+
+
+			if( !rs.next() ) {
+
+				rs.close();
+				stmt.close();
+				db.close();
+
+				return false;
+			}else{
+
+				rs.close();
+				stmt.close();
+				db.close();
+
+				return true;
+			}
+
+
+		} catch (Exception e) {
+
+			throw new Exception(e.getMessage());
+
+		} finally {
+
+			try {
+				db.close();
+			} catch (Exception e) {
+				//no need to do anything...
+			}
+
+		}
+
+	}
+
+
 	public AdministratorDAO() {
 
 	}

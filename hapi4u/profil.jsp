@@ -9,6 +9,8 @@ UserDAO udao = new UserDAO();
 
 PharmacyDAO pdao = new PharmacyDAO();
 
+AdministratorDAO adao = new AdministratorDAO();
+
 %>	
 
 <!DOCTYPE html>
