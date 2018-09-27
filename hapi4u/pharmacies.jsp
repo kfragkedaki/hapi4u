@@ -135,7 +135,7 @@
 					<div class="col-md-5" id="description">
 					  <h4><%= pharmacy.getName()%></h4>
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
-					  <a class="btn btn-primary" href="#">Δες περισσότερα</a>
+					  <a href=""> <i class="fa fa-heart"></i> </a>
 					  <a href="" data-toggle="modal" data-target="#communication"><i class="fa fa-envelope" aria-hidden="false" style="color:#007bff;"> </i></a>
 					</div>
 				  </div>
