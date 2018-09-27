@@ -39,7 +39,7 @@ public class AdministratorDAO {
 
 			}
 
-			Administrator admin = new Administrator( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("image"), rs.getInt("user_id"));
+			Administrator admin = new Administrator( rs.getInt("admin_id"), rs.getString("name"), rs.getString("image"), rs.getInt("user_id"));
 
 
 			rs.close(); //closing ResultSet
