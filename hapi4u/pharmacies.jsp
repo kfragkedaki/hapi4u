@@ -136,6 +136,7 @@
 					  <h4><%= pharmacy.getName()%></h4>
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
 					  <a class="btn btn-primary" href="#">Δες περισσότερα</a>
+					  <a href="" data-toggle="modal" data-target="#communication"><i class="fa fa-envelope" aria-hidden="false" style="color:#007bff;"> </i></a>
 					</div>
 				  </div>
 				  <!-- /.row -->
@@ -168,6 +169,60 @@
     </div>
 	</section>
     <!-- /.container -->
+	
+	<!-- Message-->
+	<div class="modal fade" id="communication" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content" style="background: #ccdfcb;">
+			
+				<div class="modal-heading">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<br>
+					<div class="form-signin-heading text-center container">
+						<h5 class="text-center">Συμπλήρωσε την παρακάτω φόρμα <br>για να επικοινωνήσεις με το φαρμακείο!</i></h5>
+					</div>
+				</div>
+				
+				<div class="modal-body container-fluid">
+					<div class="container" >
+						<form name="sentMessage" id="contactForm" method="post" action="messageController.jsp">
+							<div class="control-group form-group">
+							  <div class="controls">
+								<label>Title:</label>
+								<input type="text" class="form-control" name="title" required>
+							  </div>
+							</div>
+							<div class="control-group form-group">
+							  <div class="controls">
+								<label>Full Name:</label>
+								<input type="text" class="form-control" id="name" name="name" required>
+								<p class="help-block"></p>
+							  </div>
+							</div>
+							<div class="control-group form-group">
+							  <div class="controls">
+								<label>Email Address:</label>
+								<input type="email" class="form-control" id="email" name= "email" required>
+							  </div>
+							</div>
+							<div class="control-group form-group">
+							  <div class="controls">
+								<label>Message:</label>
+								<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" style="resize:none"required></textarea>
+							  </div>
+							</div>
+							<div class="text-center">
+								<%session.setAttribute("pharmacy_id_receiver", 0 );
+								session.setAttribute("admin_id_receiver", 1 );%>
+								<!-- For success/fail messages -->
+								<button type="submit" class="btn btn-primary">Send Message</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	
     <!-- Footer -->
