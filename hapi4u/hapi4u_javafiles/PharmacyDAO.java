@@ -235,7 +235,7 @@ public class PharmacyDAO {
 				stmt.close();
 				db.close();
 
-				throw new Exception ("Not valid email!");
+				throw new Exception ("Not valid!");
 
 			}
 
