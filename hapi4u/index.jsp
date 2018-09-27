@@ -108,7 +108,7 @@ LocationDAO ldao = new LocationDAO();
 			<form class="form-group" method="post" action ="pharmacies.jsp">
 			    
 					<label><b>Περιοχή:  </b></label>
-						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="locations" style="width: 20%;">
+						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="locations" style="width: 20%;" required>
 						
 						<optgroup label = "Αθήνα, ΑΤΤΙΚΗ">
 						
@@ -135,10 +135,10 @@ LocationDAO ldao = new LocationDAO();
                       </select>
 					
 					<label class="date"><b>Ημερομηνία</b>
-						<input type="date" id="date" name="date">
+						<input type="date" id="date" name="date" required>
 					</label>
 					<label class="time"><b>Ώρα</b>
-						<input type="time"id="time" name="time">
+						<input type="time"id="time" name="time" required>
 					</label>
 					
 					<button type="submit" class="btn btn-primary">Αναζήτηση</button>

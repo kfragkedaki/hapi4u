@@ -19,30 +19,34 @@
 	PharmacyDAO pdao = new PharmacyDAO();
 	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>(); 	
 	List<Pharmacy> pharmacies2 = new ArrayList<Pharmacy>();
-	Availability availability = pdao.getAvailability(date);
-	int availability_id = 0;
+	
+    if (pdao.authenticateDate(date) == 1) {
 		
-	if ((Integer.parseInt(time.replace(":","")) > 2100 || Integer.parseInt(time.replace(":","")) < 800) || availability.getSunday().equals("1")) {
-		availability_id = pdao.getAvailability(date).getAvailabilityId();
+		Availability availability = pdao.getAvailability(date);
+		int availability_id = 0;
 		
-		for (int i=0; i<location_ids.size(); i++){
-			pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
-			for (int j=0; j< pharmacies2.size(); j++){
-				int availablePharmacies = pdao.findAvailablePharmacies(pharmacies2.get(j).getId(), availability_id);
-				if ( availablePharmacies == 1) {
+		if ((Integer.parseInt(time.replace(":","")) > 2100 || Integer.parseInt(time.replace(":","")) < 800) || availability.getSunday().equals("1")) {
+			availability_id = pdao.getAvailability(date).getAvailabilityId();
+			
+			for (int i=0; i<location_ids.size(); i++){
+				pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
+				for (int j=0; j< pharmacies2.size(); j++){
+					int availablePharmacies = pdao.findAvailablePharmacies(pharmacies2.get(j).getId(), availability_id);
+					if ( availablePharmacies == 1) {
+						pharmacies.add(pharmacies2.get(j));
+					}
+				}
+			}
+		} else {
+			
+			for (int i=0; i<location_ids.size(); i++){
+				pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
+				for (int j=0; j< pharmacies2.size(); j++){
 					pharmacies.add(pharmacies2.get(j));
 				}
 			}
-		}
-	} else {
-		
-		for (int i=0; i<location_ids.size(); i++){
-			pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
-			for (int j=0; j< pharmacies2.size(); j++){
-				pharmacies.add(pharmacies2.get(j));
-			}
-		}
 
+		}
 	}
 	
 %>	
@@ -114,8 +118,7 @@
 
       <!-- Page Heading -->
 	  <h2 class="section-heading">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h2>
-      <h4 class="section-subheading text-muted"><%= pharmacies.size()%> Αποτελέσματα <%=date %> and <%=Integer.parseInt(time.replace(":",""))%> >
-					 and <%=availability_id %> </h4>
+      <h5 class="section-subheading text-muted"><%= pharmacies.size()%> Αποτελέσματα </h5>
 	  <hr>
 	  
 		<%
@@ -153,12 +156,6 @@
         </li>
         <li class="page-item">
           <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
         </li>
         <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">

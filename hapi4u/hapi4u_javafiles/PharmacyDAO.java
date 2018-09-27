@@ -264,6 +264,52 @@ public class PharmacyDAO {
 
 	}
 
+	public Integer authenticateDate(String date) throws Exception {
+
+		Connection con = null;
+
+		String sqlquery= "SELECT * FROM availability WHERE date=?;";
+
+		DB db = new DB();
+		try {
+
+			db.open();
+
+			con = db.getConnection();
+
+			PreparedStatement stmt = con.prepareStatement(sqlquery);
+			stmt.setString( 1, date );
+
+			ResultSet rs = stmt.executeQuery();
+
+
+			if(rs.next() ) {
+				rs.close();
+				stmt.close();
+				db.close();
+
+				return 1;
+			}
+
+			rs.close();
+			stmt.close();
+			db.close();
+
+			return 0;
+		} catch (Exception e) {
+
+			throw new Exception(e.getMessage());
+
+		} finally {
+
+			try {
+				db.close();
+			} catch (Exception e) {
+				//no need to do anything...
+			}
+
+		}
+	}
 
 
 
