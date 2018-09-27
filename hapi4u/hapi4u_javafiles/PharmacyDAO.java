@@ -120,6 +120,16 @@ public class PharmacyDAO {
 
 				ResultSet rs = stmt.executeQuery();
 
+				if( !rs.next() ) {
+
+					rs.close();
+					stmt.close();
+					db.close();
+
+					throw new Exception ("Not valid date!");
+
+				}
+
 				Availability availability= new Availability( rs.getInt("availability_id"), rs.getString("date"), rs.getString("sunday"));
 
 				rs.close(); //closing ResultSet
@@ -144,14 +154,14 @@ public class PharmacyDAO {
 
 	}
 
-		public List<Pharmacy> findAvailablePharmacies(int pharmacy_id, int availability_id) throws Exception {
+		public Integer findAvailablePharmacies(int pharmacy_id, int availability_id) throws Exception {
 
 			Connection con = null;
 
 			String sqlquery= "SELECT * FROM my_availability WHERE pharmacy_id=? AND availability_id=?;";
 
 			DB db = new DB();
-			List<Pharmacy> availablePharmacies = new ArrayList<Pharmacy>();
+			List<Integer> availablePharmacies = new ArrayList<Integer>();
 
 
 			try {
@@ -166,8 +176,13 @@ public class PharmacyDAO {
 
 				ResultSet rs = stmt.executeQuery();
 
-				while ( rs.next() ) {
-					availablePharmacies.add( new Pharmacy( rs.getInt("pharmacy_id"), rs.getString("name"), rs.getString("address"), rs.getString("image"),rs.getInt("location_id"), rs.getInt("user_id") ) );
+				if ( rs.next() ) {
+
+					rs.close(); //closing ResultSet
+					stmt.close(); // closing PreparedStatement
+					db.close(); // closing connection
+
+					return 1;
 				}
 
 
@@ -176,7 +191,7 @@ public class PharmacyDAO {
 				stmt.close(); // closing PreparedStatement
 				db.close(); // closing connection
 
-				return availablePharmacies;
+				return 0;
 
 			} catch (Exception e) {
 
