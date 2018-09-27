@@ -115,18 +115,22 @@ LocationDAO ldao = new LocationDAO();
 						<% for (int i = 1; i <= ldao.getLocations("Αθήνα", "ΑΤΤΙΚΗ").size() ; i++) { %>
 						
 					
+							<option value=<%=i%>> <%= ldao.getLocationByID(i).getArea() %> </option>
+					
+						<%}%>
+						
+						</optgroup>
+						
+						<optgroup label = "Ηράκλειο, ΚΡΗΤΗ">
+						
+						<% for (int i = 46; i <= ldao.getLocations("Ηράκλειο", "ΚΡΗΤΗ").size() ; i++) { %>
+						
+					
 							<option value=<%=i%> > <%= ldao.getLocationByID(i).getArea() %> </option>
 					
 						<% }%>
 						
-						<optgroup label = "Ηράκλειο, ΚΡΗΤΗ">
-						
-						<% for (int i = 1; i <= ldao.getLocations("Ηράκλειο", "ΚΡΗΤΗ").size() ; i++) { %>
-						
-					
-							<option value=<%=i%> > <%= ldao.getLocationByID(i +45).getArea() %> </option>
-					
-						<% }%>
+						</optgroup>
 						
                       </select>
 					

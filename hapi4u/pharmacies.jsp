@@ -19,21 +19,21 @@
 	PharmacyDAO pdao = new PharmacyDAO();
 	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>(); 	
 	List<Pharmacy> pharmacies2 = new ArrayList<Pharmacy>();
-	Availability availability = pdao.getAvailabilityId(date);
+	Availability availability = pdao.getAvailability(date);
 	
-	if ((Integer.parseInt(time.replace(":","")) > 2100 && Integer.parseInt(time.replace(":","")) < 800) || availability.getSunday().equals("1")) {
-		
-		int availability_id = pdao.getAvailabilityId(date).getAvailabilityId();
+	if ((Integer.parseInt(time.replace(":","")) > 2100 || Integer.parseInt(time.replace(":","")) < 800) || availability.getSunday().equals("1")) {
+		int availability_id = pdao.getAvailability(date).getAvailabilityId();
 		
 		for (int i=0; i<location_ids.size(); i++){
-			pharmacies2 = pdao.findAvailablePharmacies(location_ids.get(i), availability_id);
-			pharmacies = pharmacies.addAll(pharmacies2);
+			pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
+			for (int j=0; j< pharmacies2.size(); j++){
+				pharmacies = pdao.findAvailablePharmacies(pharmacies2.get(j).getId(), availability_id);
+			}
 		}
 	} else {
 		
 		for (int i=0; i<location_ids.size(); i++){
-			pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
-			pharmacies = pharmacies.addAll(pharmacies2);
+			pharmacies = pdao.findPharmaciesByLocation(location_ids.get(i));
 		}
 	}
 	
@@ -106,7 +106,7 @@
 
       <!-- Page Heading -->
 	  <h2 class="section-heading">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h2>
-      <h4 class="section-subheading text-muted"><%= pharmacies.size()%> Αποτελέσματα <%=date %> and <%= time%>  </h4>
+      <h4 class="section-subheading text-muted"><%= pharmacies.size()%> Αποτελέσματα <%=date %> and <%=Integer.parseInt(time.replace(":",""))%> > <%= time%>  </h4>
 	  <hr>
 	  
 		<%

@@ -101,7 +101,7 @@ public class PharmacyDAO {
 
 	}
 
-		public Availability getAvailabilityId(String date) throws Exception {
+		public Availability getAvailability(String date) throws Exception {
 
 			Connection con = null;
 
@@ -119,16 +119,6 @@ public class PharmacyDAO {
 				stmt.setString( 1, date );
 
 				ResultSet rs = stmt.executeQuery();
-
-				if( !rs.next() ) {
-
-					rs.close();
-					stmt.close();
-					db.close();
-
-					throw new Exception ("Not valid date");
-
-				}
 
 				Availability availability= new Availability( rs.getInt("availability_id"), rs.getString("date"), rs.getString("sunday"));
 
@@ -154,7 +144,7 @@ public class PharmacyDAO {
 
 	}
 
-		public List<Pharmacy> findAvailablePharmacies(int location_id, int availability_id) throws Exception {
+		public List<Pharmacy> findAvailablePharmacies(int pharmacy_id, int availability_id) throws Exception {
 
 			Connection con = null;
 
@@ -171,7 +161,7 @@ public class PharmacyDAO {
 				con = db.getConnection();
 
 				PreparedStatement stmt = con.prepareStatement(sqlquery);
-				stmt.setInt( 1, location_id);
+				stmt.setInt( 1, pharmacy_id);
 				stmt.setInt( 2, availability_id);
 
 				ResultSet rs = stmt.executeQuery();
