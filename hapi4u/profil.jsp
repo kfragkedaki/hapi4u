@@ -67,9 +67,24 @@ AdministratorDAO adao = new AdministratorDAO();
 		</div>
 	</nav>
     <!-- Header - set the background image for the header in the line below -->
-    <%Pharmacy pharmacy = pdao.findPharmacyByUserId(user.getUserId());
-	  
-	%>
+    <%if (user.getIfPharmacy().equals("0")){
+		Administrator admin = adao.findAdminByUserId(user.getUserId());%>
+		
+		<header>
+     <img class="img-fluid d-block mx-auto"  style="width:30%; margin-top:30px;" src=<%=admin.getImage()%> 	alt="">
+    </header>
+
+    <!-- Content section -->
+    <section class="py-5">
+      <div class="container">
+        <h1><%=admin.getName()%></h1>
+      </div>
+    </section>
+
+		
+	<%}else{
+		Pharmacy pharmacy = pdao.findPharmacyByUserId(user.getUserId());%>
+	
     <header>
      <img class="img-fluid d-block mx-auto"  style="width:30%; margin-top:30px;" src=<%=pharmacy.getImage()%> alt="">
     </header>
@@ -77,10 +92,11 @@ AdministratorDAO adao = new AdministratorDAO();
     <!-- Content section -->
     <section class="py-5">
       <div class="container">
-        <h1><%=pharmacy.getName()%></h1>
-        <p class="lead">Δημαρχείου 14, Αιγάλεω, 12242, ΑΤΤΙΚΗΣ</p>
+		<h1><%=pharmacy.getName()%></h1>
+        <p class="lead"><%=pharmacy.getAddress()%></p>
       </div>
     </section>
+	<%}	%>
 
 
 	
