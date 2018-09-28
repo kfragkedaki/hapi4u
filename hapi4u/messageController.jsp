@@ -15,7 +15,7 @@
 		int pharmacy_id = Integer.parseInt(session.getAttribute("pharmacy_id_receiver").toString());
 		MessageDAO mdao = new MessageDAO();
 		
-		Message message = new Message(title,name,email,msg,pharmacy_id,admin_id,false);
+		Message message = new Message(((mdao.getMessages().size())+1),title,name,email,msg,pharmacy_id,admin_id,false);
  		
 		try {
 			
