@@ -149,18 +149,27 @@ LocationDAO ldao= new LocationDAO();
           <div class="inbox_chat">
 		  <%List<Message> messages = new ArrayList<Message>(); 
 		   messages = mdao.getMessagesByPharmacyId(pharmacy.getId());
-		   for(Message message: messages){
+		   
+		   if(request.getAttribute("message") != null) { 	%>
+			<h5><b><%=(String)request.getAttribute("message")%></h5>
+		   <%}%>
+		   
+		   <%for(Message message: messages){
 		  %>
             <div class="chat_list" >
               <div class="chat_people">
-                <div class="chat_ib">
+                <form class="chat_ib" method="post" action="messageDelete.jsp">
 				
-                  <h5><b>Email:</b> <%=message.getEmail()%><span class="chat_date">Aug 28</span></h5>
+                  <h5><b>Email:</b><%=message.getEmail()%></i><span class="chat_date">Aug 28</span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=message.getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=message.getTitle()%></h5>
 				  <br>
 				  <%=message.getMessage()%>
-                </div>
+				  <input type="hidden" name="message_id" value="<%=message.getMessageId()%>" />
+				  <div class="delete">
+				  <button class="btn btn-lg btn-block" type="submit">Διαγραφή</button>
+				  </div>
+                </form>
 	
               </div>
             </div>
