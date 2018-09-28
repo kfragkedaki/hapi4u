@@ -15,8 +15,12 @@
 	String date = request.getParameter("date");
 	String time = request.getParameter("time");
 	
+	User user = (User) session.getAttribute("user_object");
+	int user_id = user.getUserId();
+	
 	LocationDAO ldao = new LocationDAO();
 	PharmacyDAO pdao = new PharmacyDAO();
+	MyFavouritesDAO fdao = new MyFavouritesDAO();
 	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>(); 	
 	List<Pharmacy> pharmacies2 = new ArrayList<Pharmacy>();
 	
@@ -37,7 +41,7 @@
 					}
 				}
 			}
-		} else {
+		} else {  
 			
 			for (int i=0; i<location_ids.size(); i++){
 				pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
@@ -135,7 +139,16 @@
 					<div class="col-md-5" id="description">
 					  <h4><%= pharmacy.getName()%></h4>
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
-					  <a href=""> <i class="fa fa-heart"></i> </a>
+					  <%if ((fdao.getMyFavouritesId( user_id, pharmacy.getId()) == -1)) { %>
+							
+						<a class="glyphicon glyphicon-heart-empty"> <% fdao.saveMyFavourites( user_id, pharmacy.getId()); %> </a>
+						
+					  <% } else { %>
+					  
+						<a class="glyphicon glyphicon-heart"> <% fdao.deleteMyFavourites ( user_id, pharmacy.getId()); %> </a>
+						
+					  <% } %>
+						  
 					  <form class="chat_ib" method="post" action="messageForm.jsp">
 					  <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
 					  <button class="fa fa-envelope" type="submit" aria-hidden="false" style="color:#007bff;"> </button>
