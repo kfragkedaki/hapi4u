@@ -1,0 +1,19 @@
+SELECT * FROM ismgroup90.messages;
+
+drop table messages
+
+CREATE TABLE `messages` (
+  `message_id` int(10) NOT NULL,
+  `title` varchar(45) NOT NULL,
+  `name` varchar(70) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `message` varchar(999) NOT NULL,
+  `pharmacy_id` int(10) NULL,
+  `admin_id` int(10) NULL,
+  `checked` Boolean,  
+  PRIMARY KEY (`message_id`),
+  KEY `FK_message_1` (`pharmacy_id`),
+  CONSTRAINT `FK_message_1` FOREIGN KEY (`pharmacy_id`) REFERENCES `pharmacies` (`pharmacy_id`),
+  KEY `FK_message_2` (`admin_id`),
+  CONSTRAINT `FK_message_2` FOREIGN KEY (`admin_id`) REFERENCES `administrators` (`admin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
