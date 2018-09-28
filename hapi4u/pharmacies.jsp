@@ -136,7 +136,11 @@
 					  <h4><%= pharmacy.getName()%></h4>
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
 					  <a href=""> <i class="fa fa-heart"></i> </a>
-					  <a href="" data-toggle="modal" data-target="#communication"><i class="fa fa-envelope" aria-hidden="false" style="color:#007bff;"> </i></a>
+					  <form class="chat_ib" method="post" action="messageForm.jsp">
+					  <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+					  <button class="fa fa-envelope" type="submit" aria-hidden="false" style="color:#007bff;"> </button>
+					  </form>
+					<!--  <a href="" data-toggle="modal" data-target="#communication"><i class="fa fa-envelope" aria-hidden="false" style="color:#007bff;"> </i></a>-->
 					</div>
 				  </div>
 				  <!-- /.row -->
