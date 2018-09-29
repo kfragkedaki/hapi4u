@@ -165,14 +165,15 @@
 					<div class="col-md-5" id="description">
 					  <h4><%= pharmacy.getName()%></h4>
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
+
 					  <% if (user_id != 0) {
 							if (fdao.getMyFavouritesId( user_id, pharmacy.getId()) == 0) { %>
 							
-								<button class="fa fa-heart-o" type="submit" name=""aria-hidden="false" onClick="<%fdao.saveMyFavourites( user_id, pharmacy.getId());%>" style="color:#007bff;"> </button>
+								<button class="fa fa-heart-o" onclick="<%fdao.saveMyFavourites( user_id, pharmacy.getId());%>" style="color:#007bff;"> </button>
 						
 							<% } else { %>
 							
-								<button class="fa fa-heart" type="submit" name="" aria-hidden="false" onClick= "<%fdao.deleteMyFavourites ( user_id, pharmacy.getId());%>" style="color:#007bff;">  </button>
+								<button class="fa fa-heart"  onclick= "<%fdao.deleteMyFavourites ( user_id, pharmacy.getId());%>" style="color:#007bff;">  </button>
 						
 							<% } 
 					  } %>
