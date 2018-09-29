@@ -4,56 +4,32 @@
 <%@ page import="hapi4u_javafiles.*" %>
 
 
-<%
-	List<Integer> location_ids =  new ArrayList<Integer>();
-	String[] l = request.getParameterValues("locations");
-	for( int i=0; i< l.length; i++) {
-		int location = Integer.parseInt(l[i]);
-		location_ids.add(location);
-	}
-	
-	String date = request.getParameter("date");
-	String time = request.getParameter("time");
-	
+<%  
 	User user = (User) session.getAttribute("user_object");
-	int user_id = 0;
 	
-	if (session.getAttribute("user_object") != null) {
-		user_id = user.getUserId();
-	}
-	
+	if( session.getAttribute("user_object") == null ) {
+		request.setAttribute("message", "You are not authorized to access this resource. Please login.");
+	%>
+		<jsp:forward page="login.jsp"/>
+	<%	} 
+ 
+	int user_id = user.getUserId();
+		
 	LocationDAO ldao = new LocationDAO();
 	PharmacyDAO pdao = new PharmacyDAO();
 	MyFavouritesDAO fdao = new MyFavouritesDAO();
-	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>(); 	
-	List<Pharmacy> pharmacies2 = new ArrayList<Pharmacy>();
+	List<Integer> pharmaciesId = new ArrayList<Integer>(); 	
+	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
+	List<Pharmacy> myFavouritePharmacies = new ArrayList<Pharmacy>();
 	
-    if (pdao.authenticateDate(date) == 1) {
-		
-		Availability availability = pdao.getAvailability(date);
-		int availability_id = 0;
-		
-		if ((Integer.parseInt(time.replace(":","")) > 2100 || Integer.parseInt(time.replace(":","")) < 800) || availability.getSunday().equals("1")) {
-			availability_id = pdao.getAvailability(date).getAvailabilityId();
-			
-			for (int i=0; i<location_ids.size(); i++){
-				pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
-				for (int j=0; j< pharmacies2.size(); j++){
-					int availablePharmacies = pdao.findAvailablePharmacies(pharmacies2.get(j).getId(), availability_id);
-					if ( availablePharmacies == 1) {
-						pharmacies.add(pharmacies2.get(j));
-					}
-				}
+	pharmaciesId = fdao.getMyFavouritesByUserId( user_id);
+	pharmacies = pdao.getPharmacies();
+	
+	for ( int i=0; i< pharmacies.size() ; i++) {
+		for (int j=0; j< pharmaciesId.size(); j++) {
+			if (pharmacies.get(i).getId() == pharmaciesId.get(j) ){
+				myFavouritePharmacies.add(pharmacies.get(i));
 			}
-		} else {  
-			
-			for (int i=0; i<location_ids.size(); i++){
-				pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
-				for (int j=0; j< pharmacies2.size(); j++){
-					pharmacies.add(pharmacies2.get(j));
-				}
-			}
-
 		}
 	}
 	
@@ -148,12 +124,12 @@
 
       <!-- Page Heading -->
 	  <h2 class="section-heading">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h2>
-      <h5 class="section-subheading text-muted"><%= pharmacies.size()%> Αποτελέσματα </h5>
+      <h5 class="section-subheading text-muted"><%= myFavouritePharmacies.size()%> Αποτελέσματα </h5>
 	  <hr>
 	  
 		<%
-			for (int i=0; i < pharmacies.size(); i++){
-				Pharmacy pharmacy = pharmacies.get(i); %> 
+			for (int i=0; i < myFavouritePharmacies.size(); i++){
+				Pharmacy pharmacy = myFavouritePharmacies.get(i); %> 
 				
 				  <!-- Project -->
 				  <div class="row">

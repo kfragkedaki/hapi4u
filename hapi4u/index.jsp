@@ -77,7 +77,7 @@ LocationDAO ldao = new LocationDAO();
 	
 %>
 				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="favourites.jsp">Αγαπημένα</a>
+					<a class="nav-link js-scroll-trigger" href="myfavourites.jsp">Αγαπημένα</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

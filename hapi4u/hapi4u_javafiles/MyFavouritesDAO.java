@@ -10,7 +10,7 @@ public class MyFavouritesDAO {
 
 		Connection con = null;
 
-		String sqlquery= "SELECT * FROM myfavourites;";
+		String sqlquery= "SELECT * FROM my_favourites;";
 		List<MyFavourites> myfavourites = new ArrayList<MyFavourites>();
 
 		DB db = new DB();
@@ -53,7 +53,7 @@ public class MyFavouritesDAO {
 
 		Connection con = null;
 
-		String sqlquery= "SELECT * FROM myfavourites WHERE user_id=?;";
+		String sqlquery= "SELECT * FROM my_favourites WHERE user_id=?;";
 		List<Integer> myfavourites = new ArrayList<Integer>();
 
 		DB db = new DB();
@@ -100,7 +100,7 @@ public class MyFavouritesDAO {
 
 		Connection con = null;
 
-		String sqlquery= "SELECT * FROM myfavourites WHERE user_id=? and pharmacy_id=?;";
+		String sqlquery= "SELECT * FROM my_favourites WHERE user_id=? and pharmacy_id=?;";
 
 		DB db = new DB();
 
@@ -113,6 +113,7 @@ public class MyFavouritesDAO {
 
 			PreparedStatement stmt = con.prepareStatement(sqlquery);
 			stmt.setInt( 1, user_id );
+			stmt.setInt( 2, pharmacy_id );
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -122,7 +123,7 @@ public class MyFavouritesDAO {
 				stmt.close();
 				db.close();
 
-				return -1;
+				return 0;
 
 			}
 
@@ -154,7 +155,7 @@ public class MyFavouritesDAO {
 
 		Connection con = null;
 
-		String sqlquery= "INSERT INTO myfavourites VALUES (?, ?, ?);";
+		String sqlquery= "INSERT INTO my_favourites VALUES (?, ?, ?);";
 
 		DB db = new DB();
 
@@ -195,7 +196,7 @@ public class MyFavouritesDAO {
 
 		Connection con = null;
 
-		String sqlquery= "UPDATE myfavourites SET myfavourites_id=? WHERE myfavourites_id=?;";
+		String sqlquery= "UPDATE my_favourites SET myfavourites_id=? WHERE myfavourites_id=?;";
 
 		DB db = new DB();
 
@@ -235,7 +236,7 @@ public class MyFavouritesDAO {
 
 		Connection con = null;
 
-		String sqlquery= "DELETE FROM myfavourites WHERE user_id=? and pharmacy_id=?;";
+		String sqlquery= "DELETE FROM my_favourites WHERE user_id=? and pharmacy_id=?;";
 
 		DB db = new DB();
 
