@@ -106,7 +106,7 @@ LocationDAO ldao= new LocationDAO();
               <div class="chat_people">
                 <form class="chat_ib" method="post" action="messageDelete.jsp">
 				
-                  <h5><b>Email:</b><%=message.getEmail()%></i><span class="chat_date">Aug 28</span></h5>
+                  <h5><b>Email:</b><%=message.getEmail()%></i><span class="chat_date"><%=message.getDate()%></span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=message.getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=message.getTitle()%></h5>
 				  <br>
@@ -164,7 +164,7 @@ LocationDAO ldao= new LocationDAO();
               <div class="chat_people">
                 <form class="chat_ib" method="post" action="messageDelete.jsp">
 				
-                  <h5><b>Email:</b><%=message.getEmail()%></i><span class="chat_date">Aug 28</span></h5>
+                  <h5><b>Email:</b><%=message.getEmail()%></i><span class="chat_date"><%=message.getDate()%></span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=message.getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=message.getTitle()%></h5>
 				  <br>
