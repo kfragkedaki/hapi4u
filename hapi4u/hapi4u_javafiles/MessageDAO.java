@@ -35,7 +35,7 @@ public class MessageDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked") ) );
+				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked"), rs.getString("date") ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -81,7 +81,7 @@ public class MessageDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked") ) );
+				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked"),rs.getString("date") ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -126,7 +126,7 @@ public class MessageDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked") ) );
+				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked"),rs.getString("date") ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -155,7 +155,7 @@ public class MessageDAO {
 
 		Connection con = null;
 
-		String sqlquery= "INSERT INTO messages VALUES (?,?, ?, ? ,? , ?, ?, ?);";
+		String sqlquery= "INSERT INTO messages VALUES (?, ?, ?, ? ,? , ?, ?, ?, ?);";
 
 		DB db = new DB();
 
@@ -183,6 +183,7 @@ public class MessageDAO {
 				stmt.setInt( 7, message.getAdminId() );
 			}
 			stmt.setBoolean( 8, message.getIfChecked() );
+			stmt.setString(9,message.getDate() );
 
 			stmt.executeUpdate();
 
