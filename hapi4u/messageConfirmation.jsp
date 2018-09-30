@@ -122,6 +122,3 @@
        
   </body>
 </html>
-<%
-session.invalidate();
-%>	

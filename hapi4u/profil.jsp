@@ -100,18 +100,18 @@ LocationDAO ldao= new LocationDAO();
 		  <%
 		   List<Message> messages = new ArrayList<Message>(); 
 		   messages = mdao.getMessagesByAdminId(admin.getId());
-		   for(Message message: messages){
+		   for (int i=(messages.size()-1); i>=0; i--){
 		  %>
             <div class="chat_list" >
               <div class="chat_people">
                 <form class="chat_ib" method="post" action="messageDelete.jsp">
 				
-                  <h5><b>Email:</b><%=message.getEmail()%></i><span class="chat_date"><%=message.getDate()%></span></h5>
-				  <h5><b>Ονοματεπώνυμο:</b> <%=message.getName()%></h5>
-                  <h5><b>Τίτλος:</b> <%=message.getTitle()%></h5>
+                  <h5><b>Email:</b><%=messages.get(i).getEmail()%></i><span class="chat_date"><%=messages.get(i).getDate()%></span></h5>
+				  <h5><b>Ονοματεπώνυμο:</b> <%=messages.get(i).getName()%></h5>
+                  <h5><b>Τίτλος:</b> <%=messages.get(i).getTitle()%></h5>
 				  <br>
-				  <%=message.getMessage()%>
-				  <input type="hidden" name="message_id" value="<%=message.getMessageId()%>" />
+				  <%=messages.get(i).getMessage()%>
+				  <input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
 				  <div class="delete">
 				  <button class="btn btn-lg btn-block" type="submit">Διαγραφή</button>
 				  </div>
@@ -158,18 +158,17 @@ LocationDAO ldao= new LocationDAO();
 			<h5><b><%=(String)request.getAttribute("message")%></h5>
 		   <%}%>
 		   
-		   <%for(Message message: messages){
-		  %>
+		   <%for (int i=(messages.size()-1); i>=0; i--){%>
             <div class="chat_list" >
               <div class="chat_people">
                 <form class="chat_ib" method="post" action="messageDelete.jsp">
 				
-                  <h5><b>Email:</b><%=message.getEmail()%></i><span class="chat_date"><%=message.getDate()%></span></h5>
-				  <h5><b>Ονοματεπώνυμο:</b> <%=message.getName()%></h5>
-                  <h5><b>Τίτλος:</b> <%=message.getTitle()%></h5>
+                  <h5><b>Email:</b><%=messages.get(i).getEmail()%></i><span class="chat_date"><%=messages.get(i).getDate()%></span></h5>
+				  <h5><b>Ονοματεπώνυμο:</b> <%=messages.get(i).getName()%></h5>
+                  <h5><b>Τίτλος:</b> <%=messages.get(i).getTitle()%></h5>
 				  <br>
-				  <%=message.getMessage()%>
-				  <input type="hidden" name="message_id" value="<%=message.getMessageId()%>" />
+				  <%=messages.get(i).getMessage()%>
+				  <input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
 				  <div class="delete">
 				  <button class="btn btn-lg btn-block" type="submit">Διαγραφή</button>
 				  </div>
