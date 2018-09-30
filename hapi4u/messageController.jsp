@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page errorPage="error.jsp"%>
+
 <%@ page import="hapi4u_javafiles.*" %> 
+<%@ page import="java.util.*" %>
 
 		<%--   Gets the results from the request --%>
     
 		<% 
-		
 		
 		String title = request.getParameter("title");
 		String name = request.getParameter("name");
@@ -13,9 +13,10 @@
 		String msg = request.getParameter("message");
 		int admin_id = Integer.parseInt(session.getAttribute("admin_id_receiver").toString());
 		int pharmacy_id = Integer.parseInt(session.getAttribute("pharmacy_id_receiver").toString());
+		Date date = new Date();
 		MessageDAO mdao = new MessageDAO();
 		
-		Message message = new Message(((mdao.getMessages().size())+1),title,name,email,msg,pharmacy_id,admin_id,false);
+		Message message = new Message(((mdao.getMessages().size())+1),title,name,email,msg,pharmacy_id,admin_id,false,date.toString());
  		
 		try {
 			
