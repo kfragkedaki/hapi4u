@@ -13,7 +13,7 @@ public class DB {
 	private final String dbServerPort = "3306";
 	private final String dbName = "ismgroup90";
 	private final String dbusername = "ismgroup90";
-	private final String dbpassword = "9aduf8";
+	private final String dbpassword = "yo2ewd";
 
 	/**
 	 * Default Constructor

@@ -6,7 +6,7 @@
 <html lang="en">
 
 	<head>
-		
+
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</nav>
-		
+
 		<!-- /container -->
 
 		<div class="container theme-showcase" role="main">
@@ -74,12 +74,12 @@
 			<h4 class="form-signin-heading text-center"><small>Δημιούργησε λογαριασμό στο hapi4u συμπληρώνοντας απλώς την παρακάτω φόρμα!</small></h4>
 
 			<hr>
-			
-			<% if(session.getAttribute("message") != null) { %>		
+
+			<% if(session.getAttribute("message") != null) { %>
 				<div class="alert alert-danger text-center" role="alert"><%=(String)session.getAttribute("message") %></div>
 			<% } %>
-		
-			<form name="form-register" class="form-horizontal" pharmacies.jspmethod="post" action="../servlet/RegisterController">
+
+			<form name="form-register" class="form-horizontal" method="post" action="../servlet/RegisterController">
 				<div class="form-group row">
 					<label for="email" class="col-sm-2 offset-sm-2 control-label"><b>Email:</b></label>
 					<div class="col-sm-4">
@@ -91,7 +91,7 @@
 					<div class="col-sm-4">
 					  <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
 					</div>
-			    </div> 
+			    </div>
 				<div class="form-group row">
 					<label for="password" class="col-sm-3 offset-sm-1 control-label"><b>Επιβεβαίωση Kωδικού:</b></label>
 					<div class="col-sm-4">
@@ -102,12 +102,12 @@
 				<br>
 				<div class="text-center">
 					<button type="submit" class="btn btn-lg btn-primary "><b>Δημιουργία λογαριασμού</b></button>
-				</div> 
+				</div>
 			</form>
 		</div>
 
 		<!-- Footer -->
-		
+
 		<footer class="footer bg-dark">
 		  <div class="container">
 			<div class="row">
@@ -133,13 +133,13 @@
 				<div id="copyright">
 					<p class="text-muted small mb-4 mb-lg-0">&copy; Hapi4u 2018. All Rights Reserved.</p>
 				</div>
-			  </div>	  
+			  </div>
 			</div>
 		  </div>
 		</footer>
-		
+
 		<!-- End footer -->
-		
+
 		 <!-- Bootstrap core JavaScript -->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

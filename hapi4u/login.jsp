@@ -28,11 +28,11 @@
   </head>
 
   <body>
-  
+
 <!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top" id="title"></i> Hapi4u</a>
+			<a class="navbar-brand js-scroll-trigger" href="index.jsp#page-top" id="title"></i> Hapi4u</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			  Menu
 			  <i class="fa fa-bars"></i>
@@ -61,10 +61,10 @@
 			</div>
 		</div>
 	</nav>
-  
+
     <div class="container theme-showcase" role="main">
-	
-        <% if(request.getAttribute("message") != null) { %>		
+
+        <% if(request.getAttribute("message") != null) { %>
 			<div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
 		<% } %>
 
@@ -79,7 +79,7 @@
 
 	</div>
 	<!-- /container -->
-		
+
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
@@ -93,6 +93,6 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/jquery.min.js"></script>
 	<script	src="js/bootstrap.min.js"></script>
-       
+
   </body>
 </html>
