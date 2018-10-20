@@ -11,31 +11,31 @@
 		int location = Integer.parseInt(l[i]);
 		location_ids.add(location);
 	}
-	
+
 	String date = request.getParameter("date");
 	String time = request.getParameter("time");
-	
+
 	User user = (User) session.getAttribute("user_object");
 	int user_id = 0;
-	
+
 	if (session.getAttribute("user_object") != null) {
 		user_id = user.getUserId();
 	}
-	
+
 	LocationDAO ldao = new LocationDAO();
 	PharmacyDAO pdao = new PharmacyDAO();
 	MyFavouritesDAO fdao = new MyFavouritesDAO();
-	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>(); 	
+	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
 	List<Pharmacy> pharmacies2 = new ArrayList<Pharmacy>();
-	
+
     if (pdao.authenticateDate(date) == 1) {
-		
+
 		Availability availability = pdao.getAvailability(date);
 		int availability_id = 0;
-		
+
 		if ((Integer.parseInt(time.replace(":","")) > 2100 || Integer.parseInt(time.replace(":","")) < 800) || availability.getSunday().equals("1")) {
 			availability_id = pdao.getAvailability(date).getAvailabilityId();
-			
+
 			for (int i=0; i<location_ids.size(); i++){
 				pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
 				for (int j=0; j< pharmacies2.size(); j++){
@@ -45,8 +45,8 @@
 					}
 				}
 			}
-		} else {  
-			
+		} else {
+
 			for (int i=0; i<location_ids.size(); i++){
 				pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
 				for (int j=0; j< pharmacies2.size(); j++){
@@ -56,8 +56,8 @@
 
 		}
 	}
-	
-%>	
+
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +111,7 @@
 				</li>
 				<%
 				if( session.getAttribute("user_object") == null ) {
-				
+
 				%>
 							<li class="nav-item">
 							  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
@@ -122,7 +122,7 @@
 						 </ul>
 						  <%
 				}else{
-				
+
 				%>
 							<li class="nav-item">
 								<a class="nav-link js-scroll-trigger" href="myfavourites.jsp">Αγαπημενα</a>
@@ -134,14 +134,14 @@
 								<ul class="dropdown-menu">
 									<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
 								</ul>
-							</li>				
+							</li>
 						</ul>
 				<%}
 				%>
 			</div>
 		</div>
 	</nav>
-	
+
 	<section id="pharmacies" class="features-icons bg-light text-center">
 	<!-- Page Content -->
     <div class="container">
@@ -150,11 +150,11 @@
 	  <h2 class="section-heading">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h2>
       <h5 class="section-subheading text-muted"><%= pharmacies.size()%> Αποτελέσματα </h5>
 	  <hr>
-	  
+
 		<%
 			for (int i=0; i < pharmacies.size(); i++){
-				Pharmacy pharmacy = pharmacies.get(i); %> 
-				
+				Pharmacy pharmacy = pharmacies.get(i); %>
+
 				  <!-- Project -->
 				  <div class="row">
 					<div class="col-md-7">
@@ -168,16 +168,16 @@
 
 					  <% if (user_id != 0) {
 							if (fdao.getMyFavouritesId( user_id, pharmacy.getId()) == 0) { %>
-							
+
 								<button class="fa fa-heart-o" type="button" onclick="<%fdao.saveMyFavourites( user_id, pharmacy.getId());%>" style="color:#007bff;"> </button>
-						
+
 							<% } else { %>
-							
+
 								<button class="fa fa-heart" type="button" onclick= "<%fdao.deleteMyFavourites ( user_id, pharmacy.getId());%>" style="color:#007bff;">  </button>
-						
-							<% } 
+
+							<% }
 					  } %>
-						  
+
 					  <form class="chat_ib" method="post" action="messageForm.jsp">
 					  <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
 					  <button class="fa fa-envelope" type="submit" aria-hidden="false" style="color:#007bff;"> </button>
@@ -188,10 +188,10 @@
 				  <!-- /.row -->
 
 				  <hr>
-				
-				
+
+
 		<%	} %>
-		
+
 
       <!-- Pagination -->
       <ul class="pagination justify-content-center">
@@ -215,9 +215,9 @@
     </div>
 	</section>
     <!-- /.container -->
-	
 
-	
+
+
     <!-- Footer -->
     <footer class="footer bg-dark">
       <div class="container">
@@ -244,7 +244,7 @@
 			<div id="copyright">
 				<p class="text-muted small mb-4 mb-lg-0">&copy; Hapi4u 2018. All Rights Reserved.</p>
 			</div>
-          </div>	  
+          </div>
         </div>
       </div>
     </footer>
@@ -252,6 +252,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
   </body>
 
