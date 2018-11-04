@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isErrorPage="true"%>
 <%@ page import="hapi4u_javafiles.*" %>
-	
+
 <%session = request.getSession(false);%>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
 		<!-- Fixed navbar -->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="index.html#page-top" id="title"></i> Hapi4u</a>
+			<a class="navbar-brand js-scroll-trigger" href="index.jsp#page-top" id="title"></i> Hapi4u</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			  Menu
 			  <i class="fa fa-bars"></i>
@@ -43,22 +43,22 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 			  <ul class="navbar-nav text-uppercase ml-auto">
 			  <li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.html#services"> Υπηρεσιες</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#services"> Υπηρεσιες</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.html#about">Πως λειτουργει</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.html#developers">Η ομαδα μας</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#developers">Η ομαδα μας</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.html#contact">Επικοινωνια</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#contact">Επικοινωνια</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="login.html"><b>Εισοδος</b></button></a>
+				  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" data-target="#register"><b>Εγγραφη</b></button></a>
+				  <a class="nav-link js-scroll-trigger" data-target="register.jsp"><b>Εγγραφη</b></button></a>
 				</li>
 			  </ul>
 			</div>
@@ -70,10 +70,10 @@
 			<!-- Page Title -->
 			<div class="page-header">
 				<h1>Σφάλμα</h1>
-			</div>		
+			</div>
 
 			<div class="alert alert-danger" role="alert"><%= exception.getMessage() %></div>
-			
+
 		</div>
 		<!-- /container -->
 

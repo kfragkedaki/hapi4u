@@ -7,7 +7,7 @@
 
 UserDAO udao = new UserDAO();
 LocationDAO ldao = new LocationDAO();
-%>	
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +31,14 @@ LocationDAO ldao = new LocationDAO();
 
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
-	
-	
+
+
 	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/> <!--For dropdown option-->
 
   </head>
 
   <body>
-  
+
 <!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
 		<div class="container">
@@ -63,7 +63,7 @@ LocationDAO ldao = new LocationDAO();
 				</li>
 	<%
 	if( session.getAttribute("user_object") == null ) {
-	
+
 %>
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
@@ -74,7 +74,7 @@ LocationDAO ldao = new LocationDAO();
              </ul>
 			  <%
 	}else{
-	
+
 %>
 				<li class="nav-item">
 					<a class="nav-link js-scroll-trigger" href="myfavourites.jsp">Αγαπημενα</a>
@@ -86,11 +86,11 @@ LocationDAO ldao = new LocationDAO();
 					<ul class="dropdown-menu">
 						<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
 					</ul>
-				</li>				
+				</li>
 		    </ul>
 	<%}
 	%>
-	    
+
 			</div>
 		</div>
 	</nav>
@@ -106,44 +106,44 @@ LocationDAO ldao = new LocationDAO();
           <div class="col-md-10 mx-auto">
 		   <div class="container2">
 			<form class="form-group" method="post" action ="pharmacies.jsp">
-			    
+
 					<label><b>Περιοχή:  </b></label>
 						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="locations" style="width: 20%;" required>
-						
+
 						<optgroup label = "Αθήνα, ΑΤΤΙΚΗ">
-						
+
 						<% for (int i = 1; i <= ldao.getLocations("Αθήνα", "ΑΤΤΙΚΗ").size() ; i++) { %>
-						
-					
+
+
 							<option value=<%=i%>> <%= ldao.getLocationByID(i).getArea() %> </option>
-					
+
 						<%}%>
-						
+
 						</optgroup>
-						
+
 						<optgroup label = "Ηράκλειο, ΚΡΗΤΗ">
-						
+
 						<% for (int i = 46; i <= ldao.getLocations("Ηράκλειο", "ΚΡΗΤΗ").size() ; i++) { %>
-						
-					
+
+
 							<option value=<%=i%> > <%= ldao.getLocationByID(i).getArea() %> </option>
-					
+
 						<% }%>
-						
+
 						</optgroup>
-						
+
                       </select>
-					
+
 					<label class="date"><b>Ημερομηνία</b>
 						<input type="date" id="date" name="date" required>
 					</label>
 					<label class="time"><b>Ώρα</b>
 						<input type="time"id="time" name="time" required>
 					</label>
-					
+
 					<button type="submit" class="btn btn-primary">Αναζήτηση</button>
 		    </form>
-		   </div>	
+		   </div>
           </div>
         </div>
       </div>
@@ -278,7 +278,7 @@ LocationDAO ldao = new LocationDAO();
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 
-					
+
 			  <form name="sentMessage" id="contactForm" method="post" action="messageController.jsp">
 			    <div class="control-group form-group">
 				  <div class="controls">
@@ -343,7 +343,7 @@ LocationDAO ldao = new LocationDAO();
 			<div id="copyright">
 				<p class="text-muted small mb-4 mb-lg-0">&copy; Hapi4u 2018. All Rights Reserved.</p>
 			</div>
-          </div>	  
+          </div>
         </div>
       </div>
     </footer>
@@ -351,7 +351,7 @@ LocationDAO ldao = new LocationDAO();
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
 
