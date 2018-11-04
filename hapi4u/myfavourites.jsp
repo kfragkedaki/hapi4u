@@ -4,27 +4,27 @@
 <%@ page import="hapi4u_javafiles.*" %>
 
 
-<%  
+<%
 	User user = (User) session.getAttribute("user_object");
-	
+
 	if( session.getAttribute("user_object") == null ) {
 		request.setAttribute("message", "You are not authorized to access this resource. Please login.");
 	%>
 		<jsp:forward page="login.jsp"/>
-	<%	} 
- 
+	<%	}
+
 	int user_id = user.getUserId();
-		
+
 	LocationDAO ldao = new LocationDAO();
 	PharmacyDAO pdao = new PharmacyDAO();
 	MyFavouritesDAO fdao = new MyFavouritesDAO();
-	List<Integer> pharmaciesId = new ArrayList<Integer>(); 	
+	List<Integer> pharmaciesId = new ArrayList<Integer>();
 	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
 	List<Pharmacy> myFavouritePharmacies = new ArrayList<Pharmacy>();
-	
+
 	pharmaciesId = fdao.getMyFavouritesByUserId( user_id);
 	pharmacies = pdao.getPharmacies();
-	
+
 	for ( int i=0; i< pharmacies.size() ; i++) {
 		for (int j=0; j< pharmaciesId.size(); j++) {
 			if (pharmacies.get(i).getId() == pharmaciesId.get(j) ){
@@ -32,8 +32,8 @@
 			}
 		}
 	}
-	
-%>	
+
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +87,7 @@
 				</li>
 				<%
 				if( session.getAttribute("user_object") == null ) {
-				
+
 				%>
 							<li class="nav-item">
 							  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
@@ -98,7 +98,7 @@
 						 </ul>
 						  <%
 				}else{
-				
+
 				%>
 							<li class="nav-item">
 								<a class="nav-link js-scroll-trigger" href="myfavourites.jsp">Αγαπημενα</a>
@@ -110,14 +110,14 @@
 								<ul class="dropdown-menu">
 									<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
 								</ul>
-							</li>				
+							</li>
 						</ul>
 				<%}
 				%>
 			</div>
 		</div>
 	</nav>
-	
+
 	<section id="pharmacies" class="features-icons bg-light text-center">
 	<!-- Page Content -->
     <div class="container">
@@ -126,11 +126,11 @@
 	  <h2 class="section-heading">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h2>
       <h5 class="section-subheading text-muted"><%= myFavouritePharmacies.size()%> Αποτελέσματα </h5>
 	  <hr>
-	  
+
 		<%
 			for (int i=0; i < myFavouritePharmacies.size(); i++){
-				Pharmacy pharmacy = myFavouritePharmacies.get(i); %> 
-				
+				Pharmacy pharmacy = myFavouritePharmacies.get(i); %>
+
 				  <!-- Project -->
 				  <div class="row">
 					<div class="col-md-7">
@@ -143,16 +143,16 @@
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
 					  <% if (user_id != 0) {
 							if (fdao.getMyFavouritesId( user_id, pharmacy.getId()) == 0) { %>
-							
-								<button class="fa fa-heart-o" type="submit" name=""aria-hidden="false" onClick="<%fdao.saveMyFavourites( user_id, pharmacy.getId());%>" style="color:#007bff;"> </button>
-						
+
+								<button class="fa fa-heart-o" type="submit" name=""aria-hidden="false" onClick="saveMyFavourites(<%=user_id%>, <%=pharmacy.getId()%>)" style="color:#007bff;"> </button>
+
 							<% } else { %>
-							
-								<button class="fa fa-heart" type="submit" name="" aria-hidden="false" onClick= "<%fdao.deleteMyFavourites ( user_id, pharmacy.getId());%>" style="color:#007bff;">  </button>
-						
-							<% } 
+
+								<button class="fa fa-heart" type="submit" name="" aria-hidden="false" onClick= "deleteMyFavourites(<%=user_id%>, <%=pharmacy.getId()%>)" style="color:#007bff;">  </button>
+
+							<% }
 					  } %>
-						  
+
 					  <form class="chat_ib" method="post" action="messageForm.jsp">
 					  <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
 					  <button class="fa fa-envelope" type="submit" aria-hidden="false" style="color:#007bff;"> </button>
@@ -163,10 +163,10 @@
 				  <!-- /.row -->
 
 				  <hr>
-				
-				
+
+
 		<%	} %>
-		
+
 
       <!-- Pagination -->
       <ul class="pagination justify-content-center">
@@ -190,12 +190,12 @@
     </div>
 	</section>
     <!-- /.container -->
-	
+
 	<!-- Message-->
 	<div class="modal fade" id="communication" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content" style="background: #ccdfcb;">
-			
+
 				<div class="modal-heading">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<br>
@@ -203,7 +203,7 @@
 						<h5 class="text-center">Συμπλήρωσε την παρακάτω φόρμα <br>για να επικοινωνήσεις με το φαρμακείο!</i></h5>
 					</div>
 				</div>
-				
+
 				<div class="modal-body container-fluid">
 					<div class="container" >
 						<form name="sentMessage" id="contactForm" method="post" action="messageController.jsp">
@@ -244,8 +244,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
     <!-- Footer -->
     <footer class="footer bg-dark">
       <div class="container">
@@ -272,7 +272,7 @@
 			<div id="copyright">
 				<p class="text-muted small mb-4 mb-lg-0">&copy; Hapi4u 2018. All Rights Reserved.</p>
 			</div>
-          </div>	  
+          </div>
         </div>
       </div>
     </footer>
@@ -280,6 +280,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="js/MyFavourites.js"></script>
 
   </body>
 

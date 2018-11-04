@@ -169,11 +169,11 @@
 					  <% if (user_id != 0) {
 							if (fdao.getMyFavouritesId( user_id, pharmacy.getId()) == 0) { %>
 
-								<button class="fa fa-heart-o" type="button" onclick="<%fdao.saveMyFavourites( user_id, pharmacy.getId());%>" style="color:#007bff;"> </button>
+								<button class="fa fa-heart-o" type="button" onclick="saveMyFavourites( <%=user_id%>, <%=pharmacy.getId()%>)" style="color:#007bff;"> </button>
 
 							<% } else { %>
 
-								<button class="fa fa-heart" type="button" onclick= "<%fdao.deleteMyFavourites ( user_id, pharmacy.getId());%>" style="color:#007bff;">  </button>
+								<button class="fa fa-heart" type="button" onclick= "deleteMyFavourites( <%=user_id%>, <%=pharmacy.getId()%>)" style="color:#007bff;">  </button>
 
 							<% }
 					  } %>
@@ -252,6 +252,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="js/MyFavourites.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
   </body>
