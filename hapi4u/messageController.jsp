@@ -15,10 +15,19 @@
 		int pharmacy_id = Integer.parseInt(session.getAttribute("pharmacy_id_receiver").toString());
 		Date date = new Date();
 		
+		MessageDAO mdao = new MessageDAO();
+		AdministratorDAO adao = new AdministratorDAO();
  		
 		try {
-			
-			mdao.saveMessage(title,name,email,msg,date.toString(),pharmacy_id,admin_id);
+			if (admin_id != 0){
+				for (Administrator administrator : adao.getAdministrators() ){
+					mdao.saveMessage(title,name,email,msg,date.toString(),pharmacy_id,administrator.getId());
+				}
+			}else{
+				mdao.saveMessage(title,name,email,msg,date.toString(),pharmacy_id,admin_id);
+			}
+				
+					
 			
 		} catch(Exception e) {
 			

@@ -151,9 +151,11 @@ public class MessageDAO {
 
 	}
 
+	public void saveMessage(String title, String name, String email, String message, String date, int pharmacy_id, int admin_id) {
+
 		Connection con = null;
 
-		String sqlquery= "INSERT INTO messages (title,name,email,message , date, pharmacy_id,admin_id) VALUES (?, ?, ? ,? , ?, ?, ?, ?);";
+		String sqlquery= "INSERT INTO messages (title,name,email,message,date,pharmacy_id,admin_id) VALUES (?, ?, ? ,? , ?, ?, ?);";
 
 		DB db = new DB();
 
@@ -165,20 +167,20 @@ public class MessageDAO {
 
 			PreparedStatement stmt = con.prepareStatement(sqlquery);
 
-			stmt.setString( 1, message.getTitle() );
-			stmt.setString( 2, message.getName() );
-			stmt.setString( 3, message.getEmail() );
-			stmt.setString( 4, message.getMessage() );
-			stmt.setString(5,message.getDate() );
-			if (message.getPharmacyId() == 0){
+			stmt.setString( 1, title );
+			stmt.setString( 2, name );
+			stmt.setString( 3, email );
+			stmt.setString( 4, message );
+			stmt.setString(5, date );
+			if (pharmacy_id == 0){
 				stmt.setNull(6,java.sql.Types.INTEGER);
 			}else{
-				stmt.setInt( 6, message.getPharmacyId() );
+				stmt.setInt( 6, pharmacy_id );
 			}
-			if (message.getAdminId() == 0){
+			if (admin_id  == 0){
 				stmt.setNull(7,java.sql.Types.INTEGER);
 			}else{
-				stmt.setInt( 7, message.getAdminId() );
+				stmt.setInt( 7, admin_id );
 			}
 
 
