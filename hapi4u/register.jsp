@@ -106,37 +106,15 @@
 			</form>
 		</div>
 
-		<!-- Footer -->
 
-		<footer class="footer bg-dark">
-		  <div class="container">
-			<div class="row">
-			  <div class="col-lg-7 h-100 text-center text-lg-right my-auto">
-				<ul class="list-inline mb-0">
-				  <li class="list-inline-item mr-3">
-					<a href="#">
-					  <i class="fa fa-facebook fa-2x fa-fw"></i>
-					</a>
-				  </li>
-				  <li class="list-inline-item mr-3">
-					<a href="#">
-					  <i class="fa fa-twitter fa-2x fa-fw"></i>
-					</a>
-				  </li>
-				  <li class="list-inline-item">
-					<a href="#">
-					  <i class="fa fa-instagram fa-2x fa-fw"></i>
-					</a>
-				  </li>
-				</ul>
-				<br>
-				<div id="copyright">
-					<p class="text-muted small mb-4 mb-lg-0">&copy; Hapi4u 2018. All Rights Reserved.</p>
-				</div>
-			  </div>
-			</div>
+	  <!-- Footer -->
+
+	  <footer class="py-5 bg-dark">
+	  	<div class="container">
+		  	<p class="m-0 text-center text-white">Copyright &copy; hapi4u 2018</p>
 		  </div>
-		</footer>
+		  <!-- /.container -->
+	  </footer>
 
 		<!-- End footer -->
 
