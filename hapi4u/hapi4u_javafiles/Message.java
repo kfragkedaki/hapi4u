@@ -9,7 +9,6 @@ public class Message {
 	private String message;
 	private int pharmacy_id;
 	private int admin_id;
-	private boolean checked;
 	private String date;
 
 
@@ -20,7 +19,7 @@ public class Message {
 	 * @param password, String
 	 * @param email, String
 	 */
-	public Message( int message_id,String title, String name, String email, String message, int pharmacy_id, int admin_id, boolean checked,String date) {
+	public Message( int message_id,String title, String name, String email, String message ,String date, int pharmacy_id, int admin_id) {
 
 		this.message_id = message_id;
 		this.title = title;
@@ -29,7 +28,6 @@ public class Message {
 		this.message = message;
 		this.pharmacy_id = pharmacy_id;
 		this.admin_id = admin_id;
-		this.checked = checked;
 		this.date = date;
 	}
 
@@ -92,15 +90,6 @@ public class Message {
 	public void setAdminId(int admin_id) {
 		this.admin_id = admin_id;
 	}
-
-	public boolean getIfChecked(){
-		return checked;
-	}
-
-	public void setIfChecked(boolean checked){
-		this.checked = checked;
-	}
-
 
 	public String getDate() {
 		return date;

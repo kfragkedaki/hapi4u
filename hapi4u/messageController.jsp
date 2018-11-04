@@ -14,13 +14,11 @@
 		int admin_id = Integer.parseInt(session.getAttribute("admin_id_receiver").toString());
 		int pharmacy_id = Integer.parseInt(session.getAttribute("pharmacy_id_receiver").toString());
 		Date date = new Date();
-		MessageDAO mdao = new MessageDAO();
 		
-		Message message = new Message(((mdao.getMessages().size())+1),title,name,email,msg,pharmacy_id,admin_id,false,date.toString());
  		
 		try {
 			
-			mdao.saveMessage(message);
+			mdao.saveMessage(title,name,email,msg,date.toString(),pharmacy_id,admin_id);
 			
 		} catch(Exception e) {
 			

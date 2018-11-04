@@ -35,7 +35,7 @@ public class MessageDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked"), rs.getString("date") ) );
+				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getString("date"), rs.getInt("pharmacy_id"), rs.getInt("admin_id") ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -81,7 +81,7 @@ public class MessageDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked"),rs.getString("date") ) );
+				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getString("date"), rs.getInt("pharmacy_id"), rs.getInt("admin_id") ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -126,7 +126,7 @@ public class MessageDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while ( rs.next() ) {
-				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getInt("pharmacy_id"), rs.getInt("admin_id"), rs.getBoolean("checked"),rs.getString("date") ) );
+				messages.add( new Message( rs.getInt("message_id"),rs.getString("title"), rs.getString("name"), rs.getString("email"), rs.getString("message"), rs.getString("date"), rs.getInt("pharmacy_id"), rs.getInt("admin_id") ) );
 			}
 
 			rs.close(); //closing ResultSet
@@ -151,11 +151,9 @@ public class MessageDAO {
 
 	}
 
-	public void saveMessage(Message message) {
-
 		Connection con = null;
 
-		String sqlquery= "INSERT INTO messages VALUES (?, ?, ?, ? ,? , ?, ?, ?, ?);";
+		String sqlquery= "INSERT INTO messages (title,name,email,message , date, pharmacy_id,admin_id) VALUES (?, ?, ? ,? , ?, ?, ?, ?);";
 
 		DB db = new DB();
 
@@ -167,11 +165,11 @@ public class MessageDAO {
 
 			PreparedStatement stmt = con.prepareStatement(sqlquery);
 
-			stmt.setInt( 1, message.getMessageId());
-			stmt.setString( 2, message.getTitle() );
-			stmt.setString( 3, message.getName() );
-			stmt.setString( 4, message.getEmail() );
-			stmt.setString( 5, message.getMessage() );
+			stmt.setString( 1, message.getTitle() );
+			stmt.setString( 2, message.getName() );
+			stmt.setString( 3, message.getEmail() );
+			stmt.setString( 4, message.getMessage() );
+			stmt.setString(5,message.getDate() );
 			if (message.getPharmacyId() == 0){
 				stmt.setNull(6,java.sql.Types.INTEGER);
 			}else{
@@ -182,8 +180,7 @@ public class MessageDAO {
 			}else{
 				stmt.setInt( 7, message.getAdminId() );
 			}
-			stmt.setBoolean( 8, message.getIfChecked() );
-			stmt.setString(9,message.getDate() );
+
 
 			stmt.executeUpdate();
 
