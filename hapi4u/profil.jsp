@@ -28,7 +28,7 @@ LocationDAO ldao= new LocationDAO();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pharmacy profil</title>
+    <title>Profil</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -88,8 +88,8 @@ LocationDAO ldao= new LocationDAO();
       </div>
     </section>
 	
-		<div class="containerM">
-<h3 class=" text-center">Μηνύματα</h3>
+		<div class="container">
+		 <h3 class=" text-center">Μηνύματα</h3>
           <div class="headind_srch">
             <div class="recent_heading">
               <h4>Πρόσφατα</h4>
@@ -112,9 +112,9 @@ LocationDAO ldao= new LocationDAO();
 				  <br>
 				  <%=messages.get(i).getMessage()%>
 				  <input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
-				  <div class="delete">
-				  <button class="btn btn-lg btn-block" type="submit">Διαγραφή</button>
-				  </div>
+				  
+				  <button class="btn btn-lg  pull-right" type="submit" >Διαγραφή</button>
+				  
                 </form>
 	
               </div>
@@ -206,6 +206,17 @@ LocationDAO ldao= new LocationDAO();
   no_results_text: "Oops, nothing found!"
 })
 	</script>
+	
+	<script type="text/JavaScript">
+ 
+FUNCTION confirmDelete(){
+VAR agree=CONFIRM("Are you sure you want to delete this file?");
+IF (agree)
+     RETURN TRUE ;
+ELSE
+     RETURN FALSE ;
+}
+</script>
   </body>
 
 </html>
