@@ -186,7 +186,7 @@ LocationDAO ldao = new LocationDAO();
 
     <!-- Image Showcases -->
     <section id="about" class="showcase">
-      <div class="container-fluid p-0">
+      <div class="container-fluid">
 	    <div class="row">
           <div class="col-lg-12 text-center" style="margin-top:90px;">
             <h2 class="section-heading text-uppercase">ΠΩΣ</h2>
