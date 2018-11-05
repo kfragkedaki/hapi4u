@@ -1,5 +1,6 @@
 body{
-	font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif
+	font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
+	width:100%;
 	}
 	
 #title{
@@ -23,21 +24,15 @@ h1,h2,h3,h4,h5,h6{
 	border-color:#2976a0;
 }
 
-.container2{
+
+.form-inline{
 	width:100%; 
 	background-color:rgba(20, 20, 31, 0.8); 
 	padding:40px; 
 	margin-top:70px;
 }
 
-.date{
-	margin-right:10px;
-	margin-left:10px;
-}
 
-.time{
-	margin-right:30px;
-}
 
 header.masthead{
 	position:relative;
