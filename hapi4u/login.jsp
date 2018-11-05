@@ -62,11 +62,11 @@
 		</div>
 	</nav>
 
-    <div class="container theme-showcase" role="main">
+  <div class="container theme-showcase" role="main">
 
         <% if(request.getAttribute("message") != null) { %>
-			<div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
-		<% } %>
+			     <div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
+		    <% } %>
 
 
 		<form class="form-signin" method="post" action="loginController.jsp">

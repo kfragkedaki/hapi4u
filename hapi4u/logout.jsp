@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-	
+
 	<meta http-equiv="refresh" content="3;url=login.jsp" />
 
     <title>Logout page</title>
@@ -45,22 +45,22 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 			  <ul class="navbar-nav text-uppercase ml-auto">
 			  <li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#services"> Υπηρεσιες</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#services"> Υπηρεσιες</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#about">Πως λειτουργει</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#developers">Η ομαδα μας</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#developers">Η ομαδα μας</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#contact">Επικοινωνια</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#contact">Επικοινωνια</a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" data-target="#register"><b>Εγγραφη</b></button></a>
+				  <a class="nav-link js-scroll-trigger" data-target="register.jsp"><b>Εγγραφη</b></button></a>
 				</li>
 			  </ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -69,7 +69,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
 							</ul>
-				         </li>				
+				         </li>
 		            </ul>
 			</div>
 		</div>
@@ -77,7 +77,7 @@
 
 	<div class="container theme-showcase" role="main">
 
-		<div class="alert alert-success text-center" role="alert">Η έξοδος πραγματοποιηθηκε με επιτυχία</div>		
+		<div class="alert alert-success text-center" role="alert">Η έξοδος πραγματοποιηθηκε με επιτυχία</div>
 
 	</div>
 	<!-- /container -->
@@ -96,10 +96,10 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/jquery.min.js"></script>
 	<script	src="js/bootstrap.min.js"></script>
-       
+
   </body>
 </html>
 
 <%
 session.invalidate();
-%>	
+%>
