@@ -169,11 +169,22 @@
 					  <% if (user_id != 0) {
 							if (fdao.getMyFavouritesId( user_id, pharmacy.getId()) == 0) { %>
 
-								<button class="fa fa-heart-o" type="button" onclick="saveMyFavourites( <%=user_id%>, <%=pharmacy.getId()%>)" style="color:#007bff;"> </button>
+								<form class="favourites" method="post" action="saveFavouritesController.jsp">
 
+									 <input type="hidden" name="user_id" value="<%=user_id%>" />
+									 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+								   <button class="fa fa-heart-o" type="submit" style="color:#007bff;"> </button>
+
+								</form>
 							<% } else { %>
 
-								<button class="fa fa-heart" type="button" onclick= "deleteMyFavourites( <%=user_id%>, <%=pharmacy.getId()%>)" style="color:#007bff;">  </button>
+										<form class="favourites" method="post" action="deleteFavouritesController.jsp">
+
+											 <input type="hidden" name="user_id" value="<%=user_id%>" />
+											 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+											 <button class="fa fa-heart" type="submit" style="color:#007bff;"> </button>
+
+										</form>
 
 							<% }
 					  } %>
