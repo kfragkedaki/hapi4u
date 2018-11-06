@@ -97,18 +97,12 @@ LocationDAO ldao = new LocationDAO();
 
     <!-- Masthead -->
     <header id="page-top" class="masthead text-white text-center">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-9 mx-auto" style="color:#000000;">
-            <h1 class="mb-5" style=" top:0px;">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h1>
-          </div>
-          <div class="col-md-10 mx-auto">
-		   <div class="container2">
-			<form class="form-group" method="post" action ="pharmacies.jsp">
-
+	  <div class="page-header"><h1>Βρες τα διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h1></div>
+       <div class="container">
+			<form class="form-inline" method="post" action ="pharmacies.jsp">
+				<div class="form-group col-md-4">
 					<label><b>Περιοχή:  </b></label>
-						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="locations" style="width: 20%;" required>
+						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select col-md-6" name="locations" required>
 
 						<optgroup label = "Αθήνα, ΑΤΤΙΚΗ">
 
@@ -133,20 +127,25 @@ LocationDAO ldao = new LocationDAO();
 						</optgroup>
 
                       </select>
-
+				</div>
+				
+				<div class="form-group col-md-4">
 					<label class="date"><b>Ημερομηνία</b>
 						<input type="date" id="date" name="date" required>
 					</label>
+				</div>
+				
+				<div class="form-group col-md-2">
 					<label class="time"><b>Ώρα</b>
 						<input type="time"id="time" name="time" required>
 					</label>
-
+				</div>
+				
+				<div class="form-group col-md-1">
 					<button type="submit" class="btn btn-primary">Αναζήτηση</button>
+				</div>
 		    </form>
-		   </div>
           </div>
-        </div>
-      </div>
     </header>
 
     <!-- Icons Grid -->

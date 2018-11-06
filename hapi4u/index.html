@@ -64,14 +64,14 @@
 
     <!-- Masthead -->
     <header id="page-top" class="masthead text-white text-center">
+	  <div class="page-header"><h1>Βρες τα διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h1></div>
       <div class="container">
-        <div class="row">
 			<form class="form-inline">
 			       
-				<div class="form-group">
+				<div class="form-group col-md-4">
 			    
 					<label><b>Περιοχή:  </b></label>
-						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select" name="test">
+						<select data-placeholder="Πληκτρολόγησε περιοχή " multiple class="chosen-select col-md-6" >
 						
 						<optgroup label = "Κέντρο Αθήνας">
 						
@@ -125,20 +125,20 @@
 					  
 			    </div>
 		  
-			 <div class="form-group">
+			 <div class="form-group col-md-4">
 					
-					<label><b> Ημερομηνία: </b>
+					<label><b> Ημερομηνία: </b> </label>
 						<input type="date" id="date" name="date">
-					</label>
 				</div>
-		    <div class="form-group">
-					<label class="time"><b> Ώρα: </b>
+		    <div class="form-group col-md-2">
+					<label class="time"><b>Ώρα: </b></label>
 						<input type="time"id="time" name="time">
-					</label>
 				</div>
+				<div class="form-group col-md-1">
 					<button type="button" class="btn btn-primary">Αναζήτηση</button>
+				</div>
 		    </form>
-        </div>
+		  
       </div>
     </header>
 
