@@ -31,7 +31,9 @@ h1,h2,h3,h4,h5,h6{
 	background-color:rgba(20, 20, 31, 0.8); 
 	margin-top:280px;
 }
-
+.position-fixed{
+	margin-top:90px;
+}
 
 
 header.masthead{
