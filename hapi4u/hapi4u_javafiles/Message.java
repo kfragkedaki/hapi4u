@@ -7,8 +7,7 @@ public class Message {
 	private String name;
 	private String email;
 	private String message;
-	private int pharmacy_id;
-	private int admin_id;
+	private int user_id;
 	private String date;
 
 
@@ -19,15 +18,14 @@ public class Message {
 	 * @param password, String
 	 * @param email, String
 	 */
-	public Message( int message_id,String title, String name, String email, String message ,String date, int pharmacy_id, int admin_id) {
+	public Message( int message_id,String title, String name, String email, String message ,String date, int user_id) {
 
 		this.message_id = message_id;
 		this.title = title;
 		this.name = name;
 	    this.email = email;
 		this.message = message;
-		this.pharmacy_id = pharmacy_id;
-		this.admin_id = admin_id;
+		this.user_id = user_id;
 		this.date = date;
 	}
 
@@ -75,20 +73,12 @@ public class Message {
 		this.message = message;
 	}
 
-	public int getPharmacyId() {
-		return pharmacy_id;
+	public int getUserId() {
+		return user_id;
 	}
 
-	public void setPharmacyId(int pharmacy_id) {
-		this.pharmacy_id = pharmacy_id;
-	}
-
-	public int getAdminId() {
-		return admin_id;
-	}
-
-	public void setAdminId(int admin_id) {
-		this.admin_id = admin_id;
+	public void setUserId(int user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getDate() {

@@ -19,23 +19,7 @@ public class UserDAO {
 	 *
 	 * @return List<User>
 	 */
-/*	public List<User> getUsers() {
 
-		List<User> users = new ArrayList<User>();
-
-		// adding some users for the sake of the example
-		users.add(new User("phoebe_buffay@gmail.com", "1111"));
-		users.add(new User("rachel_green@gmail.com", "2222"));
-		users.add(new User("ross_geller@gmail.com", "3333"));
-		users.add(new User("chadler_bing@gmail.com", "4444"));
-		users.add(new User("joey_tribbiani@gmail.com", "5555"));
-		users.add(new User("monica_geller@gmail.com", "6666"));
-		users.add(new User("pharmacy_haimalis@gmail.com", "7777"));
-
-
-		return users;
-
-	} */
 	public List<User> getUsers() throws Exception {
 
 		Connection con = null;
@@ -80,27 +64,60 @@ public class UserDAO {
 		}
 
 	}
-	/**
-	 * Search user by username
-	 *
-	 * @param username, String
-	 * @return User, the User object
-	 * @throws Exception, if user not found
-	 */
-/*	public User findUser(String email) throws Exception {
 
-		List<User> users = getUsers();
+	public User findUserByPharmacyId(int pharmacy_id) throws Exception {
 
-		for (User user : users) {
+			Connection con = null;
 
-			if ( user.getEmail().equals(email) ) {
+			String sqlquery= "SELECT * FROM users WHERE pharmacy_id=?;";
+
+
+			DB db = new DB();
+
+
+			try {
+
+				db.open();
+
+				con = db.getConnection();
+
+				PreparedStatement stmt = con.prepareStatement(sqlquery);
+				stmt.setInt( 1, pharmacy_id );
+
+				ResultSet rs = stmt.executeQuery();
+				if( !rs.next() ) {
+
+					rs.close();
+					stmt.close();
+					db.close();
+
+					throw new Exception ("Not valid email");
+
+				}
+				User user = new User( rs.getInt("user_id"), rs.getString("email"), rs.getString("password"), rs.getString("pharmacy"), rs.getString("administrator") );
+
+				rs.close(); //closing ResultSet
+				stmt.close(); // closing PreparedStatement
+				db.close(); // closing connection
+
 				return user;
+
+			} catch (Exception e) {
+
+				throw new Exception(e.getMessage());
+
+			} finally {
+
+				try {
+					db.close();
+				} catch (Exception e) {
+					//no need to do anything...
+				}
+
 			}
 
-		}
+	}
 
-		throw new Exception("User with username: " + email + " does not exist");
-	} */
 	public User findUser(String email) throws Exception {
 
 		Connection con = null;
@@ -154,27 +171,6 @@ public class UserDAO {
 
 	}
 
-	/**
-	 * Checks if the credentials are valid.
-	 *
-	 * @param username
-	 * @param password
-	 * @throws Exception, if the credentials are not valid
-	 */
-/*	public void authenticate(String email, String password) throws Exception {
-
-		List<User> users = getUsers();
-
-		for (User user : users) {
-
-			if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-				return; // credentials are valid, so do nothing (return)
-			}
-
-		}
-
-		throw new Exception("Wrong email or password");
-	}*/
 
 	public void authenticateUser(String email, String password) throws Exception {
 

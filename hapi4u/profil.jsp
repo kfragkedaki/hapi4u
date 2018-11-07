@@ -5,7 +5,7 @@
 
 <%
 	if( session.getAttribute("user_object") == null ) {
-		request.setAttribute("message", "You are not authorized to access this resource! Please login.");
+		request.setAttribute("message", "Δεν έχετε πρόσβαση σε αυτήν την σελίδα. Παρακαλούμε συνδεθείτε.");
 	
 %>
 		<jsp:forward page="login.jsp"/>
@@ -30,7 +30,7 @@ LocationDAO ldao= new LocationDAO();
   <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -80,17 +80,16 @@ LocationDAO ldao= new LocationDAO();
 		</div>
 	</nav>
     <!-- Header - set the background image for the header in the line below -->
-    <%if (user.getIfPharmacy().equals("0")){
-		Administrator admin = adao.findAdminByUserId(user.getUserId());%>
+    <%if (user.getIfPharmacy().equals("0")){ %>
 		
 		<header>
-     <img class="img-fluid d-block mx-auto"  style="width:30%; margin-top:30px;" src=<%=admin.getImage()%> 	alt="">
+     <img class="img-fluid mx-auto d-block w-50 p-3" src="img/administrators.jpg"	alt="">
     </header>
 
     <!-- Content section -->
     <section class="py-5">
       <div class="container">
-        <h1><%=admin.getName()%></h1>
+        <h1>Διαχειριστές</h1>
       </div>
     </section>
 	
@@ -105,7 +104,7 @@ LocationDAO ldao= new LocationDAO();
           <div class="inbox_chat">
 		  <%
 		   List<Message> messages = new ArrayList<Message>(); 
-		   messages = mdao.getMessagesByAdminId(admin.getId());
+		   messages = mdao.getMessagesByUserId(user.getUserId());
 		   for (int i=(messages.size()-1); i>=0; i--){
 		  %>
             <div class="chat_list" >
@@ -136,7 +135,7 @@ LocationDAO ldao= new LocationDAO();
 		Pharmacy pharmacy = pdao.findPharmacyByUserId(user.getUserId());%>
 	
     <header>
-     <img class="img-fluid d-block mx-auto"  style="width:30%; margin-top:30px;" src=<%=pharmacy.getImage()%> alt="">
+     <img class="img-fluid mx-auto d-block w-50 p-3"  src=<%=pharmacy.getImage()%> alt="">
     </header>
 
     <!-- Content section -->
@@ -158,7 +157,7 @@ LocationDAO ldao= new LocationDAO();
 	
           <div class="inbox_chat">
 		  <%List<Message> messages = new ArrayList<Message>(); 
-		   messages = mdao.getMessagesByPharmacyId(pharmacy.getId());
+		   messages = mdao.getMessagesByUserId(user.getUserId());
 		   
 		   if(request.getAttribute("message") != null) { 	%>
 			<h5><b><%=(String)request.getAttribute("message")%></h5>
@@ -213,16 +212,6 @@ LocationDAO ldao= new LocationDAO();
 })
 	</script>
 	
-	<script type="text/JavaScript">
- 
-FUNCTION confirmDelete(){
-VAR agree=CONFIRM("Are you sure you want to delete this file?");
-IF (agree)
-     RETURN TRUE ;
-ELSE
-     RETURN FALSE ;
-}
-</script>
   </body>
 
 </html>
