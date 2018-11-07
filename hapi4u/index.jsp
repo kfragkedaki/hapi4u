@@ -185,63 +185,74 @@ LocationDAO ldao = new LocationDAO();
 
     <!-- Image Showcases -->
     <section id="about" class="showcase">
-      <div class="container-fluid">
-	    <div class="row">
-          <div class="col-lg-12 text-center" style="margin-top:90px;">
+	    <br>
+        <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">ΠΩΣ</h2>
             <h3 class="section-subheading text-muted">...λειτουργεί..</h3>
-          </div>
-        </div>
-        <div class="row no-gutters" style="margin-top:90px;">
-
-          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/conceptual-creativity-cube.jpg');"></div>
-          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-            <h2>Συμπλήρωσε την μηχανή αναζήτησης.</h2>
-            <p class="lead mb-0">Επέλεξε περιοχή/περιοχές, ημερομηνία και ώρα που επιθυμείς να αναζητήσεις διαθέσιμα φαρμακεία. </p>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/apple-business-click.jpg');"></div>
-          <div class="col-lg-6 my-auto showcase-text">
-            <h2>Δες τα διαθέσιμα φαρμακεία.</h2>
-            <p class="lead mb-0">Πάτησε αναζήτηση! Δες τα διαθέσιμα φαρμακεία που υπάρχουν στην περιοχή/περιοχές που επιθυμείς, την ώρα και την ημερομηνία που έχεις επιλέξει.</p>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/adult-beautiful-blur.jpg');"></div>
-          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-            <h2>Εαν διαθέτεις λογαριασμό...</h2>
-            <p class="lead mb-0">Τι καλύτερο απ το να μπορείς να αποθηκεύσεις τα αγαπημένα σου φαρμακεία! Με τη δημιουργία λογαριασμού μπορείς να αποθηκεύσεις τα φαρμακεία που επιθυμείς ώστε κάθε φορά να μπορείς να δεις αν είναι διαθέσιμα χωρίς να πραγματοποιήσεις αναζήτηση.</p>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/ask-blackboard.jpg');"></div>
-          <div class="col-lg-6 my-auto showcase-text">
-            <h2>Πως δημιουργώ λογαριασμό;</h2>
-            <p class="lead mb-0">Παιχνιδάκι. Το μόνο που χρειάζεται είναι να πατήσεις εγγραφή και να σημειώσεις ένα όνομα και ένα email. Τόσο απλό...</p>
-          </div>
-        </div>
-	    <div class="row">
-          <div class="col-lg-12 text-center" style="margin-top:90px;">
-            <h2>Αν είσαι διαχειριστής φαρμακείου...</h2>
-          </div>
-        </div>
-        <div class="row no-gutters" style="margin-top:90px;">
-
-          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/achievement-agreement-body-language.jpg');"></div>
-          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-            <h2>Πως θα συνεργαστείς μαζί μας;</h2>
-            <p class="lead mb-0">Πολύ απλό! Επικοινώνησε μαζί μας μέσω της <a href="#contact">παρακάτω φόρμας. </a> Συμπλήρωσε τα στοιχεία του φαρμακείου σου και εμείς θα έρθουμε σε επαφή μαζί σου για περισσότερες λεπτομέρειες. </p>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-6 text-white showcase-img" style="background-image: url('img/business-communication-computer.jpg');"></div>
-          <div class="col-lg-6 my-auto showcase-text">
-            <h2>Συνεργάζεσαι ήδη μαζί μας; Δες τα μηνύματά σου!</h2>
-            <p class="lead mb-0">Επέλεξε σύνδεση, συμπλήρωσε το username και το password σου. Πάτησε το κουμπί σύνδεση και θα μεταφερθείς αυτομάτως στο προφιλ σου. Εκεί, μπορείς να δεις τα μηνύματα που σου έχουν σταλθεί.</p>
-          </div>
-        </div>
+		</div>
+		<br>
+    <div class="row">
+	  <div class="row no-gutters">
+        <div class="col-lg-12" align="middle">
+			<img class="img-fluid float-right col-lg-6" src="img/conceptual-creativity-cube.jpg" alt="">
+            <div class="vertical"><h2>Συμπλήρωσε την μηχανή αναζήτησης.</h2>
+				<p class="lead mb-0">Επέλεξε περιοχή/περιοχές, ημερομηνία και ώρα που επιθυμείς να αναζητήσεις διαθέσιμα φαρμακεία. </p>
+			</div>
+	    </div>
+       </div>
+		  
+       <div class="row no-gutters">
+		<div class="col-lg-12" align="middle">
+			<img class="img-fluid float-left col-lg-6" src="img/apple-business-click.jpg" alt="">
+            <div class="vertical"><h2>Δες τα διαθέσιμα φαρμακεία.</h2>
+				<p class="lead mb-0">Πάτησε αναζήτηση! Δες τα διαθέσιμα φαρμακεία που υπάρχουν στην περιοχή/περιοχές που επιθυμείς, την ώρα και την ημερομηνία που έχεις επιλέξει.</p>
+			</div>
+		</div>
+	   </div>
+            
+	  <div class="row no-gutters">	
+        <div class="col-lg-12" align="middle">
+			<img class="img-fluid float-right col-lg-6" src="img/adult-beautiful-blur.jpg" alt="">
+            <div class="vertical"><h2>Εαν διαθέτεις λογαριασμό...</h2>
+				<p class="lead mb-0">Τι καλύτερο απ το να μπορείς να αποθηκεύσεις τα αγαπημένα σου φαρμακεία! Με τη δημιουργία λογαριασμού μπορείς να αποθηκεύσεις τα φαρμακεία που επιθυμείς ώστε κάθε φορά να μπορείς να δεις αν είναι διαθέσιμα χωρίς να πραγματοποιήσεις αναζήτηση.</p>
+			</div>
+		</div>
 	  </div>
+        
+	  <div class="row no-gutters">
+		<div class="col-lg-12" align="middle">
+		    <img class="img-fluid float-left col-lg-6" src="img/ask-blackboard.jpg" alt="">
+            <div class="vertical"><h2>Πως δημιουργώ λογαριασμό;</h2>
+				<p class="lead mb-0">Παιχνιδάκι. Το μόνο που χρειάζεται είναι να πατήσεις εγγραφή και να σημειώσεις ένα όνομα και ένα email. Τόσο απλό...</p>
+			</div>
+		</div>
+	   </div>
+    </div>
+	<br>
+	<br>
+		
+	<div class="col-lg-12 text-center">
+            <h2>Αν είσαι διαχειριστής φαρμακείου...</h2>
+    </div>
+	<br>
+	<div class="row">
+	  <div class="row no-gutters">
+        <div class="col-lg-12" align="middle">
+			<img class="img-fluid float-right col-lg-6" src="img/achievement-agreement-body-language.jpg" alt="">
+            <div class="vertical"><h2>Πως θα συνεργαστείς μαζί μας;</h2>
+				<p class="lead mb-0">Πολύ απλό! Επικοινώνησε μαζί μας μέσω της <a href="#contact">παρακάτω φόρμας. </a> Συμπλήρωσε τα στοιχεία του φαρμακείου σου και εμείς θα έρθουμε σε επαφή μαζί σου για περισσότερες λεπτομέρειες. </p>
+			</div>
+		</div>
+	   </div>
+	   <div class="row no-gutters">
+        <div class="col-lg-12" align="middle">
+			<img class="img-fluid float-left col-lg-6" src="img/business-communication-computer.jpg" alt="">
+            <div class="vertical"><h2>Συνεργάζεσαι ήδη μαζί μας; Δες τα μηνύματά σου!</h2>
+				<p class="lead mb-0">Επέλεξε σύνδεση, συμπλήρωσε το username και το password σου. Πάτησε το κουμπί σύνδεση και θα μεταφερθείς αυτομάτως στο προφιλ σου. Εκεί, μπορείς να δεις τα μηνύματα που σου έχουν σταλθεί.</p>
+			</div>
+		</div>
+	   </div>
+    </div>
     </section>
 
     <!-- Developers -->
