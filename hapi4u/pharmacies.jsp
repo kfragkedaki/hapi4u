@@ -152,8 +152,11 @@
 	  <hr>
 
 		<%
+			List<Integer> pharmacy_ids = new ArrayList<Integer>();
 			for (int i=0; i < pharmacies.size(); i++){
-				Pharmacy pharmacy = pharmacies.get(i); %>
+				Pharmacy pharmacy = pharmacies.get(i);
+				pharmacy_ids.add(pharmacy.getId()); %>
+
 
 				  <!-- Project -->
 				  <div class="row">
@@ -173,6 +176,9 @@
 
 									 <input type="hidden" name="user_id" value="<%=user_id%>" />
 									 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+									 <input type="hidden" name="date" value="<%=date%>" />
+									 <input type="hidden" name="time" value="<%=time%>" />
+									 <input type="hidden" name="pharmacies_ids" value="<%=pharmacies_ids%>" />
 								   <button class="fa fa-heart-o" type="submit" style="color:#007bff;"> </button>
 
 								</form>
@@ -182,6 +188,9 @@
 
 											 <input type="hidden" name="user_id" value="<%=user_id%>" />
 											 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+											 <input type="hidden" name="date" value="<%=date%>" />
+											 <input type="hidden" name="time" value="<%=time%>" />
+											 <input type="hidden" name="pharmacies_ids" value="<%=pharmacies_ids%>" />
 											 <button class="fa fa-heart" type="submit" style="color:#007bff;"> </button>
 
 										</form>

@@ -99,7 +99,7 @@ LocationDAO ldao = new LocationDAO();
     <header id="page-top" class="masthead text-white text-center">
 	  <div class="page-header"><h1>Βρες τα διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h1></div>
        <div class="container">
-			<form class="form-inline" method="post" action ="pharmacies.jsp">
+			<form class="form-inline" method="get" action ="pharmacies.jsp">
 				<div class="form-group col-md-4">
 					<label><b>Περιοχή:  </b></label>
 						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select col-md-6" name="locations" required>
@@ -128,19 +128,19 @@ LocationDAO ldao = new LocationDAO();
 
                       </select>
 				</div>
-				
+
 				<div class="form-group col-md-4">
 					<label class="date"><b>Ημερομηνία</b>
 						<input type="date" id="date" name="date" required>
 					</label>
 				</div>
-				
+
 				<div class="form-group col-md-2">
 					<label class="time"><b>Ώρα</b>
 						<input type="time"id="time" name="time" required>
 					</label>
 				</div>
-				
+
 				<div class="form-group col-md-1">
 					<button type="submit" class="btn btn-primary">Αναζήτηση</button>
 				</div>
