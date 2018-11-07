@@ -305,8 +305,7 @@ LocationDAO ldao = new LocationDAO();
 				  </div>
 				</div>
 				<div class="text-center">
-					<%session.setAttribute("pharmacy_id_receiver", 0 );
-					session.setAttribute("admin_id_receiver", 1 );%>
+					<%session.setAttribute("user_id_receiver", 10 );%>
 					<!-- For success/fail messages -->
 					<button type="submit" class="btn btn-primary">Send Message</button>
 				</div>
