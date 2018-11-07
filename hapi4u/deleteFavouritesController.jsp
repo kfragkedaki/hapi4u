@@ -21,6 +21,6 @@
 
 			request.setAttribute("message", e.getMessage());
 %>
-		<jsp:forward page="pharmacies.jsp"/>
+		<jsp:forward page="pharmacies.jsp?locations=1&date=2018-10-11&time=12%3A32"/>
 	<% }%>
-	<jsp:forward page="pharmacies.jsp"/>
+	<jsp:forward page="pharmacies.jsp?locations=1&date=2018-10-11&time=12%3A32"/>
