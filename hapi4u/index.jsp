@@ -130,13 +130,13 @@ LocationDAO ldao = new LocationDAO();
 				</div>
 
 				<div class="form-group col-md-4">
-					<label class="date"><b>Ημερομηνία</b>
+					<label class="date"><b>Ημερομηνία: </b>
 						<input type="date" id="date" name="date" required>
 					</label>
 				</div>
 
 				<div class="form-group col-md-2">
-					<label class="time"><b>Ώρα</b>
+					<label class="time"><b>Ώρα: </b>
 						<input type="time"id="time" name="time" required>
 					</label>
 				</div>

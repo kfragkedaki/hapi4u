@@ -65,7 +65,7 @@
   <div class="container theme-showcase" role="main">
 
         <% if(request.getAttribute("message") != null) { %>
-			     <div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
+			     <div class="alert alert-danger text-center" role="alert">Λάθος email ή κωδικός</div>
 		    <% } %>
 
 
