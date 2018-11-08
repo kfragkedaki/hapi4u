@@ -155,7 +155,7 @@ public class MyFavouritesDAO {
 
 		Connection con = null;
 
-		String sqlquery= "INSERT INTO my_favourites VALUES (?, ?, ?);";
+		String sqlquery= "INSERT INTO my_favourites ( user_id, pharmacy_id) VALUES ( ?, ?);";
 
 		DB db = new DB();
 
@@ -166,49 +166,8 @@ public class MyFavouritesDAO {
 			con = db.getConnection();
 
 			PreparedStatement stmt = con.prepareStatement(sqlquery);
-			stmt.setInt( 1, getMyFavourites().size() + 1 );
-			stmt.setInt( 2, user_id );
-			stmt.setInt( 3, pharmacy_id );
-
-			stmt.executeUpdate();
-
-			stmt.close(); // closing PreparedStatement
-			db.close(); // closing connection
-
-
-	 	} catch (Exception e) {
-
-			throw new Exception(e.getMessage());
-
-		} finally {
-
-			try {
-				db.close();
-			} catch (Exception e) {
-				//no need to do anything...
-			}
-
-		}
-
-	}
-
-	public void changeMyFavouritesIds ( int myfavourites_id) throws Exception {
-
-		Connection con = null;
-
-		String sqlquery= "UPDATE my_favourites SET myfavourites_id=? WHERE myfavourites_id=?;";
-
-		DB db = new DB();
-
-		try {
-
-			db.open();
-
-			con = db.getConnection();
-
-			PreparedStatement stmt = con.prepareStatement(sqlquery);
-			stmt.setInt( 1, myfavourites_id -1);
-			stmt.setInt( 2, myfavourites_id);
+			stmt.setInt( 1, user_id );
+			stmt.setInt( 2, pharmacy_id );
 
 			stmt.executeUpdate();
 
@@ -259,7 +218,6 @@ public class MyFavouritesDAO {
 			int size = getMyFavourites().size() - myfavourites_id;
 			for (int i=0; i < size ; i++) {
 				myfavourites_id = myfavourites_id +1;
-				changeMyFavouritesIds(myfavourites_id);
 			}
 
 

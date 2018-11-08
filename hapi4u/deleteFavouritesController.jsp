@@ -7,6 +7,7 @@
 		<%
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
     int pharmacy_id = Integer.parseInt(request.getParameter("pharmacy_id"));
+		String previous_url = request.getHeader("Referer");
 
     MyFavouritesDAO fdao = new MyFavouritesDAO();
 
@@ -20,7 +21,5 @@
 		} catch(Exception e) {
 
 			request.setAttribute("message", e.getMessage());
-%>
-		<jsp:forward page="pharmacies.jsp?locations=1&date=2018-10-11&time=12%3A32"/>
-	<% }%>
-	<jsp:forward page="pharmacies.jsp?locations=1&date=2018-10-11&time=12%3A32"/>
+		}
+		response.sendRedirect(previous_url);%>

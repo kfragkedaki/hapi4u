@@ -21,6 +21,5 @@
 		} catch(Exception e) {
 
 			request.setAttribute("message", e.getMessage());
-			//response.sendRedirect(previous_url);
 	 }
-			response.sendRedirect(previous_url); %>
+			response.sendRedirect(previous_url);%>
