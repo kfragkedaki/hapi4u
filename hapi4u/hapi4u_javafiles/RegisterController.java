@@ -14,7 +14,7 @@ public class RegisterController extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
 
-    response.setContentType("text/html; charset=ISO-8859-7");
+    response.setContentType("text/html; charset=UTF-8");
     PrintWriter out = new PrintWriter(response.getWriter(), true);
 
     String password = request.getParameter("password");;
@@ -33,7 +33,7 @@ public class RegisterController extends HttpServlet {
 		for(int i=0; i<users.size(); i++) {
 			if ( email.equals(users.get(i).getEmail()) ) {
 
-				session.setAttribute("message", "This email has been already used!");
+				session.setAttribute("message", "Αυτό το email έχει ήδη καταχωρηθεί!");
 				response.sendRedirect("../hapi4u/register.jsp");
 			}
 		}
@@ -104,82 +104,52 @@ public class RegisterController extends HttpServlet {
 			out.println("			<div class='collapse navbar-collapse' id='navbarResponsive'>");
 			out.println("			  <ul class='navbar-nav text-uppercase ml-auto'>");
 			out.println("			  <li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#services'> Services</a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#services'>Υπηρεσίες</a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#about'>How it works</a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#about'>Πως λειτουργεί</a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#developers'>Our team</a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#developers'>Η ομάδα μας</a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#contact'>Communication</a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#contact'>Επικοινωνία</a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/login.jsp'><b>Log in</b></button></a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/login.jsp'><b>Είσοδος</b></button></a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' data-target='../hapi4u/register.jsp'><b>Register</b></button></a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/register.jsp'><b>Εγγραφή</b></button></a>");
 			out.println("				</li>");
 			out.println("			  </ul>");
 			out.println("			</div>");
 			out.println("		</div>");
 			out.println("	</nav>");
 			out.println("<div class='container theme-showcase' role='main'>");
-			out.println("<h4 class='text-center'>Your inputs are not correct. Please try again!</h4>");
+			out.println("<div class='absolute_center'>");
+			out.println("<h4 class='text-center'>Ουπς, κάτι πήγε λάθος. Προσπαθείστε ξανά !</h4>");
 			out.println("<div class='alert alert-danger'>");
 			out.println("<div class='form-group row'>");
 			out.println("<div class='col-sm-offset-1'>");
 
-				  if (!(dv.isValidEmailAddress(email)))
-					out.println(++countErrors + ". The Email is not a valid email adress <br>");
+				if (!(dv.isValidEmailAddress(email)))
+					out.println(++countErrors + ". Το email δεν είναι έγκυρο <br>");
 
-				  if (!(dv.isValidPassword(password)))
-					out.println(++countErrors + ". Password need to be at least 4 characters long <br>");
+				if (!(dv.isValidPassword(password)))
+					out.println(++countErrors + ". Ο κωδικός πρέπει να είναι τουλάχιστον 4 χαρακτήρες <br>");
 
-				  if (!(password.equals(valid_password)))
-					out.println(++countErrors + ". Passwords do not match <br>");
-
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-
-			out.println("<div class='col-sm-10 col-sm-offset-5'>");
-			out.println("<a href='../hapi4u/register.jsp' class='tn btn-primary btn-lg active' role='button' aria-pressed='true' text-align='center'>");
-			out.println("<span class='glyphicon glyphicon-chevron-left'></span>Back to the form</a> <br><br><br>");
-			out.println("</div>");
+				if (!(password.equals(valid_password)))
+					out.println(++countErrors + ". ο κωδικός δεν επιβεβαιώθηκε σωστά <br>");
 
 			out.println("</div>");
-  	  		out.println("	<!-- Footer -->");
-	  		out.println("    <footer class='footer bg-dark'>");
-	  		out.println("      <div class='container'>");
-	  		out.println("        <div class='row'>");
-	  		out.println("          <div class='col-lg-7 h-100 text-center text-lg-right my-auto'>");
-	  		out.println("            <ul class='list-inline mb-0'>");
-	  		out.println("              <li class='list-inline-item mr-3'>");
-	  		out.println("                <a href='#'>");
-	  		out.println("                  <i class='fa fa-facebook fa-2x fa-fw'></i>");
-	  		out.println("                </a>");
-	  		out.println("              </li>");
-	  		out.println("              <li class='list-inline-item mr-3'>");
-	  		out.println("                <a href='#'>");
-	  		out.println("                  <i class='fa fa-twitter fa-2x fa-fw'></i>");
-	  		out.println("                </a>");
-	  		out.println("              </li>");
-	  		out.println("              <li class='list-inline-item'>");
-	  		out.println("                <a href='#'>");
-	  		out.println("                  <i class='fa fa-instagram fa-2x fa-fw'></i>");
-	  		out.println("                </a>");
-	  		out.println("              </li>");
-	  		out.println("            </ul>");
-	  		out.println("			<br>");
-	  		out.println("			<div id='copyright'>");
-	  		out.println("				<p class='text-muted small mb-4 mb-lg-0'>&copy; Hapi4u 2018. All Rights Reserved.</p>");
-	  		out.println("			</div>");
-	  		out.println("          </div>	  ");
-	  		out.println("        </div>");
-	  		out.println("      </div>");
-	  		out.println("    </footer>");
+			out.println("</div>");
+			out.println("</div>");
+
+
+			out.println("<a class='btn btn-info' href='../hapi4u/register.jsp' role='button'><i class='glyphicon glyphicon-menu-left'></i><b>Πίσω στη φόρμα</b></a>");
+
+ 			out.println("</div>");
+			out.println("</div>");
 	  		out.println("");
 	  		out.println("    <!-- Bootstrap core JavaScript -->");
 	  		out.println("    <script src='../vendor/jquery/jquery.min.js'></script>");
