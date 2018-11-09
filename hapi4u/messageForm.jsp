@@ -135,7 +135,7 @@ LocationDAO ldao = new LocationDAO();
 				</div>
 				<div class="text-center">
 					<% int pharmacy_id = Integer.parseInt(request.getParameter("pharmacy_id")); 
-					session.setAttribute("user_id_receiver", (udao.findUserByPharmacyId(pharmacy_id)).getUserId() );%>
+					session.setAttribute("user_id_receiver", udao.findUserIdByPharmacyId(pharmacy_id) );%>
 					<!-- For success/fail messages -->
 					<button type="submit" class="btn btn-primary">Send Message</button>
 				</div>

@@ -65,11 +65,11 @@ public class UserDAO {
 
 	}
 
-	public User findUserByPharmacyId(int pharmacy_id) throws Exception {
+	public int findUserIdByPharmacyId(int pharmacy_id) throws Exception {
 
 			Connection con = null;
 
-			String sqlquery= "SELECT * FROM users WHERE pharmacy_id=?;";
+			String sqlquery= "SELECT user_id FROM pharmacies WHERE pharmacy_id=?;";
 
 
 			DB db = new DB();
@@ -94,13 +94,13 @@ public class UserDAO {
 					throw new Exception ("Not valid email");
 
 				}
-				User user = new User( rs.getInt("user_id"), rs.getString("email"), rs.getString("password"), rs.getString("pharmacy"), rs.getString("administrator") );
+				int user_id = rs.getInt("user_id");
 
 				rs.close(); //closing ResultSet
 				stmt.close(); // closing PreparedStatement
 				db.close(); // closing connection
 
-				return user;
+				return user_id;
 
 			} catch (Exception e) {
 
