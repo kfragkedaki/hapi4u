@@ -101,13 +101,9 @@
 		<link href="css/pharmacies.css" rel="stylesheet">
 		<link href="css/landing-page.min.css" rel="stylesheet">
 
-		<style type="text/css"> html, body { margin: 0; padding: 0; height: 100%; width: 100%; } </style>
-
-
 	</head>
 
 	<body>
-	<style type="text/css"> html, body,div { margin: 0; padding: 0; height: 100%; width: 100%; } </style>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
@@ -282,7 +278,7 @@
 	</div>
 
       <!-- Pagination -->
-      <ul class="pagination justify-content-center">
+      <ul class="pagination justify-content-center" >
         <li class="page-item">
           <a class="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
