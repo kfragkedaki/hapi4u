@@ -26,8 +26,6 @@
 		<link href="css/landing-page.min.css" rel="stylesheet">
 		<link href="css/register.css" rel="stylesheet">s
 		<link href="css/landing-page.css" rel="stylesheet">
-		<link href="../hapi4u/css/register.css" rel="stylesheet">
-		<link href="../hapi4u/css/landing-page.css" rel="stylesheet">
 
 	</head>
 
@@ -78,6 +76,9 @@
 			<% if(session.getAttribute("message") != null) { %>
 				<div class="alert alert-danger text-center" role="alert"><%=(String)session.getAttribute("message") %></div>
 			<% } %>
+			<%
+			session.invalidate();
+			%>
 
 			<form name="form-register" class="form-horizontal" method="post" action="../servlet/RegisterController">
 				<div class="form-group row">
@@ -107,14 +108,16 @@
 		</div>
 
 
-	  <!-- Footer -->
+	<!-- footer -->
+	<footer class="page-footer">
+   
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
+		<!-- Copyright -->
 
-	  <footer class="py-5 bg-dark">
-	  	<div class="container">
-		  	<p class="m-0 text-center text-white">Copyright &copy; hapi4u 2018</p>
-		  </div>
-		  <!-- /.container -->
-	  </footer>
+	</footer>
+	<!-- End footer -->
+
 
 		<!-- End footer -->
 

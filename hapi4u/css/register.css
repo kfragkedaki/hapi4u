@@ -1,19 +1,9 @@
 body {
   padding-top: 70px;
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 0px;
 }
 
-footer {
-	/*background-color: #082457;*/
-	color: #fff;
-	padding: 20px 0;
-	position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-}
 
 .theme-dropdown .dropdown-menu {
   position: static;
@@ -27,6 +17,11 @@ footer {
 
 .theme-showcase .navbar .container {
   width: auto;
+}
+.form-horizontal{
+  padding: 15px;
+  padding-bottom: 200px;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 575px){
