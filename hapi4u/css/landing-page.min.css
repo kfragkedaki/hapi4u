@@ -24,6 +24,10 @@ h1,h2,h3,h4,h5,h6{
 	color:black;
 }
 
+.absolute_center{
+	padding-top:100px;
+}
+
 .form-inline{
 	padding:1rem 0;
 	margin: 0 auto;
