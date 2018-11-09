@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.io.*,java.util.*,java.text.*" %>
+<%@ page import="java.io.*,java.util.*,java.text.*" %>
 <%@ page errorPage="error.jsp"%>
 <%@ page import="hapi4u_javafiles.*" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 
 <%
@@ -15,12 +17,24 @@
 
 	int user_id = user.getUserId();
 
+	DateFormat datef = new SimpleDateFormat("yyyy-MM-dd");
+	DateFormat timef = new SimpleDateFormat("HH:mm");
+	Date currentDate = new Date();
+
+	String date = (datef.format(currentDate)).toString();
+	String times = (timef.format(currentDate)).toString();
+	int time = Integer.parseInt(times.replace(":",""));
+
+
 	LocationDAO ldao = new LocationDAO();
 	PharmacyDAO pdao = new PharmacyDAO();
 	MyFavouritesDAO fdao = new MyFavouritesDAO();
+	AvailabilityDAO adao = new AvailabilityDAO();
+
 	List<Integer> pharmaciesId = new ArrayList<Integer>();
 	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
 	List<Pharmacy> myFavouritePharmacies = new ArrayList<Pharmacy>();
+	List<Pharmacy> greyFavourites = new ArrayList<Pharmacy>();
 
 	pharmaciesId = fdao.getMyFavouritesByUserId( user_id);
 	pharmacies = pdao.getPharmacies();
@@ -32,6 +46,34 @@
 			}
 		}
 	}
+
+	int results = myFavouritePharmacies.size();
+
+	if (adao.authenticateDate(date) == 1) {
+
+	Availability availability = adao.getAvailability(date);
+	int availability_id = 0;
+
+	if (time > 2100 || time < 800 || availability.getSunday().equals("1")) {
+		availability_id = adao.getAvailability(date).getAvailabilityId();
+
+		for (int i=0; i<myFavouritePharmacies.size(); i++){
+				int availablePharmacies = adao.findAvailablePharmacies(myFavouritePharmacies.get(i).getId(), availability_id);
+				if ( availablePharmacies == 0) {
+					greyFavourites.add(myFavouritePharmacies.get(i));
+					myFavouritePharmacies.remove(myFavouritePharmacies.get(i));
+				}
+			}
+	}
+	if (time > 2100 || time < 800 ) {
+
+		for (int i=0; i<myFavouritePharmacies.size(); i++){
+
+					greyFavourites.add(myFavouritePharmacies.get(i));
+					myFavouritePharmacies.remove(myFavouritePharmacies.get(i));
+			}
+	}
+}
 
 %>
 
@@ -77,7 +119,7 @@
 				  <a class="nav-link js-scroll-trigger" href="index.jsp#services"> Υπηρεσιες</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει <%=myFavouritePharmacies.size()%> and <%=greyFavourites.size()%></a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" href="index.jsp#developers">Η ομαδα μας</a>
@@ -123,8 +165,8 @@
     <div class="container">
 
       <!-- Page Heading -->
-	  <h2 class="section-heading">Βρες διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h2>
-      <h5 class="section-subheading text-muted"><%= myFavouritePharmacies.size()%> Αποτελέσματα </h5>
+	  <h2 class="section-heading">Tα αγαπημένα σου Φαρμακεία!</h2>
+      <h5 class="section-subheading text-muted"><%=results%> Αποτελέσματα </h5>
 	  <hr>
 
 		<%
@@ -140,6 +182,7 @@
 					</div>
 					<div class="col-md-5" id="description">
 					  <h4><%= pharmacy.getName()%></h4>
+
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
 						<% if (user_id != 0) {
 							if (fdao.getMyFavouritesId( user_id, pharmacy.getId()) == 0) { %>
@@ -162,7 +205,7 @@
 										</form>
 
 							<% }
-					  } %>
+					    } %>
 
 					  <form class="chat_ib" method="post" action="messageForm.jsp">
 					  <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
@@ -177,7 +220,62 @@
 
 
 		<%	} %>
+		<div id="grayPharmacies" >
+		<%
+			for (int i=0; i < greyFavourites.size(); i++){
+				Pharmacy pharmacy = greyFavourites.get(i); %>
 
+					<!-- Project -->
+					<div class="row">
+					<div class="col-md-7">
+						<a href="#">
+						<img style="opacity:0.5;" class="img-fluid rounded mb-3 mb-md-0" src="<%=pharmacy.getImage()%>" alt="">
+						</a>
+					</div>
+					<div class="col-md-5" id="description" ">
+						<h4><%= pharmacy.getName()%></h4>
+
+						<p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
+						<% if (user_id != 0) {
+							if (fdao.getMyFavouritesId( user_id, pharmacy.getId()) == 0) { %>
+
+								<form class="favourites" method="post" action="saveFavouritesController.jsp">
+
+									 <input type="hidden" name="user_id" value="<%=user_id%>" />
+									 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+									 <button class="fa fa-heart-o" type="submit" style="color:#007bff;"> </button>
+
+								</form>
+							<% } else { %>
+
+										<form class="favourites" method="post" action="deleteFavouritesController.jsp">
+
+											 <input type="hidden" name="user_id" value="<%=user_id%>" />
+											 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+											 <button class="fa fa-heart" type="submit" style="color:#007bff;"> </button>
+
+										</form>
+
+							<% }
+						} %>
+
+						<form class="chat_ib" method="post" action="messageForm.jsp">
+						<input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+						<button class="fa fa-envelope" type="submit" aria-hidden="false" style="color:#007bff;"> </button>
+						</form>
+					<!--  <a href="" data-toggle="modal" data-target="#communication"><i class="fa fa-envelope" aria-hidden="false" style="color:#007bff;"> </i></a>-->
+					</div>
+					</div>
+					<!-- /.row -->
+
+					<hr>
+
+
+		<%	} %>
+
+
+
+	</div>
 
       <!-- Pagination -->
       <ul class="pagination justify-content-center">
@@ -291,7 +389,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="js/MyFavourites.js"></script>
 
   </body>
 
