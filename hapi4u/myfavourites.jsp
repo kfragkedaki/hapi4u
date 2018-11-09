@@ -354,17 +354,6 @@
 		</div>
 	</div>
 
-
-	<!-- footer -->
-	<footer class="page-footer">
-
-		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
-		<!-- Copyright -->
-
-	</footer>
-	<!-- End footer -->
-
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
