@@ -24,7 +24,7 @@
 
 		<!-- Custom styles for this template -->
 		<link href="css/landing-page.min.css" rel="stylesheet">
-		<link href="css/register.css" rel="stylesheet">s
+		<link href="css/register.css" rel="stylesheet">
 		<link href="css/landing-page.css" rel="stylesheet">
 
 	</head>
@@ -108,15 +108,6 @@
 		</div>
 
 
-	<!-- footer -->
-	<footer class="page-footer">
-   
-		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
-		<!-- Copyright -->
-
-	</footer>
-	<!-- End footer -->
 
 
 		<!-- End footer -->
