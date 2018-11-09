@@ -142,13 +142,9 @@ margin-top:10%;
 	opacity:.3
 	}
 	
-footer.footer{
-	padding-top:4rem;
-	padding-bottom:4rem
-	}
-	
-#copyright{
-	width: auto;
+.page-footer {
+	background-color: #14141f;
+	color: #fff;
 }
 @media screen and (max-width: 992px){
 .form-inline .form-group {

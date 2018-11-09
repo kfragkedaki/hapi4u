@@ -326,36 +326,15 @@ LocationDAO ldao = new LocationDAO();
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer bg-dark">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 h-100 text-center text-lg-right my-auto">
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item mr-3">
-                <a href="#">
-                  <i class="fa fa-facebook fa-2x fa-fw"></i>
-                </a>
-              </li>
-              <li class="list-inline-item mr-3">
-                <a href="#">
-                  <i class="fa fa-twitter fa-2x fa-fw"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-instagram fa-2x fa-fw"></i>
-                </a>
-              </li>
-            </ul>
-			<br>
-			<div id="copyright">
-				<p class="text-muted small mb-4 mb-lg-0">&copy; Hapi4u 2018. All Rights Reserved.</p>
-			</div>
-          </div>
-        </div>
-      </div>
-    </footer>
+	<!-- footer -->
+	<footer class="page-footer">
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- End footer -->
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
