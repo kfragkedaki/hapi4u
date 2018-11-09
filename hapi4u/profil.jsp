@@ -191,13 +191,13 @@ LocationDAO ldao= new LocationDAO();
 		<%}	%>
 		
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+	<footer class="page-footer">
+  
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
+		<!-- Copyright -->
+
+	</footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
