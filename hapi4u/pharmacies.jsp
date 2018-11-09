@@ -25,21 +25,22 @@
 	LocationDAO ldao = new LocationDAO();
 	PharmacyDAO pdao = new PharmacyDAO();
 	MyFavouritesDAO fdao = new MyFavouritesDAO();
+	AvailabilityDAO adao = new AvailabilityDAO();
 	List<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
 	List<Pharmacy> pharmacies2 = new ArrayList<Pharmacy>();
 
-    if (pdao.authenticateDate(date) == 1) {
+    if (adao.authenticateDate(date) == 1) {
 
-		Availability availability = pdao.getAvailability(date);
+		Availability availability = adao.getAvailability(date);
 		int availability_id = 0;
 
 		if ((Integer.parseInt(time.replace(":","")) > 2100 || Integer.parseInt(time.replace(":","")) < 800) || availability.getSunday().equals("1")) {
-			availability_id = pdao.getAvailability(date).getAvailabilityId();
+			availability_id = adao.getAvailability(date).getAvailabilityId();
 
 			for (int i=0; i<location_ids.size(); i++){
 				pharmacies2 = pdao.findPharmaciesByLocation(location_ids.get(i));
 				for (int j=0; j< pharmacies2.size(); j++){
-					int availablePharmacies = pdao.findAvailablePharmacies(pharmacies2.get(j).getId(), availability_id);
+					int availablePharmacies = adao.findAvailablePharmacies(pharmacies2.get(j).getId(), availability_id);
 					if ( availablePharmacies == 1) {
 						pharmacies.add(pharmacies2.get(j));
 					}

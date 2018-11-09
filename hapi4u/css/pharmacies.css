@@ -5,6 +5,16 @@
     display: table-cell;
     vertical-align: middle;
 }
+img {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+img:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
 footer {
 	position: relative;
 	bottom:0;
@@ -24,5 +34,5 @@ footer {
             transform:scale(1.1);
           }
         }
-    }     
+    }
 }
