@@ -2,18 +2,18 @@ body{
 	font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
 	width:100%;
 	}
-	
+
 #title{
 	font-family:Arial Black, cursive;
 	font-size: 26px;
 }
 
-	
+
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Didact Gothic', sans-serif;
 	font-weight:700
 	}
-	
+
 .btn-primary{
 	background-color:#2976a0;
 	border-color:#2976a0;
@@ -32,8 +32,13 @@ h1,h2,h3,h4,h5,h6{
 	padding:1rem 0;
 	margin: 0 auto;
 	width:90%;
+<<<<<<< HEAD
+	background-color:rgba(20, 20, 31, 0.8);
+	margin-top:280px;
+=======
 	background-color:#14141f; 
 	margin-top:400px;
+>>>>>>> 0750ab07b6d618dc273049db580d40e18fc6b577
 }
 .position-fixed{
 	margin-top:90px;
@@ -57,7 +62,7 @@ header.masthead{
 	margin-top:50px;
 	height:650px;
 	margin-bottom:10px}
-	
+
 header.masthead .overlay{
 	position:absolute;
 	background-color:#212529;
@@ -67,11 +72,11 @@ header.masthead .overlay{
 	left:0;
 	opacity:.3
 	}
-	
+
 header.masthead h1{
 	font-size:2rem
 	}
-	
+
 @media (min-width:768px){
 	header.masthead{
 		padding-top:12rem;
@@ -80,13 +85,13 @@ header.masthead h1{
 
 	header.masthead h1{
 		font-size:3rem
-		}		
+		}
 }
 
 .vertical{
 margin-top:10%;
 }
-	
+
 @media (min-width:768px){
 	.showcase .showcase-text{
 		padding:7rem
@@ -97,36 +102,36 @@ margin-top:10%;
 	padding-top:7rem;
 	padding-bottom:7rem
 	}
-	
+
 .features-icons .features-icons-item{
 	max-width:20rem
 	}
-	
+
 .features-icons .features-icons-item .features-icons-icon{
 	height:7rem
 	}
-	
+
 .features-icons .features-icons-item .features-icons-icon i{
 	font-size:4.5rem
 	}
-	
+
 .features-icons .features-icons-item:hover .features-icons-icon i{
 	font-size:5rem
 	}
-	
+
 .testimonials{
 	padding-top:7rem;
 	padding-bottom:7rem
 	}
-	
+
 .testimonials .testimonial-item{
 	max-width:18rem
 	}
-	
+
 .testimonials .testimonial-item img{
 	max-width:12rem;
 	box-shadow:0 5px 5px 0 #adb5bd}
-	
+
 .call-to-action{
 	position:relative;
 	-webkit-background-size:cover;
@@ -135,7 +140,7 @@ margin-top:10%;
 	padding-top:7rem;
 	padding-bottom:7rem
 	}
-	
+
 .call-to-action .overlay{
 	position:absolute;
 	background-color:#212529;
@@ -145,7 +150,7 @@ margin-top:10%;
 	left:0;
 	opacity:.3
 	}
-	
+
 .page-footer {
 	background-color: #14141f;
 	color: #fff;

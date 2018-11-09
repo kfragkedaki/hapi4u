@@ -98,12 +98,16 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
 		<!-- Custom styles for this template -->
-		<link href="css/landing-page.min.css" rel="stylesheet">
 		<link href="css/pharmacies.css" rel="stylesheet">
+		<link href="css/landing-page.min.css" rel="stylesheet">
+
+		<style type="text/css"> html, body { margin: 0; padding: 0; height: 100%; width: 100%; } </style>
+
 
 	</head>
 
 	<body>
+	<style type="text/css"> html, body,div { margin: 0; padding: 0; height: 100%; width: 100%; } </style>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
@@ -119,7 +123,7 @@
 				  <a class="nav-link js-scroll-trigger" href="index.jsp#services"> Υπηρεσιες</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει <%=myFavouritePharmacies.size()%> and <%=greyFavourites.size()%></a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει</a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link js-scroll-trigger" href="index.jsp#developers">Η ομαδα μας</a>
@@ -232,7 +236,7 @@
 						<img style="opacity:0.5;" class="img-fluid rounded mb-3 mb-md-0" src="<%=pharmacy.getImage()%>" alt="">
 						</a>
 					</div>
-					<div class="col-md-5" id="description" ">
+					<div class="col-md-5" id="description" >
 						<h4><%= pharmacy.getName()%></h4>
 
 						<p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
@@ -355,36 +359,15 @@
 	</div>
 
 
-    <!-- Footer -->
-    <footer class="footer bg-dark">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 h-100 text-center text-lg-right my-auto">
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item mr-3">
-                <a href="#">
-                  <i class="fa fa-facebook fa-2x fa-fw"></i>
-                </a>
-              </li>
-              <li class="list-inline-item mr-3">
-                <a href="#">
-                  <i class="fa fa-twitter fa-2x fa-fw"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-instagram fa-2x fa-fw"></i>
-                </a>
-              </li>
-            </ul>
-			<br>
-			<div id="copyright">
-				<p class="text-muted small mb-4 mb-lg-0">&copy; Hapi4u 2018. All Rights Reserved.</p>
-			</div>
-          </div>
-        </div>
-      </div>
-    </footer>
+	<!-- footer -->
+	<footer class="page-footer">
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- End footer -->
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
