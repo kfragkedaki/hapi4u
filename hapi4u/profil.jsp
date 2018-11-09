@@ -53,8 +53,12 @@ LocationDAO ldao= new LocationDAO();
 	
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	
+	
 	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
   </head>
 
   <body>
@@ -70,9 +74,9 @@ LocationDAO ldao= new LocationDAO();
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 			 <ul class="navbar-nav text-uppercase ml-auto">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <i class="caret"></i></a>
 					<ul class="dropdown-menu">
-						<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
+						<li><a href="logout.jsp"><i class="fas fa-sign-out-alt"></i>	Logout</a></li>
 					</ul>
 				</li>				
 		    </ul>
