@@ -174,9 +174,9 @@ LocationDAO ldao= new LocationDAO();
 				  <br>
 				  <%=messages.get(i).getMessage()%>
 				  <input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
-				  <div class="delete">
-				  <button class="btn btn-lg btn-block" type="submit">Διαγραφή</button>
-				  </div>
+				  
+				  <button class="btn btn-lg  pull-right" type="submit" >Διαγραφή</button>
+				  
                 </form>
 	
               </div>

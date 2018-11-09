@@ -50,16 +50,16 @@ LocationDAO ldao = new LocationDAO();
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 			  <ul class="navbar-nav text-uppercase ml-auto">
 			  <li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#services"> Υπηρεσιες</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#services"> Υπηρεσιες</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#about">Πως λειτουργει</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#developers">Η ομαδα μας</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#developers">Η ομαδα μας</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#contact">Επικοινωνια</a>
+				  <a class="nav-link js-scroll-trigger" href="index.jsp#contact">Επικοινωνια</a>
 				</li>
 	<%
 	if( session.getAttribute("user_object") == null ) {
@@ -135,7 +135,7 @@ LocationDAO ldao = new LocationDAO();
 				</div>
 				<div class="text-center">
 					<% int pharmacy_id = Integer.parseInt(request.getParameter("pharmacy_id")); 
-					session.setAttribute("user_id_receiver", (udao.findUserByPharmacyId(pharmacy_id)).getUserId() );%>
+					session.setAttribute("user_id_receiver", udao.findUserIdByPharmacyId(pharmacy_id) );%>
 					<!-- For success/fail messages -->
 					<button type="submit" class="btn btn-primary">Send Message</button>
 				</div>
