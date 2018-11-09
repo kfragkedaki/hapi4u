@@ -22,8 +22,9 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-	<link href="css/landing-page.min.css" rel="stylesheet">
 	<link href="css/login_page.css" rel="stylesheet">
+	<link href="css/landing-page.min.css" rel="stylesheet">
+	
 
   </head>
 
@@ -79,14 +80,17 @@
 
 	</div>
 	<!-- /container -->
+	
+		<!-- footer -->
+		<footer class="page-footer">
+   
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
+			<!-- Copyright -->
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; hapi4u 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+		</footer>
+		<!-- End footer -->
+
 
 	<!-- Bootstrap core JavaScript
 	================================================== -->
