@@ -6,7 +6,6 @@
 <%
 
 UserDAO udao = new UserDAO();
-LocationDAO ldao = new LocationDAO();
 %>	
 
 <!DOCTYPE html>
