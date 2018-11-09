@@ -10,7 +10,7 @@ body{
 
 
 h1,h2,h3,h4,h5,h6{
-	font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
+	font-family: 'Didact Gothic', sans-serif;
 	font-weight:700
 	}
 
@@ -28,8 +28,13 @@ h1,h2,h3,h4,h5,h6{
 	padding:1rem 0;
 	margin: 0 auto;
 	width:90%;
+<<<<<<< HEAD
 	background-color:rgba(20, 20, 31, 0.8);
 	margin-top:280px;
+=======
+	background-color:#14141f; 
+	margin-top:400px;
+>>>>>>> 0750ab07b6d618dc273049db580d40e18fc6b577
 }
 .position-fixed{
 	margin-top:90px;
@@ -149,6 +154,10 @@ margin-top:10%;
 @media screen and (max-width: 992px){
 .form-inline .form-group {
 	text-align:center;
+}
+.form-inline{
+	width:100%;
+	margin-top:300px;
 }
 .page-header{
 	margin-top:-60px;
