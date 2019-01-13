@@ -6,7 +6,7 @@
 <%
 	if( session.getAttribute("user_object") == null ) {
 		request.setAttribute("message", "Δεν έχετε πρόσβαση σε αυτήν την σελίδα. Παρακαλούμε συνδεθείτε.");
-	
+
 %>
 		<jsp:forward page="login.jsp"/>
 <%	}  %>
@@ -22,7 +22,7 @@ MessageDAO mdao = new MessageDAO();
 
 LocationDAO ldao= new LocationDAO();
 
-%>	
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,44 +48,24 @@ LocationDAO ldao= new LocationDAO();
     <link href="css/landing-page.min.css" rel="stylesheet">
     <link href="css/full-width-pics.css" rel="stylesheet">
 	<link href="css/profil.css" rel="stylesheet">
-	
+
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
-	
+
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	
-	
+
+
 	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
+
   </head>
 
   <body>
-
-<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top" id="title"></i> Hapi4u</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			  Menu
-			  <i class="fa fa-bars"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-			 <ul class="navbar-nav text-uppercase ml-auto">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <i class="caret"></i></a>
-					<ul class="dropdown-menu">
-						<li><a href="logout.jsp"><i class="fas fa-sign-out-alt"></i>	Logout</a></li>
-					</ul>
-				</li>				
-		    </ul>
-			</div>
-		</div>
-	</nav>
+		<jsp:include page="navbar.jsp" />
     <!-- Header - set the background image for the header in the line below -->
     <%if (user.getIfPharmacy().equals("0")){ %>
-		
+
 		<header>
      <img class="img-fluid mx-auto d-block w-50 p-3" src="img/administrators.jpg"	alt="">
     </header>
@@ -96,7 +76,7 @@ LocationDAO ldao= new LocationDAO();
         <h1>Διαχειριστές</h1>
       </div>
     </section>
-	
+
 		<div class="container">
 		 <h3 class=" text-center">Μηνύματα</h3>
           <div class="headind_srch">
@@ -104,40 +84,40 @@ LocationDAO ldao= new LocationDAO();
               <h4>Πρόσφατα</h4>
             </div>
           </div>
-	
+
           <div class="inbox_chat">
 		  <%
-		   List<Message> messages = new ArrayList<Message>(); 
+		   List<Message> messages = new ArrayList<Message>();
 		   messages = mdao.getMessagesByUserId(user.getUserId());
 		   for (int i=(messages.size()-1); i>=0; i--){
 		  %>
             <div class="chat_list" >
               <div class="chat_people">
                 <form class="chat_ib" method="post" action="messageDelete.jsp">
-				
+
                   <h5><b>Email:</b><%=messages.get(i).getEmail()%></i><span class="chat_date"><%=messages.get(i).getDate()%></span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=messages.get(i).getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=messages.get(i).getTitle()%></h5>
 				  <br>
 				  <%=messages.get(i).getMessage()%>
 				  <input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
-				  
+
 				  <button class="btn btn-lg  pull-right" type="submit" >Διαγραφή</button>
-				  
+
                 </form>
-	
+
               </div>
             </div>
 			<%}	%>
 
           </div>
-		
+
       </div>
-     	
-		
+
+
 	<%}else{
 		Pharmacy pharmacy = pdao.findPharmacyByUserId(user.getUserId());%>
-	
+
     <header>
      <img class="img-fluid mx-auto d-block w-50 p-3"  src=<%=pharmacy.getImage()%> alt="">
     </header>
@@ -149,8 +129,8 @@ LocationDAO ldao= new LocationDAO();
         <p class="lead"><%=pharmacy.getAddress()%>, <%=(ldao.getLocationByID(pharmacy.getLocationId())) . getArea()%>, <%=(ldao.getLocationByID(pharmacy.getLocationId())) . getCity()%>, <%=(ldao.getLocationByID(pharmacy.getLocationId())) . getRegion()%></p>
       </div>
     </section>
-	
-	
+
+
 	<div class="containerM">
 		<h3 class=" text-center">Μηνύματα</h3>
           <div class="headind_srch">
@@ -158,45 +138,45 @@ LocationDAO ldao= new LocationDAO();
               <h4>Πρόσφατα</h4>
             </div>
           </div>
-	
+
           <div class="inbox_chat">
-		  <%List<Message> messages = new ArrayList<Message>(); 
+		  <%List<Message> messages = new ArrayList<Message>();
 		   messages = mdao.getMessagesByUserId(user.getUserId());
-		   
+
 		   if(request.getAttribute("message") != null) { 	%>
 			<h5><b><%=(String)request.getAttribute("message")%></h5>
 		   <%}%>
-		   
+
 		   <%for (int i=(messages.size()-1); i>=0; i--){%>
             <div class="chat_list" >
               <div class="chat_people">
                 <form class="chat_ib" method="post" action="messageDelete.jsp">
-				
+
                   <h5><b>Email:</b><%=messages.get(i).getEmail()%></i><span class="chat_date"><%=messages.get(i).getDate()%></span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=messages.get(i).getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=messages.get(i).getTitle()%></h5>
 				  <br>
 				  <%=messages.get(i).getMessage()%>
 				  <input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
-				  
+
 				  <button class="btn btn-lg  pull-right" type="submit" >Διαγραφή</button>
-				  
+
                 </form>
-	
+
               </div>
             </div>
 			<%}	%>
 
           </div>
-		
+
       </div>
-     	
-		
+
+
 		<%}	%>
-		
+
 
 	<footer class="page-footer">
-  
+
 		<!-- Copyright -->
 		<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
 		<!-- Copyright -->
@@ -206,7 +186,7 @@ LocationDAO ldao= new LocationDAO();
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	
+
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>
@@ -215,7 +195,7 @@ LocationDAO ldao= new LocationDAO();
   no_results_text: "Oops, nothing found!"
 })
 	</script>
-	
+
   </body>
 
 </html>

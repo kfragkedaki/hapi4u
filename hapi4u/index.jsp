@@ -34,69 +34,15 @@ LocationDAO ldao = new LocationDAO();
 
 
 	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/> <!--For dropdown option-->
-	
-	
+
+
 	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
   </head>
-  
+
 
   <body>
 
-<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top" id="title"></i> <i class='fa fa-ambulance'></i> Hapi4u</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			  Menu
-			  <i class="fa fa-bars"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-			  <ul class="navbar-nav text-uppercase ml-auto">
-			  <li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#services"> Υπηρεσιες</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#about">Πως λειτουργει</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#developers">Η ομαδα μας</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="#contact">Επικοινωνια</a>
-				</li>
-	<%
-	if( session.getAttribute("user_object") == null ) {
-
-%>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="register.jsp"><b>Εγγραφη</b></button></a>
-				</li>
-             </ul>
-			  <%
-	}else{
-
-%>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="myfavourites.jsp">Αγαπημενα</a>
-				</li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
-					</ul>
-				</li>
-		    </ul>
-	<%}
-	%>
-
-			</div>
-		</div>
-	</nav>
+    <jsp:include page="navbar.jsp" />
 
     <!-- Masthead -->
     <header id="page-top" class="masthead text-white text-center">
@@ -203,7 +149,7 @@ LocationDAO ldao = new LocationDAO();
 			</div>
 	    </div>
        </div>
-		  
+
        <div class="row no-gutters">
 		<div class="col-lg-12" align="middle">
 			<img class="img-fluid float-left col-lg-6" src="img/apple-business-click.jpg" alt="">
@@ -212,8 +158,8 @@ LocationDAO ldao = new LocationDAO();
 			</div>
 		</div>
 	   </div>
-            
-	  <div class="row no-gutters">	
+
+	  <div class="row no-gutters">
         <div class="col-lg-12" align="middle">
 			<img class="img-fluid float-right col-lg-6" src="img/adult-beautiful-blur.jpg" alt="">
             <div class="vertical"><h2>Εαν διαθέτεις λογαριασμό...</h2>
@@ -221,7 +167,7 @@ LocationDAO ldao = new LocationDAO();
 			</div>
 		</div>
 	  </div>
-        
+
 	  <div class="row no-gutters">
 		<div class="col-lg-12" align="middle">
 		    <img class="img-fluid float-left col-lg-6" src="img/ask-blackboard.jpg" alt="">
@@ -233,7 +179,7 @@ LocationDAO ldao = new LocationDAO();
     </div>
 	<br>
 	<br>
-		
+
 	<div class="col-lg-12 text-center">
             <h2>Αν είσαι διαχειριστής φαρμακείου...</h2>
     </div>

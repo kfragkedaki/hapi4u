@@ -6,7 +6,7 @@
 <%
 
 UserDAO udao = new UserDAO();
-%>	
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,72 +30,17 @@ UserDAO udao = new UserDAO();
 
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
-	
-	
+
+
 	<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/> <!--For dropdown option-->
 
   </head>
 
   <body>
-  
-<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top" id="title"></i> Hapi4u</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			  Menu
-			  <i class="fa fa-bars"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-			  <ul class="navbar-nav text-uppercase ml-auto">
-			  <li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.jsp#services"> Υπηρεσιες</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.jsp#about">Πως λειτουργει</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.jsp#developers">Η ομαδα μας</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="index.jsp#contact">Επικοινωνια</a>
-				</li>
-	<%
-	if( session.getAttribute("user_object") == null ) {
-	
-%>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="login.jsp"><b>Εισοδος</b></button></a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link js-scroll-trigger" href="register.jsp"><b>Εγγραφη</b></button></a>
-				</li>
-             </ul>
-			  <%
-	}else{
-	
-%>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="favourites.jsp">Αγαπημένα</a>
-				</li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
-					</ul>
-				</li>				
-		    </ul>
-	<%}
-	%>
-	    
-			</div>
-		</div>
-	</nav>
+    <jsp:include page="navbar.jsp" />
 
     <!-- Contact us -->
-	
+
     <section id="contact" class="call-to-action text-white">
       <div class="overlay"></div>
       <div class="container">
@@ -105,7 +50,7 @@ UserDAO udao = new UserDAO();
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 
-					
+
 			  <form name="sentMessage" id="contactForm" method="post" action="messageController.jsp">
 			    <div class="control-group form-group">
 				  <div class="controls">
@@ -133,7 +78,7 @@ UserDAO udao = new UserDAO();
 				  </div>
 				</div>
 				<div class="text-center">
-					<% int pharmacy_id = Integer.parseInt(request.getParameter("pharmacy_id")); 
+					<% int pharmacy_id = Integer.parseInt(request.getParameter("pharmacy_id"));
 					session.setAttribute("user_id_receiver", udao.findUserIdByPharmacyId(pharmacy_id) );%>
 					<!-- For success/fail messages -->
 					<button type="submit" class="btn btn-primary">Send Message</button>
@@ -155,7 +100,7 @@ UserDAO udao = new UserDAO();
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
 
