@@ -1,0 +1,21 @@
+C:\Users\theonymfi\hapi4u\hapi4u\hapi4u_javafiles\RegisterController.java:36: error: unmappable character for encoding Cp1252
+				session.setAttribute("message", "Αυτό το email έχει ήδη καταχω�?ηθεί!");
+				                                                                                  ^
+C:\Users\theonymfi\hapi4u\hapi4u\hapi4u_javafiles\RegisterController.java:129: error: unmappable character for encoding Cp1252
+			out.println("<h4 class='text-center'>Ουπς, κάτι πήγε λάθος. Π�?οσπαθείστε ξανά !</h4>");
+			                                                                                ^
+C:\Users\theonymfi\hapi4u\hapi4u\hapi4u_javafiles\RegisterController.java:135: error: unmappable character for encoding Cp1252
+					out.println(++countErrors + ". Το email δεν είναι έγκυ�?ο <br>");
+					                                                                     ^
+C:\Users\theonymfi\hapi4u\hapi4u\hapi4u_javafiles\RegisterController.java:138: error: unmappable character for encoding Cp1252
+					out.println(++countErrors + ". Ο κωδικός π�?έπει να είναι τουλάχιστον 4 χα�?ακτή�?ες <br>");
+					                                                    ^
+C:\Users\theonymfi\hapi4u\hapi4u\hapi4u_javafiles\RegisterController.java:138: error: unmappable character for encoding Cp1252
+					out.println(++countErrors + ". Ο κωδικός π�?έπει να είναι τουλάχιστον 4 χα�?ακτή�?ες <br>");
+					                                                                                                            ^
+C:\Users\theonymfi\hapi4u\hapi4u\hapi4u_javafiles\RegisterController.java:138: error: unmappable character for encoding Cp1252
+					out.println(++countErrors + ". Ο κωδικός π�?έπει να είναι τουλάχιστον 4 χα�?ακτή�?ες <br>");
+					                                                                                                                      ^
+6 errors
+
+Tool completed with exit code 1
