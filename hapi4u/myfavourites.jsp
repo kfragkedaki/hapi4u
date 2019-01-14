@@ -64,13 +64,21 @@
 					}
 				}
 		}
-	}
-	if (time > 2100 || time < 800 ) {
+	} else if (time > 2100 || time < 800 ) {
 
 			for (int i=0; i<myFavouritePharmacies.size(); i++){
 
 						greyFavourites.add(myFavouritePharmacies.get(i));
 						myFavouritePharmacies.remove(myFavouritePharmacies.get(i));
+				}
+	}
+
+	for (int i=0; i<myFavouritePharmacies.size(); i++){
+
+			if (myFavouritePharmacies.get(i).getId() == 7){
+
+					greyFavourites.add(myFavouritePharmacies.get(i));
+					myFavouritePharmacies.remove(myFavouritePharmacies.get(i));
 				}
 	}
 
@@ -126,7 +134,7 @@
 					  </a>
 					</div>
 					<div class="col-md-5" id="description">
-					  <h4><%= pharmacy.getName()%> <%=time%></h4>
+					  <h4><%= pharmacy.getName()%></h4>
 
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
 						<% if (user_id != 0) {
