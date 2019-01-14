@@ -225,7 +225,7 @@ LocationDAO ldao = new LocationDAO();
     </section>
 
     <!-- Contact us -->
-    <section id="contact" class="call-to-action text-white">
+    <section id="contact" class="call-to-action">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -234,37 +234,32 @@ LocationDAO ldao = new LocationDAO();
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 
-
-			  <form name="sentMessage" id="contactForm" method="post" action="messageController.jsp">
-			    <div class="control-group form-group">
-				  <div class="controls">
-					<label>Title:</label>
-					<input type="text" class="form-control" name="title" required>
-				  </div>
-				</div>
-				<div class="control-group form-group">
-				  <div class="controls">
-					<label>Full Name:</label>
-					<input type="text" class="form-control" id="name" name="name" required>
-					<p class="help-block"></p>
-				  </div>
-				</div>
-				<div class="control-group form-group">
-				  <div class="controls">
-					<label>Email Address:</label>
-					<input type="email" class="form-control" id="email" name= "email" required>
-				  </div>
-				</div>
-				<div class="control-group form-group">
-				  <div class="controls">
-					<label>Message:</label>
-					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" style="resize:none"required></textarea>
-				  </div>
-				</div>
+            <form name="sentMessage" method="post" action="messageController.jsp">
+    			    <div class="control-group form-group">
+    				  <div class="controls">
+    					<input type="text" class="form-control" name="title" placeholder="Τίτλος* " required>
+    				  </div>
+    				</div>
+    				<div class="control-group form-group">
+    				  <div class="controls">
+    					<input type="text" class="form-control" id="name" name="name" placeholder="Όνομα* " required>
+    					<p class="help-block"></p>
+    				  </div>
+    				</div>
+    				<div class="control-group form-group">
+    				  <div class="controls">
+    					<input type="email" class="form-control" id="email" name= "email" placeholder="Email* " required>
+    				  </div>
+    				</div>
+    				<div class="control-group form-group">
+    				  <div class="controls">
+    					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" placeholder="Μήνυμα* " style="resize:none"required></textarea>
+    				  </div>
+    				</div>
 				<div class="text-center">
 					<%session.setAttribute("user_id_receiver", 10 );%>
 					<!-- For success/fail messages -->
-					<button type="submit" class="btn btn-primary">Send Message</button>
+					<button type="submit" class="btn btn-primary">Αποστολή</button>
 				</div>
 			  </form>
           </div>

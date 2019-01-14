@@ -105,7 +105,7 @@ UserDAO udao = new UserDAO();
 				</div>
 				<div class="control-group form-group">
 				  <div class="controls">
-					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" placeholder="Μήνυμα" style="resize:none"required></textarea>
+					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" placeholder="Μήνυμα* " style="resize:none"required></textarea>
 				  </div>
 				</div>
 				<div class="text-center">
