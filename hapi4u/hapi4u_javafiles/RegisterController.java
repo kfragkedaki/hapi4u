@@ -33,7 +33,7 @@ public class RegisterController extends HttpServlet {
 		for(int i=0; i<users.size(); i++) {
 			if ( email.equals(users.get(i).getEmail()) ) {
 
-				session.setAttribute("message", "Αυτό το email έχει ήδη καταχωρηθεί!");
+				session.setAttribute("message", "οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½ email οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½!");
 				response.sendRedirect("../hapi4u/register.jsp");
 			}
 		}
@@ -93,10 +93,11 @@ public class RegisterController extends HttpServlet {
 			out.println("	</head>");
 			out.println("  <body>");
 			out.println("  ");
+			request.getRequestDispatcher("../hapi4u/navbar.jsp").include(request, response);
 			out.println("<!-- Navigation -->");
 			out.println("	<nav class='navbar navbar-expand-lg navbar-dark fixed-top' id='mainNav' style='background-color:#14141f'>");
 			out.println("		<div class='container'>");
-			out.println("			<a class='navbar-brand js-scroll-trigger' href='../hapi4u/index.jsp#page-top' id='title'></i> Hapi4u</a>");
+			out.println("			<a class='navbar-brand js-scroll-trigger' href='../hapi4u/index.jsp#page-top' id='title'></i>  <i class='fa fa-ambulance'></i> Hapi4u</a>");
 			out.println("			<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>");
 			out.println("			  Menu");
 			out.println("			  <i class='fa fa-bars'></i>");
@@ -104,22 +105,22 @@ public class RegisterController extends HttpServlet {
 			out.println("			<div class='collapse navbar-collapse' id='navbarResponsive'>");
 			out.println("			  <ul class='navbar-nav text-uppercase ml-auto'>");
 			out.println("			  <li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#services'>Υπηρεσίες</a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#services'>Ξ¥Ο€Ξ·ΟΞµΟƒΞΉΞµΟ‚</a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#about'>Πως λειτουργεί</a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#about'>Ξ Ο‰Ο‚ Ξ»ΞµΞΉΟ„ΞΏΟ…ΟΞ³ΞµΞΉ</a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#developers'>Η ομάδα μας</a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#developers'>Ξ— ΞΏΞΌΞ±Ξ΄Ξ± ΞΌΞ±Ο‚</a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#contact'>Επικοινωνία</a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/index.jsp#contact'>Ξ•Ο€ΞΉΞΊΞΏΞΉΞ½Ο‰Ξ½ΞΉΞ±</a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/login.jsp'><b>Είσοδος</b></button></a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/login.jsp'><b>Ξ•ΞΉΟƒΞΏΞ΄ΞΏΟ‚</b></button></a>");
 			out.println("				</li>");
 			out.println("				<li class='nav-item'>");
-			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/register.jsp'><b>Εγγραφή</b></button></a>");
+			out.println("				  <a class='nav-link js-scroll-trigger' href='../hapi4u/register.jsp'><b>Ξ•ΞΎΞΏΞ΄ΞΏΟ‚</b></button></a>");
 			out.println("				</li>");
 			out.println("			  </ul>");
 			out.println("			</div>");
@@ -127,26 +128,26 @@ public class RegisterController extends HttpServlet {
 			out.println("	</nav>");
 			out.println("<div class='container theme-showcase' role='main'>");
 			out.println("<div class='absolute_center'>");
-			out.println("<h4 class='text-center'>Ουπς, κάτι πήγε λάθος. Προσπαθείστε ξανά !</h4>");
+			out.println("<h4 class='text-center'>ΞΟ…Ο€Ο‚, ΞΊΞ¬Ο„ΞΉ Ο€Ξ®Ξ³Ξµ Ξ»Ξ¬ΞΈΞΏΟ‚. Ξ ΟΞΏΟƒΟ€Ξ±ΞΈΞµΞ―ΟƒΟ„Ξµ ΞΎΞ±Ξ½Ξ¬ !</h4>");
 			out.println("<div class='alert alert-danger'>");
 			out.println("<div class='form-group row'>");
 			out.println("<div class='col-sm-offset-1'>");
 
 				if (!(dv.isValidEmailAddress(email)))
-					out.println(++countErrors + ". Το email δεν είναι έγκυρο <br>");
+					out.println(++countErrors + ". Ξ¤ΞΏ email Ξ΄ΞµΞ½ ΞµΞ―Ξ½Ξ±ΞΉ Ξ­Ξ³ΞΊΟ…ΟΞΏ <br>");
 
 				if (!(dv.isValidPassword(password)))
-					out.println(++countErrors + ". Ο κωδικός πρέπει να είναι τουλάχιστον 4 χαρακτήρες <br>");
+					out.println(++countErrors + ". Ξ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ Ο€ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± ΞµΞ―Ξ½Ξ±ΞΉ Ο„ΞΏΟ…Ξ»Ξ¬Ο‡ΞΉΟƒΟ„ΞΏΞ½ 4 Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΞµΟ‚  <br>");
 
 				if (!(password.equals(valid_password)))
-					out.println(++countErrors + ". ο κωδικός δεν επιβεβαιώθηκε σωστά <br>");
+					out.println(++countErrors + ". Ξ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ Ξ΄ΞµΞ½ ΞµΟ€ΞΉΞ²ΞµΞ²Ξ±ΞΉΟΞΈΞ·ΞΊΞµ ΟƒΟ‰ΟƒΟ„Ξ¬ <br>");
 
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
 
 
-			out.println("<a class='btn btn-info' href='../hapi4u/register.jsp' role='button'><i class='glyphicon glyphicon-menu-left'></i><b>Πίσω στη φόρμα</b></a>");
+			out.println("<a class='btn btn-info' href='../hapi4u/register.jsp' role='button'><i class='glyphicon glyphicon-menu-left'></i><b>Ξ Ξ―ΟƒΟ‰ ΟƒΟ„Ξ·Ξ½ Ο†ΟΟΞΌΞ±</b></a>");
 
  			out.println("</div>");
 			out.println("</div>");

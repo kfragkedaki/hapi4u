@@ -12,7 +12,7 @@ LocationDAO ldao = new LocationDAO();
 <!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:#14141f">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top" id="title"></i> <i class='fa fa-ambulance'></i> Hapi4u</a>
+			<a class="navbar-brand js-scroll-trigger" href="./index.jsp#page-top" id="title"></i> <i class='fa fa-ambulance'></i> Hapi4u</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			  Menu
 			  <i class="fa fa-bars"></i>

@@ -24,6 +24,7 @@
 
 		<!-- Custom styles for this template -->
 		<link href="css/landing-page.min.css" rel="stylesheet">
+		<link href="css/login_page.css" rel="stylesheet">
 		<link href="css/register.css" rel="stylesheet">
 		<link href="css/landing-page.css" rel="stylesheet">
 
@@ -76,7 +77,7 @@
 		</div>
 
 
-
+		<jsp:include page="footer.jsp" />
 
 		<!-- End footer -->
 

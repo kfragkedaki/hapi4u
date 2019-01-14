@@ -31,7 +31,7 @@
   <body>
 
   <jsp:include page="navbar.jsp" />
-  
+
   <div class="container theme-showcase" role="main">
 
         <% if(request.getAttribute("message") != null) { %>
@@ -49,8 +49,8 @@
 
 	</div>
 	<!-- /container -->
-
-
+  
+  <jsp:include page="footer.jsp" />
 
 	<!-- Bootstrap core JavaScript
 	================================================== -->

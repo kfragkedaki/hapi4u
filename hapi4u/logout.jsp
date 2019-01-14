@@ -43,7 +43,7 @@
 	</div>
 	<!-- /container -->
 
-
+  <jsp:include page="footer.jsp" />
 	<!-- Bootstrap core JavaScript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

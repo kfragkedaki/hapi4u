@@ -46,17 +46,7 @@
 		</div>
 		<!-- /container -->
 
-		<!-- footer -->
-		<footer class="navbar-inverse">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12">
-						<p class="text-center">&copy; Copyright 2017 by ismgroupY</p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- End footer -->
+	   <jsp:include page="footer.jsp" />
 
 		<!-- Bootstrap core JavaScript
 		================================================== -->

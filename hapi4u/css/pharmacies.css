@@ -12,12 +12,6 @@
 	padding: 16px;
 }}
 
-
-footer {
-	position: absolute;
-	bottom:0;
-	width:100%;
-}
 .content {
     a{
       color: gray;

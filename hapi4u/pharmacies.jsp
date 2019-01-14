@@ -82,7 +82,6 @@
 
 		<!-- Custom styles for this template -->
 		<link href="css/landing-page.min.css" rel="stylesheet">
-		<link href="css/pharmacies.css" rel="stylesheet">
 
 	</head>
 
@@ -176,6 +175,8 @@
     </div>
 	</section>
     <!-- /.container -->
+
+		<jsp:include page="footer.jsp" />
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

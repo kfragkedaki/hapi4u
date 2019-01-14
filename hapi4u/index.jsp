@@ -275,15 +275,7 @@ LocationDAO ldao = new LocationDAO();
       </div>
     </section>
 
-	<!-- footer -->
-	<footer class="page-footer">
-
-		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">© 2018 Copyright hapi4u</div>
-		<!-- Copyright -->
-
-	</footer>
-	<!-- End footer -->
+    <jsp:include page="footer.jsp" />
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
