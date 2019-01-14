@@ -82,22 +82,12 @@ LocationDAO ldao= new LocationDAO();
     <!-- Header - set the background image for the header in the line below -->
     <%if (user.getIfPharmacy().equals("0")){ %>
 
-		<header>
-     <img class="img-fluid mx-auto d-block w-50 p-3" src="img/administrators.jpg"	alt="">
-    </header>
-
-    <!-- Content section -->
-    <section class="py-5">
-      <div class="container">
-        <h1>Διαχειριστές</h1>
-      </div>
-    </section>
 
 		<div class="container">
 		 <h3 class=" text-center">Μηνύματα</h3>
           <div class="headind_srch">
             <div class="recent_heading">
-              <h4>Πρόσφατα</h4>
+              <h4> Πρόσφατα </h4>
             </div>
           </div>
 
@@ -109,14 +99,14 @@ LocationDAO ldao= new LocationDAO();
 		  %>
             <div class="chat_list" >
               <div class="chat_people">
-                  <h5><b>Email:</b><%=messages.get(i).getEmail()%></i><span class="chat_date"><%=messages.get(i).getDate()%></span></h5>
+                  <h5><b>Email:</b> <%=messages.get(i).getEmail()%></i><span class="chat_date pull-right"><%=messages.get(i).getDate()%></span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=messages.get(i).getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=messages.get(i).getTitle()%></h5>
-				  <br>
-				  <%=messages.get(i).getMessage()%>
-				  <button type="button" class="btn btn-lg  pull-right" data-toggle="modal" data-target="#myModal"> Διαργαφή </button>
 				  
-				    <div class="modal fade" id="myModal" role="dialog">
+				  <button type="button" class="btn btn-success offset-md-9" data-toggle="modal" data-target="#view<%=messages.get(i).getMessageId()%>"> Δείτε το μήνυμα </button>
+				  <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#delete<%=messages.get(i).getMessageId()%>"> Διαργαφή </button>
+				  
+				    <div class="modal fade" id="delete<%=messages.get(i).getMessageId()%>" role="dialog">
 						<div class="modal-dialog">
     
 							<div class="modal-content">
@@ -130,8 +120,8 @@ LocationDAO ldao= new LocationDAO();
 										<form class="chat_ib" method="post" action="messageDelete.jsp">
 
 										<input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
-										<button class="btn btn-default col-md-2 offset-md-7" type="submit" >Ναι</button>
-										<button type="button" class="btn btn-default col-md-2" data-dismiss="modal">Όχι</button>
+										<button class="btn btn-danger" type="submit" >Ναι</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal">Όχι</button>
 										
 										</form>
 									</div>
@@ -139,11 +129,32 @@ LocationDAO ldao= new LocationDAO();
 								
 							</div>
 						</div>
-					</div>
+					</div> 
 					
+					
+					
+					
+				    <div class="modal fade" id="view<%=messages.get(i).getMessageId()%>" role="dialog">
+						<div class="modal-dialog">
+    
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+									<div class="modal-body">
+									<p><%=messages.get(i).getMessage()%></p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-dismiss="modal">Εντάξει</button>
+										
+									</div>
+
+								
+							</div>
+						</div>
+					</div>
       
 
-				 </form>
 
               </div>
             </div>
@@ -157,24 +168,15 @@ LocationDAO ldao= new LocationDAO();
 	<%}else{
 		Pharmacy pharmacy = pdao.findPharmacyByUserId(user.getUserId());%>
 
-    <header>
-     <img class="img-fluid mx-auto d-block w-50 p-3"  src=<%=pharmacy.getImage()%> alt="">
-    </header>
 
-    <!-- Content section -->
-    <section class="py-5">
-      <div class="container">
-		<h1><%=pharmacy.getName()%></h1>
+		<div class="container">
+		 <h3 class=" text-center">Μηνύματα</h3>
+		 <h3><%=pharmacy.getName()%></h3>
         <p class="lead"><%=pharmacy.getAddress()%>, <%=(ldao.getLocationByID(pharmacy.getLocationId())) . getArea()%>, <%=(ldao.getLocationByID(pharmacy.getLocationId())) . getCity()%>, <%=(ldao.getLocationByID(pharmacy.getLocationId())) . getRegion()%></p>
-      </div>
-    </section>
-
-
-	<div class="containerM">
-		<h3 class=" text-center">Μηνύματα</h3>
+     
           <div class="headind_srch">
             <div class="recent_heading">
-              <h4>Πρόσφατα</h4>
+              <h4> Πρόσφατα </h4>
             </div>
           </div>
 
@@ -187,20 +189,64 @@ LocationDAO ldao= new LocationDAO();
 		   <%}%>
 
 		   <%for (int i=(messages.size()-1); i>=0; i--){%>
-            <div class="chat_list" >
+             <div class="chat_list" >
               <div class="chat_people">
-                <form class="chat_ib" method="post" action="messageDelete.jsp">
-
-                  <h5><b>Email:</b><%=messages.get(i).getEmail()%></i><span class="chat_date"><%=messages.get(i).getDate()%></span></h5>
+                  <h5><b>Email:</b> <%=messages.get(i).getEmail()%></i><span class="chat_date pull-right"><%=messages.get(i).getDate()%></span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=messages.get(i).getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=messages.get(i).getTitle()%></h5>
-				  <br>
-				  <%=messages.get(i).getMessage()%>
-				  <input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
+				  
+				  <button type="button" class="btn btn-success offset-md-9" data-toggle="modal" data-target="#view<%=messages.get(i).getMessageId()%>"> Δείτε το μήνυμα </button>
+				  <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#delete<%=messages.get(i).getMessageId()%>"> Διαργαφή </button>
+				  
+				    <div class="modal fade" id="delete<%=messages.get(i).getMessageId()%>" role="dialog">
+						<div class="modal-dialog">
+    
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+									<div class="modal-body">
+									<p>Είστε σίγουροι ότι θέλετε να διαγράψετε το μήνυμα;</p>
+									</div>
+									<div class="modal-footer">
+										<form class="chat_ib" method="post" action="messageDelete.jsp">
 
-				  <button class="btn btn-lg  pull-right" type="submit" >Διαγραφή</button>
+										<input type="hidden" name="message_id" value="<%=messages.get(i).getMessageId()%>" />
+										<button class="btn btn-danger" type="submit" >Ναι</button>
+										<button type="button" class="btn btn-primary" data-dismiss="modal">Όχι</button>
+										
+										</form>
+									</div>
 
-                </form>
+								
+							</div>
+						</div>
+					</div> 
+					
+					
+					
+					
+				    <div class="modal fade" id="view<%=messages.get(i).getMessageId()%>" role="dialog">
+						<div class="modal-dialog">
+    
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+									<div class="modal-body">
+									<p><%=messages.get(i).getMessage()%></p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-dismiss="modal">Εντάξει</button>
+										
+									</div>
+
+								
+							</div>
+						</div>
+					</div>
+      
+
 
               </div>
             </div>
