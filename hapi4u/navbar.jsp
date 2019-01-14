@@ -56,7 +56,7 @@ LocationDAO ldao = new LocationDAO();
 						<li style="text-align:center;"><a style="color:black;" class="nav-link" href="logout.jsp"><span class="fa fa-sign-out"></span> Αποσύνδεση</a></li>
 					</ul>
 				</li>
-		    </ul>
+		  </ul>
 	<%}
 	%>
 

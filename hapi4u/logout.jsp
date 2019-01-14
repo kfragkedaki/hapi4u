@@ -36,7 +36,7 @@
 
 	<jsp:include page="navbar.jsp" />
 
-	<div class="container theme-showcase" role="main">
+	<div class="container theme-showcase" role="main" style="min-height: 83.2vh;">
 
 		<div class="alert alert-success text-center" role="alert">Η έξοδος πραγματοποιηθηκε με επιτυχία</div>
 

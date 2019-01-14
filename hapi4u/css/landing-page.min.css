@@ -34,7 +34,7 @@ h1,h2,h3,h4,h5,h6{
 	width:90%;
 	background-color:rgba(20, 20, 31, 0.8);
 	margin-top:280px;
-	background-color:#14141f; 
+	background-color:#14141f;
 	margin-top:400px;
 }
 .position-fixed{
@@ -97,7 +97,7 @@ margin-top:10%;
 
 .features-icons{
 	padding-top:7rem;
-	padding-bottom:7rem
+	min-height: 92.5vh
 	}
 
 .features-icons .features-icons-item{

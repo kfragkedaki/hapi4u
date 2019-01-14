@@ -32,7 +32,7 @@
 
   <jsp:include page="navbar.jsp" />
 
-  <div class="container theme-showcase" role="main">
+  <div class="container theme-showcase" role="main" style="min-height: 83.2vh;">
 
         <% if(request.getAttribute("message") != null) { %>
 			     <div class="alert alert-danger text-center" role="alert">Λάθος email ή κωδικός</div>
@@ -49,7 +49,7 @@
 
 	</div>
 	<!-- /container -->
-  
+
   <jsp:include page="footer.jsp" />
 
 	<!-- Bootstrap core JavaScript
