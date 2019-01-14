@@ -25,7 +25,6 @@
 	String times = (timef.format(currentDate)).toString();
 	int time = Integer.parseInt(times.replace(":",""));
 
-
 	LocationDAO ldao = new LocationDAO();
 	PharmacyDAO pdao = new PharmacyDAO();
 	MyFavouritesDAO fdao = new MyFavouritesDAO();
@@ -51,29 +50,29 @@
 
 	if (adao.authenticateDate(date) == 1) {
 
-	Availability availability = adao.getAvailability(date);
-	int availability_id = 0;
+		Availability availability = adao.getAvailability(date);
+		int availability_id = 0;
 
-	if (time > 2100 || time < 800 || availability.getSunday().equals("1")) {
-		availability_id = adao.getAvailability(date).getAvailabilityId();
+		if (time > 2100 || time < 800 || availability.getSunday().equals("1")) {
+			availability_id = adao.getAvailability(date).getAvailabilityId();
 
-		for (int i=0; i<myFavouritePharmacies.size(); i++){
-				int availablePharmacies = adao.findAvailablePharmacies(myFavouritePharmacies.get(i).getId(), availability_id);
-				if ( availablePharmacies == 0) {
-					greyFavourites.add(myFavouritePharmacies.get(i));
-					myFavouritePharmacies.remove(myFavouritePharmacies.get(i));
+			for (int i=0; i<myFavouritePharmacies.size(); i++){
+					int availablePharmacies = adao.findAvailablePharmacies(myFavouritePharmacies.get(i).getId(), availability_id);
+					if ( availablePharmacies == 0) {
+						greyFavourites.add(myFavouritePharmacies.get(i));
+						myFavouritePharmacies.remove(myFavouritePharmacies.get(i));
+					}
 				}
-			}
+		}
 	}
 	if (time > 2100 || time < 800 ) {
 
-		for (int i=0; i<myFavouritePharmacies.size(); i++){
+			for (int i=0; i<myFavouritePharmacies.size(); i++){
 
-					greyFavourites.add(myFavouritePharmacies.get(i));
-					myFavouritePharmacies.remove(myFavouritePharmacies.get(i));
-			}
+						greyFavourites.add(myFavouritePharmacies.get(i));
+						myFavouritePharmacies.remove(myFavouritePharmacies.get(i));
+				}
 	}
-}
 
 %>
 
@@ -127,7 +126,7 @@
 					  </a>
 					</div>
 					<div class="col-md-5" id="description">
-					  <h4><%= pharmacy.getName()%></h4>
+					  <h4><%= pharmacy.getName()%> <%=time%></h4>
 
 					  <p><%=pharmacy.getAddress()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getArea()%>- <%=ldao.getLocationByID(pharmacy.getLocationId()).getCity()%>, <%=ldao.getLocationByID(pharmacy.getLocationId()).getPostalcode()%>, <br><%=ldao.getLocationByID(pharmacy.getLocationId()).getRegion()%></p>
 						<% if (user_id != 0) {
