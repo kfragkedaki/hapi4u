@@ -35,7 +35,7 @@
 
 		<!-- /container -->
 
-		<div class="container theme-showcase" role="main">
+		<div class="container theme-showcase" role="main" style="min-height: 83.2vh;">
 
 			<h2 class="form-signin-heading text-center">Εγγραφή</h2>
 			<h4 class="form-signin-heading text-center"><small>Δημιούργησε λογαριασμό στο hapi4u συμπληρώνοντας απλώς την παρακάτω φόρμα!</small></h4>
