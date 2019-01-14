@@ -68,13 +68,13 @@ LocationDAO ldao= new LocationDAO();
 			  <i class="fa fa-bars"></i>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
-			 <ul class="navbar-nav text-uppercase ml-auto">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <i class="caret"></i></a>
+			 <ul class="navbar-nav ml-auto">
+				<li style="cursor: pointer;" class="dropdown">
+					<i class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></i>
 					<ul class="dropdown-menu">
-						<li><a href="logout.jsp"><i class="fa fa-sign-out"></i>	Logout</a></li>
+						<li style="text-align:center;"><a style="color:black;" class="nav-link" href="logout.jsp"><span class="fa fa-sign-out"></span> Αποσύνδεση</a></li>
 					</ul>
-				</li>				
+				</li>			
 		    </ul>
 			</div>
 		</div>
@@ -99,12 +99,13 @@ LocationDAO ldao= new LocationDAO();
 		  %>
             <div class="chat_list" >
               <div class="chat_people">
-                  <h5><b>Email:</b> <%=messages.get(i).getEmail()%></i><span class="chat_date pull-right"><%=messages.get(i).getDate()%></span></h5>
+                  <h5><b>Email:</b> <%=messages.get(i).getEmail()%> </i><span class="chat_date pull-right"><%=messages.get(i).getDate()%></span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=messages.get(i).getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=messages.get(i).getTitle()%></h5>
+				  <br>
+				  <%=messages.get(i).getMessage()%>
 				  
-				  <button type="button" class="btn btn-success offset-md-9" data-toggle="modal" data-target="#view<%=messages.get(i).getMessageId()%>"> Δείτε το μήνυμα </button>
-				  <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#delete<%=messages.get(i).getMessageId()%>"> Διαργαφή </button>
+				    <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#delete<%=messages.get(i).getMessageId()%>"> Διαργαφή </button>
 				  
 				    <div class="modal fade" id="delete<%=messages.get(i).getMessageId()%>" role="dialog">
 						<div class="modal-dialog">
@@ -131,29 +132,7 @@ LocationDAO ldao= new LocationDAO();
 						</div>
 					</div> 
 					
-					
-					
-					
-				    <div class="modal fade" id="view<%=messages.get(i).getMessageId()%>" role="dialog">
-						<div class="modal-dialog">
-    
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-								</div>
-									<div class="modal-body">
-									<p><%=messages.get(i).getMessage()%></p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-primary" data-dismiss="modal">Εντάξει</button>
-										
-									</div>
 
-								
-							</div>
-						</div>
-					</div>
-      
 
 
               </div>
@@ -194,8 +173,9 @@ LocationDAO ldao= new LocationDAO();
                   <h5><b>Email:</b> <%=messages.get(i).getEmail()%></i><span class="chat_date pull-right"><%=messages.get(i).getDate()%></span></h5>
 				  <h5><b>Ονοματεπώνυμο:</b> <%=messages.get(i).getName()%></h5>
                   <h5><b>Τίτλος:</b> <%=messages.get(i).getTitle()%></h5>
+				  <br>
+				  <%=messages.get(i).getMessage()%>
 				  
-				  <button type="button" class="btn btn-success offset-md-9" data-toggle="modal" data-target="#view<%=messages.get(i).getMessageId()%>"> Δείτε το μήνυμα </button>
 				  <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#delete<%=messages.get(i).getMessageId()%>"> Διαργαφή </button>
 				  
 				    <div class="modal fade" id="delete<%=messages.get(i).getMessageId()%>" role="dialog">
@@ -224,27 +204,6 @@ LocationDAO ldao= new LocationDAO();
 					</div> 
 					
 					
-					
-					
-				    <div class="modal fade" id="view<%=messages.get(i).getMessageId()%>" role="dialog">
-						<div class="modal-dialog">
-    
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-								</div>
-									<div class="modal-body">
-									<p><%=messages.get(i).getMessage()%></p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-primary" data-dismiss="modal">Εντάξει</button>
-										
-									</div>
-
-								
-							</div>
-						</div>
-					</div>
       
 
 

@@ -48,10 +48,10 @@ LocationDAO ldao = new LocationDAO();
     <header id="page-top" class="masthead text-white text-center">
 	  <div class="page-header"><h1>Βρες τα διαθέσιμα φαρμακεία εύκολα και γρήγορα!</h1></div>
        <div class="container">
-			<form class="form-inline" method="get" action ="pharmacies.jsp">
-				<div class="form-group col-md-5">
+			<form class="form" method="get" action ="pharmacies.jsp">
+				<div class=" form-group text-center">
 					<label><b>Περιοχή:  </b></label>
-						<select data-placeholder="Πληκτρολόγησε την περιοχή που επιθυμείς" multiple class="chosen-select col-md-6" name="locations" required>
+						<select data-placeholder="Πληκτρολόγησε μια περιοχή" multiple class="chosen-select" name="locations" required>
 
 						<optgroup label = "Αθήνα, ΑΤΤΙΚΗ">
 
@@ -78,19 +78,16 @@ LocationDAO ldao = new LocationDAO();
                       </select>
 				</div>
 
-				<div class="form-group col-md-3">
+				<div class="form-group text-center">
 					<label class="date"><b>Ημ/νία: </b>
 						<input type="date" id="date" name="date" required>
 					</label>
-				</div>
-
-				<div class="form-group col-md-2">
-					<label class="time"><b>Ώρα: </b>
+					<label class="time offset-sm-1"><b>Ώρα: </b>
 						<input type="time"id="time" name="time" required>
 					</label>
 				</div>
-
-				<div class="form-group col-md-1">
+				<div class="offset-sm-1 col-sm-10">
+				<br>
 					<button type="submit" class="btn btn-primary">Αναζήτηση</button>
 				</div>
 		    </form>
