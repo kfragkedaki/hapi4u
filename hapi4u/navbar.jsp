@@ -2,7 +2,6 @@
 <%@ page errorPage="error.jsp"%>
 <%@ page import="hapi4u_javafiles.*" %>
 
-
 <%
 
 UserDAO udao = new UserDAO();
@@ -51,10 +50,10 @@ LocationDAO ldao = new LocationDAO();
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></a>
+				<li style="cursor: pointer;" class="dropdown">
+					<i class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></i>
 					<ul class="dropdown-menu">
-						<li><a href="logout.jsp"><span class="glyphicon glyphicon-log-out"></span>	Logout</a></li>
+						<li style="text-align:center;"><a href="logout.jsp"><span class="fa fa-sign-out"></span>Αποσύνδεση</a></li>
 					</ul>
 				</li>
 		    </ul>
