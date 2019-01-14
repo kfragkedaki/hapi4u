@@ -53,7 +53,7 @@ LocationDAO ldao = new LocationDAO();
 				<li style="cursor: pointer;" class="dropdown">
 					<i class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span><%User user = (User) session.getAttribute("user_object");%> <%=user.getEmail()%> <span class="caret"></span></i>
 					<ul class="dropdown-menu">
-						<li style="text-align:center;"><a href="logout.jsp"><span class="fa fa-sign-out"></span>Αποσύνδεση</a></li>
+						<li style="text-align:center;"><a style="color:black;" class="nav-link" href="logout.jsp"><span class="fa fa-sign-out"></span> Αποσύνδεση</a></li>
 					</ul>
 				</li>
 		    </ul>
