@@ -13,6 +13,36 @@ UserDAO udao = new UserDAO();
 
   <head>
 
+    <style>
+        body{
+            background: -webkit-linear-gradient(left, white, silver);
+        }
+            .contact-form{
+          margin-top: 10%;
+          margin-bottom: 5%;
+          width: 70%;
+          background-color: darkgrey;
+        }
+        .contact-form .form-control{
+          border-radius:1rem;
+        }
+        .contact-image{
+          text-align: center;
+        }
+        .contact-image img{
+          border-radius: 6rem;
+          width: 11%;
+          margin-top: -3%;
+          transform: rotate(29deg);
+        }
+        .contact-form form{
+          padding: 7%;
+        }
+        .contact-form form .row{
+          margin-bottom: -7%;
+        }
+    </style>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -41,9 +71,11 @@ UserDAO udao = new UserDAO();
 
     <!-- Contact us -->
 
-    <section id="contact" class="call-to-action text-white">
-      <div class="overlay"></div>
-      <div class="container">
+    <section id="contact" class="call-to-action">
+      <div class="container contact-form">
+        <div class="contact-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDZ7dLlnFL-ci6tXjC1PrveQSwWrC-jrRlsj6xt8y1DpFpqxmq" alt="rocket_contact"/>
+        </div>
         <div class="row">
           <div class="col-xl-9 mx-auto">
             <h2 class="mb-4 text-center">Συμπλήρωσε την παρακάτω φόρμα!<h2>
@@ -51,30 +83,26 @@ UserDAO udao = new UserDAO();
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 
 
-			  <form name="sentMessage" id="contactForm" method="post" action="messageController.jsp">
+			  <form name="sentMessage" method="post" action="messageController.jsp">
 			    <div class="control-group form-group">
 				  <div class="controls">
-					<label>Title:</label>
-					<input type="text" class="form-control" name="title" required>
+					<input type="text" class="form-control" name="title" placeholder="Τίτλος* " required>
 				  </div>
 				</div>
 				<div class="control-group form-group">
 				  <div class="controls">
-					<label>Full Name:</label>
-					<input type="text" class="form-control" id="name" name="name" required>
+					<input type="text" class="form-control" id="name" name="name" placeholder="Όνομα* " required>
 					<p class="help-block"></p>
 				  </div>
 				</div>
 				<div class="control-group form-group">
 				  <div class="controls">
-					<label>Email Address:</label>
-					<input type="email" class="form-control" id="email" name= "email" required>
+					<input type="email" class="form-control" id="email" name= "email" placeholder="Email* " required>
 				  </div>
 				</div>
 				<div class="control-group form-group">
 				  <div class="controls">
-					<label>Message:</label>
-					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" style="resize:none"required></textarea>
+					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" placeholder="Μήνυμα" style="resize:none"required></textarea>
 				  </div>
 				</div>
 				<div class="text-center">
