@@ -118,22 +118,60 @@
 					  <% if (user_id != 0) {
 							if (fdao.getMyFavouritesId( user_id, pharmacy.getId()) == 0) { %>
 
-								<form class="favourites" method="post" action="saveFavouritesController.jsp">
+									<button class="fa fa-heart-o" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#save<%=pharmacy.getId()%>" style="color:#007bff;"> </button>
+									<!-- Modal -->
+									<!-- Modal -->
+									<div class="modal fade" id="save<%=pharmacy.getId()%>" role="dialog">
+										<div class="modal-dialog">
 
-									 <input type="hidden" name="user_id" value="<%=user_id%>" />
-									 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
-								   <button class="fa fa-heart-o" type="submit" style="color:#007bff;"> </button>
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title">Επιβεβαίωση.</h4>
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+												</div>
+												<div class="modal-body">
+													<p>Είστε σίγουρος ότι θέλετε να αποθηκεύσετε το φαρμακείο στα αγαπημένα σας;</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger" data-dismiss="modal">Απόρριψη</button>
+													<form class="favourites" method="post" action="saveFavouritesController.jsp">
 
-								</form>
+														 <input type="hidden" name="user_id" value="<%=user_id%>" />
+														 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+														 <button type="submit" class="btn btn-primary">Αποθήκευση αλλαγών</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
 							<% } else { %>
+											 <button class="fa fa-heart" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#delete<%=pharmacy.getId()%>" style="color:#007bff;"> </button>
 
-										<form class="favourites" method="post" action="deleteFavouritesController.jsp">
+											 <div class="modal fade" id="delete<%=pharmacy.getId()%>" role="dialog">
+												 <div class="modal-dialog">
 
-											 <input type="hidden" name="user_id" value="<%=user_id%>" />
-											 <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
-											 <button class="fa fa-heart" type="submit" style="color:#007bff;"> </button>
+													 <!-- Modal content-->
+													 <div class="modal-content">
+														 <div class="modal-header">
+															 <h4 class="modal-title">Επιβεβαίωση.</h4>
+															 <button type="button" class="close" data-dismiss="modal">&times;</button>
+														 </div>
+														 <div class="modal-body">
+															 <p>Είστε σίγουρος ότι θέλετε να διαγράψετε από τα αγαπημένα σας το φαρμακείo;</p>
+														 </div>
+														 <div class="modal-footer">
+															 <button type="button" class="btn btn-danger" data-dismiss="modal">Απόρριψη</button>
+															 <form class="favourites" method="post" action="deleteFavouritesController.jsp">
 
-										</form>
+																	<input type="hidden" name="user_id" value="<%=user_id%>" />
+																	<input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+															 		<button type="submit" class="btn btn-primary">Αποθήκευση αλλαγών</button>
+															</form>
+														 </div>
+													 </div>
+												 </div>
+											 </div>
 
 							<% }
 					  } %>

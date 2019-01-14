@@ -33,7 +33,7 @@ public class RegisterController extends HttpServlet {
 		for(int i=0; i<users.size(); i++) {
 			if ( email.equals(users.get(i).getEmail()) ) {
 
-				session.setAttribute("message", "���� �� email ���� ��� �����������!");
+				session.setAttribute("message", "Το email που χρησιμοποιήσατε υπάρχει ήδη.");
 				response.sendRedirect("../hapi4u/register.jsp");
 			}
 		}

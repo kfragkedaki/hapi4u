@@ -53,19 +53,19 @@
 				<div class="form-group row">
 					<label for="email" class="col-sm-2 offset-sm-2 control-label"><b>Email:</b></label>
 					<div class="col-sm-4">
-						<input name="email" type="text" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+						<input name="email" type="text" class="form-control" id="inputEmail" placeholder="example@gmail.com" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="password" class="col-sm-2 offset-sm-2 control-label"><b>Κωδικός:</b></label>
 					<div class="col-sm-4">
-						<input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+						<input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password" required>
 					</div>
 					</div>
 				<div class="form-group row">
 					<label for="password" class="col-sm-3 offset-sm-1 control-label"><b>Επιβεβαίωση Kωδικού:</b></label>
 					<div class="col-sm-4">
-						<input name="valid_password" type="password" class="form-control" id="inputValidPassword" placeholder="Password">
+						<input name="valid_password" type="password" class="form-control" id="inputValidPassword" placeholder="Password" required>
 					</div>
 				</div>
 				<br>
