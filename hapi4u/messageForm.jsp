@@ -74,11 +74,14 @@ UserDAO udao = new UserDAO();
     <section id="contact" class="call-to-action">
       <div class="container contact-form">
         <div class="contact-image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDZ7dLlnFL-ci6tXjC1PrveQSwWrC-jrRlsj6xt8y1DpFpqxmq" alt="rocket_contact"/>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDZ7dLlnFL-ci6tXjC1PrveQSwWrC-jrRlsj6xt8y1DpFpqxmq" alt="rocket_contact"/>
         </div>
         <div class="row">
           <div class="col-xl-9 mx-auto">
-            <h2 class="mb-4 text-center">Συμπλήρωσε την παρακάτω φόρμα!<h2>
+            <%String name = new String(request.getParameter("pharmacy_name").getBytes("ISO-8859-1"),"UTF-8");;%>
+            <h2 class="mb-4 text-center"><%=name%><h2>
+            <h3 class="mb-4 text-center">Συμπλήρωσε την παρακάτω φόρμα!<h3>
+
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 
@@ -102,14 +105,14 @@ UserDAO udao = new UserDAO();
 				</div>
 				<div class="control-group form-group">
 				  <div class="controls">
-					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" placeholder="Μήνυμα" style="resize:none"required></textarea>
+					<textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" placeholder="Μήνυμα* " style="resize:none"required></textarea>
 				  </div>
 				</div>
 				<div class="text-center">
 					<% int pharmacy_id = Integer.parseInt(request.getParameter("pharmacy_id"));
 					session.setAttribute("user_id_receiver", udao.findUserIdByPharmacyId(pharmacy_id) );%>
 					<!-- For success/fail messages -->
-					<button type="submit" class="btn btn-primary">Send Message</button>
+					<button type="submit" class="btn btn-primary">Αποστολή</button>
 				</div>
 			  </form>
           </div>

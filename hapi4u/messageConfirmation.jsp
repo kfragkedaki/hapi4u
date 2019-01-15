@@ -36,7 +36,7 @@
 
   <jsp:include page="navbar.jsp" />
 
-	<div class="container theme-showcase" role="main">
+	<div class="container theme-showcase" role="main" style="min-height: 83.2vh;">
 
 	<% if(request.getAttribute("msg") != null) { %>
 

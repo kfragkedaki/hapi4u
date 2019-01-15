@@ -178,6 +178,7 @@
 
 					  <form class="chat_ib" method="post" action="messageForm.jsp">
 					  <input type="hidden" name="pharmacy_id" value="<%=pharmacy.getId()%>" />
+						<input type="hidden" name="pharmacy_name" value="<%=pharmacy.getName()%>" />
 					  <button class="fa fa-envelope" type="submit" aria-hidden="false" style="color:#007bff;"> </button>
 					  </form>
 					<!--  <a href="" data-toggle="modal" data-target="#communication"><i class="fa fa-envelope" aria-hidden="false" style="color:#007bff;"> </i></a>-->
